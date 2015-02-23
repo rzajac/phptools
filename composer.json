@@ -1,0 +1,21 @@
+{
+    "name": "rzajac/tools",
+    "authors": [
+        {
+            "name": "Rafal Zajac",
+            "email": "rzajac@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "~4.5",
+        "mikey179/vfsStream": "1.*",
+        "phpdocumentor/phpdocumentor": "~2.8",
+        "squizlabs/php_codesniffer": "2.*"
+    },
+    "autoload": {
+      "psr-4": {
+        "Kicaj\\Tools\\": "src/",
+        "Kicaj\\Test\\Tools\\": "test/"
+      }
+    }
+}
