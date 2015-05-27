@@ -1,25 +1,27 @@
 {
-    "name": "rzajac/phptools",
-    "description": "Collection of utility classes",
-    "authors": [
-        {
-            "name": "Rafal Zajac",
-            "email": "rzajac@gmail.com"
-        }
-    ],
-    "require": {
-      "php": ">=5.5.0"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "~4.5",
-        "mikey179/vfsStream": "1.*",
-        "phpdocumentor/phpdocumentor": "~2.8",
-        "squizlabs/php_codesniffer": "2.*"
-    },
-    "autoload": {
-      "psr-4": {
-        "Kicaj\\Tools\\": "src/",
-        "Kicaj\\Test\\Tools\\": "test/"
-      }
+  "name": "rzajac/phptools",
+  "description": "Collection of utility classes",
+  "type": "library",
+  "license": "Apache License 2.0",
+  "authors": [
+    {
+      "name": "Rafal Zajac",
+      "email": "rzajac@gmail.com"
     }
+  ],
+  "require": {
+    "php": ">=5.5.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~4.5",
+    "mikey179/vfsStream": "1.*",
+    "phpdocumentor/phpdocumentor": "~2.8",
+    "squizlabs/php_codesniffer": "2.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Kicaj\\Tools\\": "src/",
+      "Kicaj\\Test\\Tools\\": "test/"
+    }
+  }
 }
