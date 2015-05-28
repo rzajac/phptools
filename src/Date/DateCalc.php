@@ -98,4 +98,31 @@ abstract class DateCalc
 
         return self::secondsSinceMidnight((int)$time_a[0], (int)$time_a[1], (int)$time_a[2]);
     }
+
+    /**
+     * Takes time in hhmmss format and returns formatted string
+     *
+     * @param int|string  $time        The time in hhmmss or hhmm format
+     * @param bool        $withSeconds Set to true to add seconds if not provided
+     *
+     * @return string The formatted string hh:mm:ss or hh:mm
+     */
+    public static function formatTimeStr($time, $withSeconds = false)
+    {
+        // Pad left with 0 in case we get numbers like 123, 12, 122015
+        $time = str_pad($time.'', 6, '0', STR_PAD_LEFT);
+
+        $_time = array();
+
+        $_time[] = substr($time, 0, 2);
+        $_time[] = substr($time, 2, 2);
+
+        if($withSeconds)
+        {
+            $_seconds = substr($time, 4, 2);
+            $_time[] = $_seconds;
+        }
+
+        return implode(':', $_time);
+    }
 }

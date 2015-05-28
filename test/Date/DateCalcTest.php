@@ -95,4 +95,32 @@ class DateCalc_Test extends PHPUnit_Framework_TestCase
             ['', null],
         );
     }
+
+    /**
+     * @dataProvider formatTimeStrProvider
+     *
+     * @param int    $timeInt
+     * @param bool   $withSeconds
+     * @param string $expected
+     */
+    public function testFormatTimeStr($timeInt, $withSeconds, $expected)
+    {
+        $time = DateCalc::formatTimeStr($timeInt, $withSeconds);
+        $this->assertSame($expected, $time);
+    }
+
+    public function formatTimeStrProvider()
+    {
+        return array
+        (
+            array(192015, false, '19:20'),
+            array(192015, true, '19:20:15'),
+            array(0, false, '00:00'),
+            array(0, true, '00:00:00'),
+            array(15, false, '00:00'),
+            array(15, true, '00:00:15'),
+            array(1615, false, '00:16'),
+            array(1615, true, '00:16:15'),
+        );
+    }
 }
