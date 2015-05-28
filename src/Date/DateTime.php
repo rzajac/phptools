@@ -343,6 +343,19 @@ class DateTime extends \DateTime implements \JsonSerializable
     }
 
     /**
+     * Get current minutes
+     *
+     * @param bool $inUTC
+     *
+     * @return int
+     */
+    public static function getCurrentMinutes($inUTC = false)
+    {
+        $tz = $inUTC ? 'UTC' : null;
+        return (int) static::now($tz)->format('i');
+    }
+
+    /**
      * Format date.
      *
      * @param string $format Format accepted by date(). When empty it's using the default format.

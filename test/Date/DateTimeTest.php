@@ -383,6 +383,18 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getCurrentMinutes
+     */
+    public function testGetCurrentMinutes()
+    {
+        date_default_timezone_set('Asia/Kathmandu');
+        $minutes = (int) date('i');
+
+        $this->assertNotSame($minutes, DateTime::getCurrentMinutes(true));
+        $this->assertSame($minutes, DateTime::getCurrentMinutes());
+    }
+
+    /**
      * @covers ::now
      */
     public function testNow()
