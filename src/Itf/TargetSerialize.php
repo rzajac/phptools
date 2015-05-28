@@ -23,7 +23,7 @@ namespace Kicaj\Tools\Itf;
  * @package Kicaj\Tools\Itf
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface TargetSerInterface extends \JsonSerializable
+interface TargetSerialize extends \JsonSerializable
 {
     /** Default serialization target */
     const SER_DEFAULT = 'default';
