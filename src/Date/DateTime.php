@@ -106,13 +106,12 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
      *
      * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
      *                                              If null the default timezone will be taken
-     * @param bool                     $addZeroHour Set to true to add 00:00:00 to the passed date
      *
      * @return static
      */
-    public static function now($timezone = null, $addZeroHour = false)
+    public static function now($timezone = null)
     {
-        return new static('now', $timezone, $addZeroHour);
+        return new static('now', $timezone);
     }
 
     /**

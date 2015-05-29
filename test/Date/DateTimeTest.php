@@ -201,6 +201,8 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
 
         $date->addMonths($delta);
         $this->assertSame($expDate, $date->format());
+
+        $this->assertSame('00:00:00', $date->format('H:i:s'));
     }
 
     public function getMonthDeltaProvider()
