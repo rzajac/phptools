@@ -400,13 +400,49 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::__construct
      * @covers ::hollow
      * @covers ::format
      * @covers ::setHollow
      * @covers ::getFormat
      * @covers ::toMySQLDate
      */
-    public function testHollow()
+    public function testHollowNew()
+    {
+        $date = new DateTime('');
+
+        $this->assertNotNull($date);
+        $this->assertTrue($date->isHollow());
+        $this->assertSame('', $date->getFormat());
+
+        $this->assertSame('', $date->getLongDate('en'));
+        $this->assertSame('', $date->format());
+        $this->assertSame('', $date->format('Y-m-d H:i:s'));
+        $this->assertSame('', $date->__toString());
+        $this->assertSame('', $date->jsonSerialize());
+
+        $this->assertSame(0, $date->secondsSinceMidnight());
+        $this->assertSame('0000-00-00 00:00:00', $date->toMySQLDate());
+
+        $this->assertSame(0, $date->getYear());
+
+        $this->assertSame(0, $date->getHours());
+        $this->assertSame(0, $date->getMinutes());
+        $this->assertSame(0, $date->getSeconds());
+
+        $date->setHollow(false);
+        $this->assertFalse($date->isHollow());
+        $this->assertSame('Y-m-d H:i:s', $date->getFormat());
+    }
+
+    /**
+     * @covers ::hollow
+     * @covers ::format
+     * @covers ::setHollow
+     * @covers ::getFormat
+     * @covers ::toMySQLDate
+     */
+    public function testHollowStatic()
     {
         $date = DateTime::hollow();
 
@@ -430,6 +466,7 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
         $this->assertSame(0, $date->getSeconds());
 
         $date->setHollow(false);
+        $this->assertFalse($date->isHollow());
         $this->assertSame('Y-m-d H:i:s', $date->getFormat());
     }
 }

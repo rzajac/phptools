@@ -69,12 +69,19 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
      */
     public function __construct($time = 'now', $timezone = null)
     {
-        if (is_string($timezone))
+        if (is_string($timezone) && $timezone !== '')
         {
             $timezone = new DateTimeZone($timezone);
         }
 
         $this->formatBack = $this->format;
+
+        if(!$time)
+        {
+            $time = '1970-01-01 00:00:00';
+            $timezone = new DateTimeZone('UTC');
+            $this->setHollow();
+        }
 
         parent::__construct($time, $timezone);
     }
@@ -115,10 +122,7 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
      */
     public static function hollow()
     {
-        $date = new DateTime('1970-01-01 00:00:00', new DateTimeZone('UTC'));
-        $date->setHollow();
-
-        return $date;
+        return new DateTime('');
     }
 
     /**
