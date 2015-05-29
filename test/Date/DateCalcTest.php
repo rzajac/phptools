@@ -105,7 +105,7 @@ class DateCalc_Test extends PHPUnit_Framework_TestCase
      */
     public function testFormatTimeStr($timeInt, $withSeconds, $expected)
     {
-        $time = DateCalc::formatTimeStr($timeInt, $withSeconds);
+        $time = DateCalc::formatStrTime($timeInt, $withSeconds);
         $this->assertSame($expected, $time);
     }
 

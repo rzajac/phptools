@@ -107,7 +107,7 @@ abstract class DateCalc
      *
      * @return string The formatted string hh:mm:ss or hh:mm
      */
-    public static function formatTimeStr($time, $withSeconds = false)
+    public static function formatStrTime($time, $withSeconds = true)
     {
         // Pad left with 0 in case we get numbers like 123, 12, 122015
         $time = str_pad($time.'', 6, '0', STR_PAD_LEFT);
