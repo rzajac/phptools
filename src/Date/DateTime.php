@@ -20,6 +20,7 @@ namespace Kicaj\Tools\Date;
 use DateInterval;
 use DateTimeZone;
 use Kicaj\Tools\Lang\Calendar;
+use Kicaj\Tools\Traits\Hollow;
 
 /**
  * Date and time base class
@@ -27,8 +28,10 @@ use Kicaj\Tools\Lang\Calendar;
  * @package Kicaj\Tools\Date
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DateTime extends \DateTime implements \JsonSerializable
+class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\Hollow
 {
+    use Hollow { setHollow as traitSetHollow; }
+
     /** Four digit year */
     const YEAR_FORMAT_LONG = 'Y';
 
@@ -49,6 +52,13 @@ class DateTime extends \DateTime implements \JsonSerializable
     protected $format = 'Y-m-d H:i:s';
 
     /**
+     * Backup of default serialization format
+     *
+     * @var string
+     */
+    private $formatBack;
+
+    /**
      * Constructor
      *
      * @param string                   $time        The time
@@ -63,6 +73,8 @@ class DateTime extends \DateTime implements \JsonSerializable
         {
             $timezone = new DateTimeZone($timezone);
         }
+
+        $this->formatBack = $this->format;
 
         parent::__construct($time, $timezone);
     }
@@ -97,6 +109,42 @@ class DateTime extends \DateTime implements \JsonSerializable
     }
 
     /**
+     * Make hollow date
+     *
+     * @return static
+     */
+    public static function hollow()
+    {
+        $date = new DateTime('1970-01-01 00:00:00', new DateTimeZone('UTC'));
+        $date->setHollow();
+
+        return $date;
+    }
+
+    /**
+     * Set DateTime as hollow / empty
+     *
+     * @param bool $flag Set to true to make object hollow / empty
+     *
+     * @return $this
+     */
+    public function setHollow($flag = true)
+    {
+        $this->traitSetHollow($flag);
+
+        if($flag)
+        {
+            $this->format = '';
+        }
+        else
+        {
+            $this->format = $this->formatBack;
+        }
+
+        return $this;
+    }
+
+    /**
      * Parse a string into a new DateTime object according to the specified format
      *
      * This is basically the same method as parent's createFromFormat but allows
@@ -127,6 +175,16 @@ class DateTime extends \DateTime implements \JsonSerializable
     }
 
     /**
+     * Get date format string
+     *
+     * @return string
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
      * Format date as Saturday, 20 April 2013, 16:23
      *
      * @param  string  $languageCode The language code ex: pl, en
@@ -136,6 +194,8 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function getLongDate($languageCode, $timeFormat = null)
     {
+        if ($this->isHollow()) return '';
+
         $dayName = Calendar::getDay($this->getDayOw(), $languageCode);
         $monthName = Calendar::getMonth($this->getMonth(), $languageCode);
 
@@ -162,7 +222,7 @@ class DateTime extends \DateTime implements \JsonSerializable
     /**
      * Returns date in MySQL format
      *
-     * NOTE: It returns 0000-00-00 00:00:00 for empty dates
+     * NOTE: It returns 0000-00-00 00:00:00 for hollow dates
      *
      * @param bool $withTime
      *
@@ -170,6 +230,11 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function toMySQLDate($withTime = true)
     {
+        if ($this->isHollow())
+        {
+            return $withTime ? '0000-00-00 00:00:00' : '0000-00-00';
+        }
+
         $format = $withTime ? 'Y-m-d H:i:s' : 'Y-m-d';
 
         return $this->format($format);
@@ -184,6 +249,8 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function getYear($format = self::YEAR_FORMAT_LONG)
     {
+        if($this->isHollow()) return 0;
+
         return (int) $this->format($format);
     }
 
@@ -194,6 +261,8 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function getMonth()
     {
+        if($this->isHollow()) return 0;
+
         return (int) $this->format('n');
     }
 
@@ -204,6 +273,8 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function getDay()
     {
+        if($this->isHollow()) return 0;
+
         return (int) $this->format('j');
     }
 
@@ -214,6 +285,8 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function getDayOw()
     {
+        if($this->isHollow()) return 0;
+
         return (int) $this->format('w');
     }
 
@@ -364,7 +437,15 @@ class DateTime extends \DateTime implements \JsonSerializable
      */
     public function format($format = '')
     {
-        $format = $format ?: $this->format;
+        if($this->isHollow())
+        {
+            $format = $this->format;
+        }
+        else
+        {
+            $format = $format ?: $this->format;
+        }
+
         return parent::format($format);
     }
 

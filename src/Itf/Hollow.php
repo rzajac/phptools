@@ -15,44 +15,29 @@
  * under the License.
  */
 
-namespace Kicaj\Tools\Traits;
+namespace Kicaj\Tools\Itf;
 
 /**
- * Hollow / empty trait
+ * Hollow / empty interface
  *
- * @package Kicaj\Tools\Traits
- * @author Rafal Zajac <rzajac@gmail.com>
+ * @package Kicaj\Tools\Itf
+ * @author  Ralph Zajac <rzajac@gmail.com>
  */
-trait Hollow
+interface Hollow
 {
-	/**
-	 * Is object hollow / empty
-	 *
-	 * @var bool
-	 */
-	private $_isHollow = false;
+    /**
+     * Returns true if class is hollow / empty
+     *
+     * @return bool
+     */
+    public function isHollow();
 
-	/**
-	 * Returns true if class is hollow / empty
-	 *
-	 * @return bool
-	 */
-	public function isHollow()
-	{
-		return $this->_isHollow;
-	}
-
-	/**
-	 * Set hollow / empty
-	 *
-	 * @param bool $flag
-	 *
-	 * @return $this
-	 */
-	public function setHollow($flag = TRUE)
-	{
-		$this->_isHollow = $flag;
-
-		return $this;
-	}
+    /**
+     * Set hollow / empty
+     *
+     * @param bool $flag
+     *
+     * @return $this
+     */
+    public function setHollow($flag = TRUE);
 }
