@@ -19,6 +19,8 @@ namespace Kicaj\Tools\Date;
 
 use DateInterval;
 use DateTimeZone;
+use Kicaj\Tools\Itf\Hollow as IHollow;
+use Kicaj\Tools\Itf\TargetSerialize;
 use Kicaj\Tools\Lang\Calendar;
 use Kicaj\Tools\Traits\Hollow;
 
@@ -28,7 +30,7 @@ use Kicaj\Tools\Traits\Hollow;
  * @package Kicaj\Tools\Date
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\Hollow
+class DateTime extends \DateTime implements IHollow, TargetSerialize
 {
     use Hollow { setHollow as traitSetHollow; }
 
@@ -475,6 +477,20 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
      * @return string
      */
     public function jsonSerialize()
+    {
+        return $this->format($this->format);
+    }
+
+    /**
+     * Serialize object for given target
+     *
+     * @param string $target The serialization target (one of the TSer constants)
+     * @param mixed  $params The additional parameters that serializer might need
+     *
+     * @throws \Exception
+     * @return \stdClass|string|array|NULL
+     */
+    public function targetSerialize($target = self::SER_DEFAULT, $params = null)
     {
         return $this->format($this->format);
     }
