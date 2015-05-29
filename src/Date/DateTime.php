@@ -160,7 +160,9 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
      * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
      *                                              If null the default timezone will be taken
      *
-     * @return static|null Returns null if $time is invalid
+     * @throws \Exception
+     *
+     * @return static
      */
     public static function fromFormat($format, $time, $timezone = null)
     {
@@ -171,7 +173,12 @@ class DateTime extends \DateTime implements \JsonSerializable, \Kicaj\Tools\Itf\
 
         $dt = DateTime::createFromFormat($format, $time, $timezone);
 
-        if (! $dt) return null;
+        if (! $dt)
+        {
+            $errorMsg = DateTime::getLastErrors();
+            $errorMsg = array_values($errorMsg['errors'])[0];
+            throw new \Exception($errorMsg);
+        }
 
         $object = new static('now', $dt->getTimezone());
         return $object->setTimestamp($dt->getTimestamp());
