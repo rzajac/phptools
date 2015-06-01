@@ -37,7 +37,7 @@ class JResp
      *
      * @return string JSON encoded $value.
      */
-    public static function retError($value, $http_code = 400, $prettyPrint = false)
+    public static function retError($value, $http_code = HttpCodes::HTTP_BAD_REQUEST, $prettyPrint = false)
     {
         $response = self::buildResponse($value, false, $http_code);
 
@@ -58,7 +58,7 @@ class JResp
     {
         $response           = new stdClass;
         $response->success  = $success;
-        $response->httpCode = $httpCode;
+        $response->http_code = $httpCode;
 
         if ($pagingInfo)
         {
@@ -102,7 +102,7 @@ class JResp
      *
      * @return string JSON encoded $value
      */
-    public static function retSuccess($value = null, $http_code = 200, Paging $pagingInfo = null, $prettyPrint = false)
+    public static function retSuccess($value = null, $http_code = HttpCodes::HTTP_OK, Paging $pagingInfo = null, $prettyPrint = false)
     {
         $response = self::buildResponse($value, true, $http_code, $pagingInfo);
 
@@ -120,7 +120,7 @@ class JResp
     {
         if (is_object($response) && $response->success == true)
         {
-            return HttpCodes::isOk($response->httpCode);
+            return HttpCodes::isOk($response->http_code);
         }
         else
         {

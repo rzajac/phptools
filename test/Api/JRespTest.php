@@ -55,14 +55,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectNotHasAttribute('pageNumber', $resp);
         $this->assertObjectNotHasAttribute('pageSize', $resp);
         $this->assertObjectNotHasAttribute('totalPages', $resp);
 
         $this->assertSame(true, $resp->success);
-        $this->assertSame(200, $resp->httpCode);
+        $this->assertSame(200, $resp->http_code);
         $this->assertSame($this->testValue, $resp->data);
 
         // Make sure there are no other keys
@@ -75,7 +75,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
     public function test_buildResponse_httpCode()
     {
         $resp = JResp::buildResponse($this->testValue, true, 123);
-        $this->assertSame(123, $resp->httpCode);
+        $this->assertSame(123, $resp->http_code);
 
         // Make sure there are no other keys
         $this->assertSame(3, count(array_keys((array)$resp)));
@@ -104,7 +104,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
 
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectHasAttribute('pageNumber', $resp);
         $this->assertObjectHasAttribute('pageSize', $resp);
@@ -131,7 +131,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
 
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectHasAttribute('pageNumber', $resp);
         $this->assertObjectHasAttribute('pageSize', $resp);
@@ -180,14 +180,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectNotHasAttribute('pageNumber', $resp);
         $this->assertObjectNotHasAttribute('pageSize', $resp);
         $this->assertObjectNotHasAttribute('totalPages', $resp);
 
         $this->assertSame(true, $resp->success);
-        $this->assertSame(200, $resp->httpCode);
+        $this->assertSame(200, $resp->http_code);
         $this->assertSame($this->testValue, (array)$resp->data);
 
         // Make sure there are no other keys
@@ -205,14 +205,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectHasAttribute('pageNumber', $resp);
         $this->assertObjectHasAttribute('pageSize', $resp);
         $this->assertObjectHasAttribute('totalPages', $resp);
 
         $this->assertSame(true, $resp->success);
-        $this->assertSame(123, $resp->httpCode);
+        $this->assertSame(123, $resp->http_code);
         $this->assertSame($this->testValue, (array)$resp->data);
         $this->assertSame(2, $resp->pageNumber);
         $this->assertSame(20, $resp->pageSize);
@@ -233,14 +233,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
-        $this->assertObjectHasAttribute('httpCode', $resp);
+        $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
         $this->assertObjectNotHasAttribute('pageNumber', $resp);
         $this->assertObjectNotHasAttribute('pageSize', $resp);
         $this->assertObjectNotHasAttribute('totalPages', $resp);
 
         $this->assertSame(false, $resp->success);
-        $this->assertSame(444, $resp->httpCode);
+        $this->assertSame(444, $resp->http_code);
         $this->assertSame($error, (array)$resp->data);
 
         // Make sure there are no other keys
