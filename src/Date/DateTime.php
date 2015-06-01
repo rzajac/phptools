@@ -173,7 +173,8 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
             $timezone = new DateTimeZone($timezone);
         }
 
-        $dt = DateTime::createFromFormat($format, $time, $timezone);
+        // DateTime::createFromFormat() expects parameter 3 to be DateTimeZone, null given
+        $dt = $timezone ? DateTime::createFromFormat($format, $time, $timezone) :  DateTime::createFromFormat($format, $time);
 
         if (! $dt)
         {
