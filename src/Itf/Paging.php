@@ -48,5 +48,5 @@ interface Paging
      *
      * @return int
      */
-    public function getPages();
+    public function getPageCount();
 }

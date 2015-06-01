@@ -285,7 +285,7 @@ class TestPaging implements Paging
      *
      * @return int
      */
-    public function getPages()
+    public function getPageCount()
     {
         return $this->totalPages;
     }

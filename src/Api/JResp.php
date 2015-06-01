@@ -65,7 +65,7 @@ class JResp
             $response->pageNumber = $pagingInfo->getPageNumber();
             $response->pageSize   = $pagingInfo->getPageSize();
 
-            $totalPages = $pagingInfo->getPages();
+            $totalPages = $pagingInfo->getPageCount();
             if ($totalPages > 0)
             {
                 $response->totalPages = $totalPages;
