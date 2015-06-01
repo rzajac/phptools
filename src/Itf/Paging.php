@@ -32,7 +32,7 @@ interface Paging
      *
      * @return int
      */
-    public function getCurrPageNumber();
+    public function getPageNumber();
 
     /**
      * Get number of data elements in the response
@@ -48,5 +48,5 @@ interface Paging
      *
      * @return int
      */
-    public function getTotalPages();
+    public function getPages();
 }

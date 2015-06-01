@@ -263,7 +263,7 @@ class TestPaging implements Paging
      *
      * @return int
      */
-    public function getCurrPageNumber()
+    public function getPageNumber()
     {
         return $this->currPage;
     }
@@ -285,7 +285,7 @@ class TestPaging implements Paging
      *
      * @return int
      */
-    public function getTotalPages()
+    public function getPages()
     {
         return $this->totalPages;
     }

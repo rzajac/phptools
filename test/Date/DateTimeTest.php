@@ -105,12 +105,21 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      */
 	public function testFromFormat($format, $dateTime, $timezone, $expected)
 	{
-        /** @var DateTime $date */
-		$date = DateTime::fromFormat($format, $dateTime, $timezone, $expected);
+        try
+        {
+            /** @var DateTime $date */
+            $date = DateTime::fromFormat($format, $dateTime, $timezone);
+            $thrown = false;
+        }
+        catch(\Exception $e)
+        {
+            $thrown = true;
+            $date = null;
+        }
 
         if($expected === null)
         {
-		    $this->assertSame($expected, $date);
+		    $this->assertSame(true, $thrown);
         }
         else
         {
@@ -156,6 +165,7 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @dataProvider jsonSerializeProvider
      *
      * @covers ::jsonSerialize
+     * @covers ::targetSerialize
      * @covers ::format
      * @covers ::__toString
      *
@@ -169,6 +179,7 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
 		$date = new $class($dateStr);
 		$this->assertEquals($expected, json_encode($date));
 		$this->assertEquals(trim($expected, '"'), $date->__toString());
+		$this->assertEquals(trim($expected, '"'), $date->targetSerialize());
 	}
 
 	public function jsonSerializeProvider()
