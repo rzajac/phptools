@@ -112,10 +112,49 @@ abstract class Arr
      *
      * @return mixed
      */
-    public static function get(&$array, $key, $default = null)
+    public static function get($array, $key, $default = null)
     {
         if (! is_array($array)) return $default;
         return array_key_exists($key, $array) ? $array[$key] : $default;
+    }
+
+    /**
+     * Get array
+     *
+     * @param array        $array
+     * @param string|array $path
+     * @param mixed        $default
+     *
+     * @return mixed
+     */
+    public static function fetch($array, $path, $default = null)
+    {
+        // $array must be an array
+        if (!is_array($array)) return $default;
+
+        $path = is_array($path) ? $path : explode('.', $path);
+        $levels = count($path);
+
+        // No path means the received array
+        if ($levels === 0) return $array;
+
+        $ret = $default;
+        $key = array_shift($path);
+        $levels -= 1;
+
+        if (array_key_exists($key, $array))
+        {
+            if (is_array($array[$key]) && $levels > 0)
+            {
+                $ret = self::fetch($array[$key], $path, $default);
+            }
+            else
+            {
+                $ret = $array[$key];
+            }
+        }
+
+        return $ret;
     }
 
     /**

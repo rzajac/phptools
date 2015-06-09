@@ -204,4 +204,23 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             [['a', 'c'], ['a' => 1, 'b' => 2, 'c' => 3], ['a' => 1, 'c' => 3]],
         ];
     }
+
+    public function test_fetch()
+    {
+        $this->assertSame('value', Arr::fetch($this->array, 'level0_0.level1_0.key'));
+        $this->assertSame('def', Arr::fetch($this->array, 'level0_0.level1_0.key1', 'def'));
+        $this->assertSame(null, Arr::fetch($this->array, 'level0_0.level1_0.key1'));
+        $this->assertSame(['level1_0' => ['key' => 'value']], Arr::fetch($this->array, 'level0_0'));
+        $this->assertSame(['key' => 'value'], Arr::fetch($this->array, 'level0_0.level1_0'));
+        $this->assertSame(null, Arr::fetch($this->array, 'a.b.c'));
+        $this->assertSame('defValue', Arr::fetch($this->array, 'a', 'defValue'));
+    }
+
+    protected $array = [
+      'level0_0' => [
+          'level1_0' => [
+              'key' => 'value'
+          ]
+      ]
+    ];
 }
