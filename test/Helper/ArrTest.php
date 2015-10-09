@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,18 +15,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Arr;
 use stdClass;
 
 /**
- * Class ArrTest
+ * Class ArrTest.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Arr
  *
- * @package Kicaj\Test\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class ArrTest extends \PHPUnit_Framework_TestCase
@@ -64,7 +63,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
         $arr = ['a' => 1, 'b' => 2];
         $got = Arr::toObject($arr);
 
-        $exp = new stdClass;
+        $exp = new stdClass();
         $exp->a = 1;
         $exp->b = 2;
 
@@ -153,8 +152,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      * @covers ::remove
      *
      * @param string|array $toRemove
-     * @param array $arr
-     * @param array $expected
+     * @param array        $arr
+     * @param array        $expected
      */
     public function test_remove($toRemove, $arr, $expected)
     {
@@ -182,8 +181,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      * @covers ::keep
      *
      * @param string|array $toKeep
-     * @param array $arr
-     * @param array $expected
+     * @param array        $arr
+     * @param array        $expected
      */
     public function test_keep($toKeep, $arr, $expected)
     {
@@ -219,8 +218,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
     protected $array = [
       'level0_0' => [
           'level1_0' => [
-              'key' => 'value'
-          ]
-      ]
+              'key' => 'value',
+          ],
+      ],
     ];
 }

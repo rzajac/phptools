@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,7 +15,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Helper;
 
 use Exception;
@@ -23,31 +23,30 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 
 /**
- * Class FileTest
+ * Class FileTest.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\File
  *
- * @package Kicaj\Test\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class FileTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Root of virtual filesystem
+     * Root of virtual filesystem.
      *
-     * @var  vfsStreamDirectory
+     * @var vfsStreamDirectory
      */
     private $root;
 
     /**
-     * Path to test file in the virtual file system
+     * Path to test file in the virtual file system.
      *
      * @var string
      */
     protected $testFile;
 
     /**
-     * Test file sha1 hash
+     * Test file sha1 hash.
      *
      * @var string
      */
@@ -60,7 +59,7 @@ class FileTest extends \PHPUnit_Framework_TestCase
 
         // Put license file in it
         $this->testFile = vfsStream::url('exampleDir/LICENSE');
-        file_put_contents($this->testFile, file_get_contents(dirname(__FILE__) . '/../../LICENSE'));
+        file_put_contents($this->testFile, file_get_contents(dirname(__FILE__).'/../../LICENSE'));
     }
 
     /**
@@ -137,23 +136,21 @@ class FileTest extends \PHPUnit_Framework_TestCase
         // - exist on the file system
         // - have the correct hash
         $prefix = '';
-        foreach($chunks as $index => $chunk)
-        {
-            $chunkPath = vfsStream::url('exampleDir/chunks/' . $chunk);
+        foreach ($chunks as $index => $chunk) {
+            $chunkPath = vfsStream::url('exampleDir/chunks/'.$chunk);
 
             $parts = explode('_', $chunk);
 
             // First chunk
-            if($prefix == '')
-            {
+            if ($prefix == '') {
                 $prefix = $parts[0];
-                $this->assertSame(1, (int)$parts[1]);
+                $this->assertSame(1, (int) $parts[1]);
                 $this->assertSame($expectedHashes[$index], sha1_file($chunkPath));
                 continue;
             }
 
             $this->assertSame($prefix, $parts[0]);
-            $this->assertSame($index+1, (int)$parts[1]);
+            $this->assertSame($index + 1, (int) $parts[1]);
             $this->assertSame($expectedHashes[$index], sha1_file($chunkPath));
         }
     }

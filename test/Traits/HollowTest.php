@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,18 +15,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Traits;
 
 use Kicaj\Tools\Traits\Hollow;
 
-
 /**
- * Class ApiExceptionTest
+ * Class ApiExceptionTest.
  *
  * @coversDefaultClass Kicaj\Tools\Traits\Hollow
  *
- * @package Kicaj\Test\Traits
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class HollowTest extends \PHPUnit_Framework_TestCase
@@ -47,7 +45,6 @@ class HollowTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($h->isHollow());
     }
 }
-
 
 class HollowTmp
 {

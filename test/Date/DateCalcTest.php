@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,21 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Date;
 
 use Kicaj\Tools\Date\DateCalc;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Class DateCalc_Test
+ * Class DateCalc_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Date\DateCalc
  *
  * @author Rafal Zajac <rzajac@gmail.com>
- * @package Kicaj\Test\Tools\Date
  */
-class DateCalc_Test extends PHPUnit_Framework_TestCase
+class DateCalcTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::durationHI
@@ -75,7 +74,7 @@ class DateCalc_Test extends PHPUnit_Framework_TestCase
      * @covers ::secondsSinceMidnightStr
      *
      * @param string $timeStr
-     * @param int $expected
+     * @param int    $expected
      */
     public function testSecondsSinceMidnightStr($timeStr, $expected)
     {
@@ -84,8 +83,7 @@ class DateCalc_Test extends PHPUnit_Framework_TestCase
 
     public function secondsSinceMidnightStrProvider()
     {
-        return array
-        (
+        return array(
             ['01:01:01', 3661],
             ['01:01:01', 3661],
             ['00:01:00', 60],
@@ -111,8 +109,7 @@ class DateCalc_Test extends PHPUnit_Framework_TestCase
 
     public function formatTimeStrProvider()
     {
-        return array
-        (
+        return array(
             array(192015, false, '19:20'),
             array(192015, true, '19:20:15'),
             array(0, false, '00:00'),

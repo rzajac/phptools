@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,17 +15,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Api;
 
 use Kicaj\Tools\Api\HttpCodes;
 
 /**
- * Class HttpCodesTest
+ * Class HttpCodesTest.
  *
  * @coversDefaultClass Kicaj\Tools\Api\HttpCodes
  *
- * @package Kicaj\Test\Api
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class HttpCodesTest extends \PHPUnit_Framework_TestCase
@@ -66,7 +65,7 @@ class HttpCodesTest extends \PHPUnit_Framework_TestCase
      * @covers ::isOk
      * @covers ::mayHaveBody
      *
-     * @param int    $code
+     * @param int  $code
      * @param bool $isError
      * @param bool $isOk
      * @param bool $mayHaveBody
@@ -98,6 +97,4 @@ class HttpCodesTest extends \PHPUnit_Framework_TestCase
             [500, true, false, true],
         ];
     }
-
-
 }

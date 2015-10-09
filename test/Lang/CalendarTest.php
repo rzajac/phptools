@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\I18N;
-
 
 use Kicaj\Tools\Lang\Calendar;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Class CalendarTest
+ * Class CalendarTest.
  *
  * @coversDefaultClass Kicaj\Tools\Lang\Calendar
  *
- * @package Kicaj\Tools\Test\I18N
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class CalendarTest extends PHPUnit_Framework_TestCase
@@ -36,7 +34,7 @@ class CalendarTest extends PHPUnit_Framework_TestCase
      *
      * @covers ::getDay
      *
-     * @param int $dow
+     * @param int    $dow
      * @param string $langCode
      * @param string $expS
      * @param string $expM
@@ -65,7 +63,7 @@ class CalendarTest extends PHPUnit_Framework_TestCase
      *
      * @covers ::getMonth
      *
-     * @param int $month
+     * @param int    $month
      * @param string $langCode
      * @param string $expS
      * @param string $expL

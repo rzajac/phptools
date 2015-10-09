@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,18 +15,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Str;
-use stdClass;
 
 /**
- * Class StrTest
+ * Class StrTest.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Str
  *
- * @package Kicaj\Test\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class StrTest extends \PHPUnit_Framework_TestCase
@@ -48,15 +46,14 @@ class StrTest extends \PHPUnit_Framework_TestCase
 
     public function returnIfNotProvider()
     {
-        return array
-        (
-            [ FALSE, TRUE, TRUE, TRUE ],
-            [ TRUE, TRUE, TRUE, TRUE ],
-            [ TRUE, TRUE, FALSE, TRUE ],
+        return array(
+            [false, true, true, true],
+            [true, true, true, true],
+            [true, true, false, true],
 
-            [ FALSE, FALSE, TRUE, FALSE ],
-            [ TRUE, FALSE, FALSE, FALSE ],
-            [ TRUE, FALSE, TRUE, TRUE ],
+            [false, false, true, false],
+            [true, false, false, false],
+            [true, false, true, true],
         );
     }
 
@@ -172,7 +169,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $str
      * @param string $needle
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function test_startsWith($str, $needle, $expected)
     {
@@ -197,7 +194,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
      *
      * @param string $str
      * @param string $needle
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function test_endsWith($str, $needle, $expected)
     {
@@ -245,13 +242,12 @@ class StrTest extends \PHPUnit_Framework_TestCase
     {
         $iterations = 1000;
 
-        $cond = ['A'=>5.0, 'B'=>35.0, 'C'=>60.0];
+        $cond = ['A' => 5.0, 'B' => 35.0, 'C' => 60.0];
         $count = ['A' => 0, 'B' => 0, 'C' => 0];
 
-        for($x = 0; $x < $iterations; $x++)
-        {
+        for ($x = 0; $x < $iterations; ++$x) {
             $got = Str::getRandomWeightedElement($cond);
-            $count[$got]++;
+            ++$count[$got];
         }
 
         $aPercent = round($count['A'] / $iterations * 100, 0);

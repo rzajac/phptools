@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,17 +15,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Num;
 
 /**
- * Class NumTest
+ * Class NumTest.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Num
  *
- * @package Kicaj\Test\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class NumTest extends \PHPUnit_Framework_TestCase
@@ -37,7 +36,7 @@ class NumTest extends \PHPUnit_Framework_TestCase
      * @param int|float $a
      * @param int|float $b
      * @param int|float $delta
-     * @param bool $expected
+     * @param bool      $expected
      */
     public function test_equalWithin($a, $b, $delta, $expected)
     {

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,18 +15,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Api;
 
 use Kicaj\Tools\Api\JResp;
 use Kicaj\Tools\Itf\Paging;
 
 /**
- * Class JRespTest
+ * Class JRespTest.
  *
  * @coversDefaultClass Kicaj\Tools\Api\JResp
  *
- * @package Kicaj\Test\Api
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class JRespTest extends \PHPUnit_Framework_TestCase
@@ -66,7 +65,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->testValue, $resp->data);
 
         // Make sure there are no other keys
-        $this->assertSame(3, count(array_keys((array)$resp)));
+        $this->assertSame(3, count(array_keys((array) $resp)));
     }
 
     /**
@@ -78,8 +77,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(123, $resp->http_code);
 
         // Make sure there are no other keys
-        $this->assertSame(3, count(array_keys((array)$resp)));
-
+        $this->assertSame(3, count(array_keys((array) $resp)));
     }
 
     /**
@@ -91,7 +89,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $this->assertSame(false, $resp->success);
 
         // Make sure there are no other keys
-        $this->assertSame(3, count(array_keys((array)$resp)));
+        $this->assertSame(3, count(array_keys((array) $resp)));
     }
 
     /**
@@ -99,7 +97,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging()
     {
-        $paging = new TestPaging;
+        $paging = new TestPaging();
 
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
 
@@ -117,7 +115,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->testValue, $resp->data);
 
         // Make sure there are no other keys
-        $this->assertSame(6, count(array_keys((array)$resp)));
+        $this->assertSame(6, count(array_keys((array) $resp)));
     }
 
     /**
@@ -125,7 +123,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging_no_totalPages()
     {
-        $paging = new TestPaging;
+        $paging = new TestPaging();
         $paging->totalPages = 0;
 
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
@@ -143,7 +141,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($this->testValue, $resp->data);
 
         // Make sure there are no other keys
-        $this->assertSame(5, count(array_keys((array)$resp)));
+        $this->assertSame(5, count(array_keys((array) $resp)));
     }
 
     /**
@@ -188,10 +186,10 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(true, $resp->success);
         $this->assertSame(200, $resp->http_code);
-        $this->assertSame($this->testValue, (array)$resp->data);
+        $this->assertSame($this->testValue, (array) $resp->data);
 
         // Make sure there are no other keys
-        $this->assertSame(3, count(array_keys((array)$resp)));
+        $this->assertSame(3, count(array_keys((array) $resp)));
     }
 
     /**
@@ -199,7 +197,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_retSuccess_paging()
     {
-        $paging = new TestPaging;
+        $paging = new TestPaging();
         $resp = JResp::retSuccess($this->testValue, 123, $paging);
         $resp = json_decode($resp);
 
@@ -213,13 +211,13 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(true, $resp->success);
         $this->assertSame(123, $resp->http_code);
-        $this->assertSame($this->testValue, (array)$resp->data);
+        $this->assertSame($this->testValue, (array) $resp->data);
         $this->assertSame(2, $resp->pageNumber);
         $this->assertSame(20, $resp->pageSize);
         $this->assertSame(30, $resp->totalPages);
 
         // Make sure there are no other keys
-        $this->assertSame(6, count(array_keys((array)$resp)));
+        $this->assertSame(6, count(array_keys((array) $resp)));
     }
 
     /**
@@ -241,10 +239,10 @@ class JRespTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(false, $resp->success);
         $this->assertSame(444, $resp->http_code);
-        $this->assertSame($error, (array)$resp->data);
+        $this->assertSame($error, (array) $resp->data);
 
         // Make sure there are no other keys
-        $this->assertSame(3, count(array_keys((array)$resp)));
+        $this->assertSame(3, count(array_keys((array) $resp)));
     }
 }
 
@@ -257,7 +255,7 @@ class TestPaging implements Paging
     public $totalPages = 30;
 
     /**
-     * Get current page number
+     * Get current page number.
      *
      * For first page this method should return 1 not 0
      *
@@ -269,7 +267,7 @@ class TestPaging implements Paging
     }
 
     /**
-     * Get number of data elements in the response
+     * Get number of data elements in the response.
      *
      * @return int
      */
@@ -279,7 +277,7 @@ class TestPaging implements Paging
     }
 
     /**
-     * Get total number of pages in the result set
+     * Get total number of pages in the result set.
      *
      * If the result set size is not known this method should return -1.
      *

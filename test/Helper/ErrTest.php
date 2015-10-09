@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,24 +15,22 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Err;
 use stdClass;
 
 /**
- * Class ErrTest
+ * Class ErrTest.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Err
  *
- * @package Kicaj\Test\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class ErrTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * Previous error handler
+     * Previous error handler.
      *
      * @var mixed
      */
@@ -39,8 +38,7 @@ class ErrTest extends \PHPUnit_Framework_TestCase
 
     protected function tearDown()
     {
-        if($this->prevHandler !== null)
-        {
+        if ($this->prevHandler !== null) {
             set_error_handler($this->prevHandler);
         }
     }
@@ -60,7 +58,7 @@ class ErrTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($currentHandler, $this->prevHandler);
 
         // This is actual test
-        $o = new stdClass;
+        $o = new stdClass();
         $o->test;
     }
 

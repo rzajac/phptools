@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,7 +15,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Test\Tools\Date;
 
 use Kicaj\Tools\Date\DateTime;
@@ -25,24 +25,23 @@ use Kicaj\Tools\Date\DateTimeYMDHI;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Class DateTime_Test
+ * Class DateTime_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Date\DateTime
  *
- * @package Kicaj\Tools\Test
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DateTime_Test extends PHPUnit_Framework_TestCase
+class DateTimeTest extends PHPUnit_Framework_TestCase
 {
     /**
-     * Default time zone name
+     * Default time zone name.
      *
      * @var string
      */
     protected $defaultTz;
 
     /**
-     * Time zone that has been set
+     * Time zone that has been set.
      *
      * @var string
      */
@@ -68,30 +67,30 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @covers ::__construct
      * @covers ::make
      */
-	public function testMakeConstruct()
-	{
-		$dt = new DateTime('2013-11-12');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
+    public function testMakeConstruct()
+    {
+        $dt = new DateTime('2013-11-12');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
 
-		$dt = DateTime::make('2013-11-12');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
+        $dt = DateTime::make('2013-11-12');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
 
-		$dt = new DateTime('2013-11-12');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
-		$this->assertNotEquals('UTC', $dt->getTimezone()->getName());
+        $dt = new DateTime('2013-11-12');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
+        $this->assertNotEquals('UTC', $dt->getTimezone()->getName());
 
-		$dt = DateTime::make('2013-11-12');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
-		$this->assertNotEquals('UTC', $dt->getTimezone()->getName());
+        $dt = DateTime::make('2013-11-12');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
+        $this->assertNotEquals('UTC', $dt->getTimezone()->getName());
 
-		$dt = new DateTime('2013-11-12', 'UTC');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
-		$this->assertEquals('UTC', $dt->getTimezone()->getName());
+        $dt = new DateTime('2013-11-12', 'UTC');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
+        $this->assertEquals('UTC', $dt->getTimezone()->getName());
 
-		$dt = DateTime::make('2013-11-12', 'UTC');
-		$this->assertEquals('2013-11-12 00:00:00', $dt->format());
-		$this->assertEquals('UTC', $dt->getTimezone()->getName());
-	}
+        $dt = DateTime::make('2013-11-12', 'UTC');
+        $this->assertEquals('2013-11-12 00:00:00', $dt->format());
+        $this->assertEquals('UTC', $dt->getTimezone()->getName());
+    }
 
     /**
      * @dataProvider fromFormatProvider
@@ -103,29 +102,23 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @param string $timezone
      * @param string $expected
      */
-	public function testFromFormat($format, $dateTime, $timezone, $expected)
-	{
-        try
-        {
+    public function testFromFormat($format, $dateTime, $timezone, $expected)
+    {
+        try {
             /** @var DateTime $date */
             $date = DateTime::fromFormat($format, $dateTime, $timezone);
             $thrown = false;
-        }
-        catch(\Exception $e)
-        {
+        } catch (\Exception $e) {
             $thrown = true;
             $date = null;
         }
 
-        if($expected === null)
-        {
-		    $this->assertSame(true, $thrown);
+        if ($expected === null) {
+            $this->assertSame(true, $thrown);
+        } else {
+            $this->assertSame($expected, $date->format(DateTime::ATOM));
         }
-        else
-        {
-		    $this->assertSame($expected, $date->format(DateTime::ATOM));
-        }
-	}
+    }
 
     public function fromFormatProvider()
     {
@@ -145,13 +138,13 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @param string $expLong
      * @param string $expShort
      */
-	public function testGetLongDate($langCode, $dateStr, $expLong, $expShort)
-	{
-		$dt = new DateTime($dateStr);
+    public function testGetLongDate($langCode, $dateStr, $expLong, $expShort)
+    {
+        $dt = new DateTime($dateStr);
 
-		$this->assertEquals($expShort, $dt->getLongDate($langCode));
-		$this->assertEquals($expLong, $dt->getLongDate($langCode, DateTime::TIME_FORMAT_SHORT));
-	}
+        $this->assertEquals($expShort, $dt->getLongDate($langCode));
+        $this->assertEquals($expLong, $dt->getLongDate($langCode, DateTime::TIME_FORMAT_SHORT));
+    }
 
     public function getLongDateProvider()
     {
@@ -173,26 +166,25 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @param string $dateStr
      * @param string $expected
      */
-	public function testJsonSerialize($class, $dateStr, $expected)
-	{
+    public function testJsonSerialize($class, $dateStr, $expected)
+    {
         /** @var DateTime $date */
-		$date = new $class($dateStr);
-		$this->assertEquals($expected, json_encode($date));
-		$this->assertEquals(trim($expected, '"'), $date->__toString());
-		$this->assertEquals(trim($expected, '"'), $date->targetSerialize());
-	}
+        $date = new $class($dateStr);
+        $this->assertEquals($expected, json_encode($date));
+        $this->assertEquals(trim($expected, '"'), $date->__toString());
+        $this->assertEquals(trim($expected, '"'), $date->targetSerialize());
+    }
 
-	public function jsonSerializeProvider()
-	{
-		return array
-		(
-			array('Kicaj\\Tools\\Date\\DateTime', '2013-09-22 09:08:10', '"2013-09-22 09:08:10"'),
-			array('Kicaj\\Tools\\Date\\DateTimeDMY', '2013-09-22 09:08:10', '"22-09-2013"'),
-			array('Kicaj\\Tools\\Date\\DateTimeDMYHIS', '2013-09-22 09:08:10', '"22-09-2013 09:08:10"'),
-			array('Kicaj\\Tools\\Date\\DateTimeYMD', '2013-09-22 09:08:10', '"2013-09-22"'),
-			array('Kicaj\\Tools\\Date\\DateTimeYMDHI', '2013-09-22 09:08:10', '"2013-09-22 09:08"'),
-		);
-	}
+    public function jsonSerializeProvider()
+    {
+        return array(
+            array('Kicaj\\Tools\\Date\\DateTime', '2013-09-22 09:08:10', '"2013-09-22 09:08:10"'),
+            array('Kicaj\\Tools\\Date\\DateTimeDMY', '2013-09-22 09:08:10', '"22-09-2013"'),
+            array('Kicaj\\Tools\\Date\\DateTimeDMYHIS', '2013-09-22 09:08:10', '"22-09-2013 09:08:10"'),
+            array('Kicaj\\Tools\\Date\\DateTimeYMD', '2013-09-22 09:08:10', '"2013-09-22"'),
+            array('Kicaj\\Tools\\Date\\DateTimeYMDHI', '2013-09-22 09:08:10', '"2013-09-22 09:08"'),
+        );
+    }
 
     /**
      * @dataProvider getMonthDeltaProvider
@@ -252,7 +244,7 @@ class DateTime_Test extends PHPUnit_Framework_TestCase
      * @covers ::secondsSinceMidnight
      *
      * @param string $dateTime
-     * @param int $expected
+     * @param int    $expected
      */
     public function testSecondsSinceMidnight($dateTime, $expected)
     {
