@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,13 +15,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Lang;
 
 /**
- * Calendar translations
+ * Calendar translations.
  *
- * @package Kicaj\Tools\Lang
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class Calendar
@@ -41,46 +40,50 @@ class Calendar
     const LANG_PL = 'pl';
 
     /**
-     * Supported translations
+     * Supported translations.
      *
      * @var array
      */
     protected static $supportedLangs = ['en', 'pl'];
 
     /**
-     * Get translated day of the week
+     * Get translated day of the week.
      *
-     * @param int     $day      The day of the week number 1 - 7
-     * @param string  $langCode The supported language code ex: en
-     * @param string  $style    The style to return day name in. One of the self::STYLE_* constants
+     * @param int    $day      The day of the week number 1 - 7
+     * @param string $langCode The supported language code ex: en
+     * @param string $style    The style to return day name in. One of the self::STYLE_* constants
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public static function getDay($day, $langCode, $style = self::STYLE_LONG)
     {
         $langCode = static::checkLanguageCode($langCode);
+
         return self::$i18n[$langCode]['day'][$style][$day];
     }
 
     /**
-     * Get translated month
+     * Get translated month.
      *
-     * @param int     $month    The month number 1 - 12
-     * @param string  $langCode The supported language code ex: en
-     * @param string  $style    The style to return month name in. One of the self::STYLE_* constants
+     * @param int    $month    The month number 1 - 12
+     * @param string $langCode The supported language code ex: en
+     * @param string $style    The style to return month name in. One of the self::STYLE_* constants
      *
      * @return mixed
+     *
      * @throws \Exception
      */
     public static function getMonth($month, $langCode, $style = self::STYLE_LONG)
     {
         $langCode = static::checkLanguageCode($langCode);
+
         return self::$i18n[$langCode]['month'][$style][$month];
     }
 
     /**
-     * Check if language code is supported
+     * Check if language code is supported.
      *
      * @param string $languageCode The supported language code ex: en
      *
@@ -92,7 +95,7 @@ class Calendar
     }
 
     /**
-     * Translations
+     * Translations.
      *
      * @var array
      */
@@ -101,24 +104,24 @@ class Calendar
             'day' => [
                 'short' => ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
                 'medium' => ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-                'long' => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                'long' => ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
             ],
             'month' => [
                 'short' => [null, 'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                'long' => [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-            ]
+                'long' => [null, 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+            ],
         ],
 
         'pl' => [
             'day' => [
                 'short' => ['Nd', 'Pn', 'Wt', 'Śr', 'Cz', 'Pt', 'So'],
                 'medium' => ['Nie', 'Pon', 'Wto', 'Śro', 'Czw', 'Pią', 'Sob'],
-                'long' => ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota']
+                'long' => ['Niedziela', 'Poniedziałek', 'Wtorek', 'Środa', 'Czwartek', 'Piątek', 'Sobota'],
             ],
             'month' => [
                 'short' => [null, 'Sty', 'Lut', 'Mar', 'Kwi', 'Maj', 'Cze', 'Lip', 'Sie', 'Wrz', 'Paź', 'Lis', 'Gru'],
-                'long' => [null, 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień']
-            ]
-        ]
+                'long' => [null, 'Styczeń', 'Luty', 'Marzec', 'Kwiecień', 'Maj', 'Czerwiec', 'Lipiec', 'Sierpień', 'Wrzesień', 'Październik', 'Listopad', 'Grudzień'],
+            ],
+        ],
     ];
 }

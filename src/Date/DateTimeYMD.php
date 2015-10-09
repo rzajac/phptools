@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Date;
 
 /**
- * Specialized DateTime subclass with default format set to Y-m-d
- *
- * @package Kicaj\Tools\Date
- * Rafal Zajac <rzajac@gmail.com>
+ * Specialized DateTime subclass with default format set to Y-m-d.
  */
 class DateTimeYMD extends DateTime
 {
     /**
-     * Default serialization format
+     * Default serialization format.
      *
      * @var string
      */

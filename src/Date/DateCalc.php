@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,47 +15,43 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Date;
 
 /**
- * Class for handling date and time related calculations
+ * Class for handling date and time related calculations.
  *
- * @package Kicaj\Tools\Date
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 abstract class DateCalc
 {
     /**
-     * Get duration in minutes formatted as ex.: 2h 10min
+     * Get duration in minutes formatted as ex.: 2h 10min.
      *
-     * @param  int $duration The duration in minutes
+     * @param int $duration The duration in minutes
      *
      * @return string
      */
     public static function durationHI($duration)
     {
         $duration = $duration * 60; // Convert to seconds
-        $hours    = gmdate('G', $duration);
-        $minutes  = gmdate('i', $duration);
+        $hours = gmdate('G', $duration);
+        $minutes = gmdate('i', $duration);
 
-        if ($minutes == '00' && $hours == '00')
-        {
+        if ($minutes == '00' && $hours == '00') {
             $minutes = '0';
         }
 
-        $formatted = $minutes . 'min';
+        $formatted = $minutes.'min';
 
-        if ($hours != 0)
-        {
-            $formatted = $hours . 'h ' . $formatted;
+        if ($hours != 0) {
+            $formatted = $hours.'h '.$formatted;
         }
 
         return $formatted;
     }
 
     /**
-     * Return number of seconds since midnight
+     * Return number of seconds since midnight.
      *
      * @param int $hour   The hour 0 - 23
      * @param int $minute The minute 0 - 59
@@ -68,7 +65,7 @@ abstract class DateCalc
     }
 
     /**
-     * Return number of seconds since midnight
+     * Return number of seconds since midnight.
      *
      * @param string $time The time in format: HH:MM:SS or HH:MM
      *
@@ -78,11 +75,10 @@ abstract class DateCalc
     {
         $time_a = explode(':', $time);
 
-        switch(count($time_a))
-        {
+        switch (count($time_a)) {
             case 0:
             case 1:
-                return null;
+                return;
 
             case 2:
                 // Add seconds
@@ -93,17 +89,17 @@ abstract class DateCalc
                 break;
 
             default:
-                return null;
+                return;
         }
 
-        return self::secondsSinceMidnight((int)$time_a[0], (int)$time_a[1], (int)$time_a[2]);
+        return self::secondsSinceMidnight((int) $time_a[0], (int) $time_a[1], (int) $time_a[2]);
     }
 
     /**
-     * Takes time in hhmmss format and returns formatted string
+     * Takes time in hhmmss format and returns formatted string.
      *
-     * @param int|string  $time        The time in hhmmss or hhmm format
-     * @param bool        $withSeconds Set to true to add seconds if not provided
+     * @param int|string $time        The time in hhmmss or hhmm format
+     * @param bool       $withSeconds Set to true to add seconds if not provided
      *
      * @return string The formatted string hh:mm:ss or hh:mm
      */
@@ -117,8 +113,7 @@ abstract class DateCalc
         $_time[] = substr($time, 0, 2);
         $_time[] = substr($time, 2, 2);
 
-        if($withSeconds)
-        {
+        if ($withSeconds) {
             $_seconds = substr($time, 4, 2);
             $_time[] = $_seconds;
         }

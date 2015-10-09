@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Itf;
 
 /**
- * Pagination interface
+ * Pagination interface.
  *
- * @package Kicaj\Tools\Itf
  * @author  Ralph Zajac <rzajac@gmail.com>
  */
 interface Paging
 {
     /**
-     * Get current page number
+     * Get current page number.
      *
      * For first page this method should return 1 not 0
      *
@@ -35,14 +34,14 @@ interface Paging
     public function getPageNumber();
 
     /**
-     * Get number of data elements in the response
+     * Get number of data elements in the response.
      *
      * @return int
      */
     public function getPageSize();
 
     /**
-     * Get total number of pages in the result set
+     * Get total number of pages in the result set.
      *
      * If the result set size is not known this method should return -1.
      *

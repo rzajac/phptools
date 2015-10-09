@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Helper;
 
 /**
- * Collection of static helper methods for string and mixed types
+ * Collection of static helper methods for string and mixed types.
  *
- * @package Kicaj\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 abstract class Str
 {
     /**
-     * Returns newValue when oldValue !== ifNot
+     * Returns newValue when oldValue !== ifNot.
      *
      * @param mixed $oldValue
      * @param mixed $ifNot
@@ -36,13 +35,15 @@ abstract class Str
      */
     public static function returnIfNot($oldValue, $ifNot, $newValue)
     {
-        if ($oldValue === $ifNot) return $oldValue;
+        if ($oldValue === $ifNot) {
+            return $oldValue;
+        }
 
         return $newValue;
     }
 
     /**
-     * Generate random string
+     * Generate random string.
      *
      * @param int $length The length of the string
      *
@@ -53,8 +54,7 @@ abstract class Str
         $key = '';
         $keys = array_merge(range('a', 'z'));
 
-        for ($i = 0; $i < $length; $i++)
-        {
+        for ($i = 0; $i < $length; ++$i) {
             $key .= $keys[array_rand($keys)];
         }
 
@@ -62,7 +62,7 @@ abstract class Str
     }
 
     /**
-     * Generates a random token, uses base64: 0-9a-zA-Z/+
+     * Generates a random token, uses base64: 0-9a-zA-Z/+.
      *
      * @param int  $length The token length
      * @param bool $strong
@@ -78,7 +78,7 @@ abstract class Str
     }
 
     /**
-     * If value evaluates to FALSE this method returns empty string
+     * If value evaluates to FALSE this method returns empty string.
      *
      * @param mixed $value
      *
@@ -86,8 +86,7 @@ abstract class Str
      */
     public static function emptyOnFalse($value)
     {
-        if ( ((bool) $value) === false)
-        {
+        if (((bool) $value) === false) {
             return '';
         }
 
@@ -95,7 +94,7 @@ abstract class Str
     }
 
     /**
-     * Get random weighted element
+     * Get random weighted element.
      *
      * Utility function for getting random values with weighting.
      *
@@ -120,12 +119,10 @@ abstract class Str
 
         $ret = $default;
 
-        foreach ($weightedValues as $key => $value)
-        {
+        foreach ($weightedValues as $key => $value) {
             $rand -= (int) $value;
 
-            if ($rand <= 0)
-            {
+            if ($rand <= 0) {
                 $ret = $key;
                 break;
             }
@@ -135,7 +132,7 @@ abstract class Str
     }
 
     /**
-     * Slugify strings
+     * Slugify strings.
      *
      * @param string $text
      *
@@ -158,8 +155,7 @@ abstract class Str
         // remove unwanted characters
         $text = preg_replace('~[^-\w]+~', '', $text);
 
-        if ($text == '')
-        {
+        if ($text == '') {
             return 'n-a';
         }
 
@@ -167,7 +163,7 @@ abstract class Str
     }
 
     /**
-     * Return TRUE if haystack starts with the needle
+     * Return TRUE if haystack starts with the needle.
      *
      * @param string $haystack
      * @param string $needle
@@ -182,7 +178,7 @@ abstract class Str
     }
 
     /**
-     * Return TRUE if haystack ends with the needle
+     * Return TRUE if haystack ends with the needle.
      *
      * @param string $haystack
      * @param string $needle
@@ -192,8 +188,7 @@ abstract class Str
     public static function endsWith($haystack, $needle)
     {
         $length = strlen($needle);
-        if ($length == 0)
-        {
+        if ($length == 0) {
             return true;
         }
 
@@ -201,7 +196,7 @@ abstract class Str
     }
 
     /**
-     * Change camelCase string to camel_case
+     * Change camelCase string to camel_case.
      *
      * @param string $input
      *

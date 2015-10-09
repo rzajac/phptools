@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,26 +15,24 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Helper;
 
 /**
- * Helper class for operating on files
+ * Helper class for operating on files.
  *
- * @package Kicaj\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class File
 {
     /**
-     * File path
+     * File path.
      *
      * @var string
      */
     protected $filePath;
 
     /**
-     * Constructor
+     * Constructor.
      *
      * @param string $filePath
      * @param string $dirPath
@@ -42,13 +41,11 @@ class File
      */
     public function __construct($filePath, $dirPath = '')
     {
-        if ($dirPath)
-        {
+        if ($dirPath) {
             $filePath = $dirPath.$filePath;
         }
 
-        if (! (is_file($filePath) && is_writable($filePath)))
-        {
+        if (!(is_file($filePath) && is_writable($filePath))) {
             throw new \Exception("$filePath does not exist or is not writable");
         }
 
@@ -56,7 +53,7 @@ class File
     }
 
     /**
-     * Make
+     * Make.
      *
      * @param string $filePath
      * @param string $dirPath
@@ -69,7 +66,7 @@ class File
     }
 
     /**
-     * Split file into chunks and save it to destination
+     * Split file into chunks and save it to destination.
      *
      * @param string $dstDir    The destination folder path
      * @param int    $chunkSize
@@ -80,33 +77,30 @@ class File
     {
         $dstDir = rtrim($dstDir, DIRECTORY_SEPARATOR);
 
-        $srcFile       = fopen($this->filePath, 'r');
-        $totalSize     = filesize($this->filePath);
-        $chunksNo      = ceil($totalSize / $chunkSize);
+        $srcFile = fopen($this->filePath, 'r');
+        $totalSize = filesize($this->filePath);
+        $chunksNo = ceil($totalSize / $chunkSize);
         $lastChunkSize = $totalSize % $chunkSize;
 
         // Chunk must be the same size as requested but the last chunk can be up to $chunkSize * 2
-        if ($lastChunkSize > 0 && $lastChunkSize < $chunkSize)
-        {
+        if ($lastChunkSize > 0 && $lastChunkSize < $chunkSize) {
             $chunksNo -= 1;
         }
 
-        $chunkNames      = [];
+        $chunkNames = [];
         $uniqueChunkName = uniqid();
 
-        for ($x = 1; $x <= $chunksNo; $x++)
-        {
+        for ($x = 1; $x <= $chunksNo; ++$x) {
             // For the last chunk we send all bytes left
-            if ($x == $chunksNo)
-            {
+            if ($x == $chunksNo) {
                 $chunkSize = -1;
             }
 
-            $chunkName    = $uniqueChunkName.'_'.$x;
+            $chunkName = $uniqueChunkName.'_'.$x;
             $chunkNames[] = $chunkName;
 
             $dstFilePath = $dstDir.DIRECTORY_SEPARATOR.$chunkName;
-            $dstFile     = fopen($dstFilePath, 'wb');
+            $dstFile = fopen($dstFilePath, 'wb');
 
             stream_copy_to_stream($srcFile, $dstFile, $chunkSize);
             fclose($dstFile);
@@ -118,7 +112,7 @@ class File
     }
 
     /**
-     * Returns SHA1 hash of the file
+     * Returns SHA1 hash of the file.
      *
      * @return string
      */
@@ -128,7 +122,7 @@ class File
     }
 
     /**
-     * Return file size in bytes
+     * Return file size in bytes.
      *
      * @return int
      */

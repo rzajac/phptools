@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,13 +15,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Itf;
 
 /**
- * Serialization interface
+ * Serialization interface.
  *
- * @package Kicaj\Tools\Itf
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 interface TargetSerialize extends \JsonSerializable
@@ -29,18 +28,19 @@ interface TargetSerialize extends \JsonSerializable
     const SER_DEFAULT = 'default';
 
     /**
-     * Serialize object for given target
+     * Serialize object for given target.
      *
      * @param string $target The serialization target (one of the TSer constants)
      * @param mixed  $params The additional parameters that serializer might need
      *
      * @throws \Exception
+     *
      * @return \stdClass|string|array|NULL
      */
     public function targetSerialize($target = self::SER_DEFAULT, $params = null);
 
     /**
-     * Serialize object to JSON
+     * Serialize object to JSON.
      *
      * @return mixed
      */

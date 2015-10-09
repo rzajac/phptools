@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Helper;
 
 /**
- * Helper class with number related methods
+ * Helper class with number related methods.
  *
- * @package Kicaj\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class Num
 {
     /**
-     * Are two numbers equal within given delta
+     * Are two numbers equal within given delta.
      *
      * @param int|float $a
      * @param int|float $b
@@ -36,13 +35,11 @@ class Num
      */
     public static function equalWithin($a, $b, $delta)
     {
-        if (is_infinite($a) xor is_infinite($b))
-        {
+        if (is_infinite($a) xor is_infinite($b)) {
             return false;
         }
 
-        if (is_nan($a) || is_nan($b) || is_nan($delta))
-        {
+        if (is_nan($a) || is_nan($b) || is_nan($delta)) {
             return false;
         }
 
@@ -50,7 +47,7 @@ class Num
     }
 
     /**
-     * Return true if num is odd
+     * Return true if num is odd.
      *
      * @param int $num
      *
@@ -58,12 +55,15 @@ class Num
      */
     public static function isOdd($num)
     {
-        if (is_float($num)) return false;
+        if (is_float($num)) {
+            return false;
+        }
+
         return $num % 2 !== 0;
     }
 
     /**
-     * Return true if num is even
+     * Return true if num is even.
      *
      * @param int $num
      *
@@ -71,7 +71,10 @@ class Num
      */
     public static function isEven($num)
     {
-        if (is_float($num)) return false;
+        if (is_float($num)) {
+            return false;
+        }
+
         return $num % 2 === 0;
     }
 }

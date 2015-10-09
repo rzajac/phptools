@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,19 +15,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Helper;
 
 /**
- * Debugging helpers
+ * Debugging helpers.
  *
- * @package Kicaj\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 abstract class Debug
 {
     /**
-     * Prints stack trace
+     * Prints stack trace.
      *
      * @param bool $asArray
      *
@@ -37,10 +36,11 @@ abstract class Debug
         $i = 0;
         $resp = [];
 
-        if (! $asArray) $resp[] = str_repeat("=", 50);
+        if (!$asArray) {
+            $resp[] = str_repeat('=', 50);
+        }
 
-        foreach (debug_backtrace() as $node)
-        {
+        foreach (debug_backtrace() as $node) {
             $file = Arr::get($node, 'file', '');
             $file = $file ?: 'no_file';
 
@@ -49,10 +49,10 @@ abstract class Debug
 
             $i = $asArray ? '' : "$i.";
 
-            $resp[] = $i . $file . ":" . $fn . " " . $line;
-            $i++;
+            $resp[] = $i.$file.':'.$fn.' '.$line;
+            ++$i;
         }
 
-        return $asArray ? $resp : join("\n", $resp);
+        return $asArray ? $resp : implode("\n", $resp);
     }
 }

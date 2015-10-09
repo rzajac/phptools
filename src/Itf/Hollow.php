@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,30 +15,28 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Itf;
 
 /**
- * Hollow / empty interface
+ * Hollow / empty interface.
  *
- * @package Kicaj\Tools\Itf
  * @author  Ralph Zajac <rzajac@gmail.com>
  */
 interface Hollow
 {
     /**
-     * Returns true if class is hollow / empty
+     * Returns true if class is hollow / empty.
      *
      * @return bool
      */
     public function isHollow();
 
     /**
-     * Set hollow / empty
+     * Set hollow / empty.
      *
      * @param bool $flag
      *
      * @return $this
      */
-    public function setHollow($flag = TRUE);
+    public function setHollow($flag = true);
 }

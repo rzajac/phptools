@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,21 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Helper;
 
 use Exception;
 
 /**
- * Helper class operating on objects
+ * Helper class operating on objects.
  *
- * @package Kicaj\Tools\Helper
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 abstract class Obj
 {
     /**
-     * Get object property value or default if it does not exist
+     * Get object property value or default if it does not exist.
      *
      * NOTES:
      *
@@ -48,17 +47,17 @@ abstract class Obj
      */
     public static function get($obj, $propName, $default = null, $handleException = true)
     {
-        if (! is_object($obj)) return $default;
+        if (!is_object($obj)) {
+            return $default;
+        }
 
-        if (property_exists($obj, $propName) || isset($obj->$propName))
-        {
-            try
-            {
+        if (property_exists($obj, $propName) || isset($obj->$propName)) {
+            try {
                 return $obj->$propName;
-            }
-            catch (Exception $e)
-            {
-                if ($handleException) return $default;
+            } catch (Exception $e) {
+                if ($handleException) {
+                    return $default;
+                }
 
                 throw $e;
             }

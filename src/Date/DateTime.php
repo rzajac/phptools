@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,7 +15,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Date;
 
 use DateInterval;
@@ -25,9 +25,8 @@ use Kicaj\Tools\Lang\Calendar;
 use Kicaj\Tools\Traits\Hollow;
 
 /**
- * Date and time base class
+ * Date and time base class.
  *
- * @package Kicaj\Tools\Date
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class DateTime extends \DateTime implements IHollow, TargetSerialize
@@ -47,39 +46,37 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     const TIME_FORMAT_SHORT = 'H:i';
 
     /**
-     * Default serialization format
+     * Default serialization format.
      *
      * @var string
      */
     protected $format = 'Y-m-d H:i:s';
 
     /**
-     * Backup of default serialization format
+     * Backup of default serialization format.
      *
      * @var string
      */
     private $formatBack;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param string                   $time        The time
-     * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
-     *                                              If null the default timezone will be used
+     * @param string                   $time     The time
+     * @param DateTimeZone|string|null $timezone The DateTimeZone instance or timezone name ex.: UTC.
+     *                                           If null the default timezone will be used
      *
      * @see http://php.net/timezones
      */
     public function __construct($time = 'now', $timezone = null)
     {
-        if (is_string($timezone) && $timezone !== '')
-        {
+        if (is_string($timezone) && $timezone !== '') {
             $timezone = new DateTimeZone($timezone);
         }
 
         $this->formatBack = $this->format;
 
-        if(!$time)
-        {
+        if (!$time) {
             $time = '1970-01-01 00:00:00';
             $timezone = new DateTimeZone('UTC');
             $this->setHollow();
@@ -89,7 +86,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Make
+     * Make.
      *
      * @param string                   $time        The time
      * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
@@ -104,10 +101,10 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Return current time
+     * Return current time.
      *
-     * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
-     *                                              If null the default timezone will be taken
+     * @param DateTimeZone|string|null $timezone The DateTimeZone instance or timezone name ex.: UTC.
+     *                                           If null the default timezone will be taken
      *
      * @return static
      */
@@ -117,17 +114,17 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Make hollow date
+     * Make hollow date.
      *
      * @return static
      */
     public static function hollow()
     {
-        return new DateTime('');
+        return new self('');
     }
 
     /**
-     * Set DateTime as hollow / empty
+     * Set DateTime as hollow / empty.
      *
      * @param bool $flag Set to true to make object hollow / empty
      *
@@ -137,12 +134,9 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     {
         $this->traitSetHollow($flag);
 
-        if($flag)
-        {
+        if ($flag) {
             $this->format = '';
-        }
-        else
-        {
+        } else {
             $this->format = $this->formatBack;
         }
 
@@ -150,17 +144,17 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Parse a string into a new DateTime object according to the specified format
+     * Parse a string into a new DateTime object according to the specified format.
      *
      * This is basically the same method as parent's createFromFormat but allows
      * passing time zone as string.
      *
      * @link http://php.net/manual/en/datetime.createfromformat.php
      *
-     * @param string                   $format      Format accepted by date()
-     * @param string                   $time        String representing the time
-     * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
-     *                                              If null the default timezone will be taken
+     * @param string                   $format   Format accepted by date()
+     * @param string                   $time     String representing the time
+     * @param DateTimeZone|string|null $timezone The DateTimeZone instance or timezone name ex.: UTC.
+     *                                           If null the default timezone will be taken
      *
      * @throws \Exception
      *
@@ -168,27 +162,26 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public static function fromFormat($format, $time, $timezone = null)
     {
-        if (is_string($timezone))
-        {
+        if (is_string($timezone)) {
             $timezone = new DateTimeZone($timezone);
         }
 
         // DateTime::createFromFormat() expects parameter 3 to be DateTimeZone, null given
-        $dt = $timezone ? DateTime::createFromFormat($format, $time, $timezone) :  DateTime::createFromFormat($format, $time);
+        $dt = $timezone ? self::createFromFormat($format, $time, $timezone) :  self::createFromFormat($format, $time);
 
-        if (! $dt)
-        {
-            $errorMsg = DateTime::getLastErrors();
+        if (!$dt) {
+            $errorMsg = self::getLastErrors();
             $errorMsg = array_values($errorMsg['errors'])[0];
             throw new \Exception($errorMsg);
         }
 
         $object = new static('now', $dt->getTimezone());
+
         return $object->setTimestamp($dt->getTimestamp());
     }
 
     /**
-     * Get date format string
+     * Get date format string.
      *
      * @return string
      */
@@ -198,25 +191,26 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Format date as Saturday, 20 April 2013, 16:23
+     * Format date as Saturday, 20 April 2013, 16:23.
      *
-     * @param  string  $languageCode The language code ex: pl, en
-     * @param  boolean $timeFormat   Tho one of self::TIME_FORMAT_* constants
+     * @param string $languageCode The language code ex: pl, en
+     * @param bool   $timeFormat   Tho one of self::TIME_FORMAT_* constants
      *
-     * @return string             The formatted date
+     * @return string The formatted date
      */
     public function getLongDate($languageCode, $timeFormat = null)
     {
-        if ($this->isHollow()) return '';
+        if ($this->isHollow()) {
+            return '';
+        }
 
         $dayName = Calendar::getDay($this->getDayOw(), $languageCode);
         $monthName = Calendar::getMonth($this->getMonth(), $languageCode);
 
-        $dateStr = $dayName . ', ' . $this->format('j') . ' ' . $monthName . ' ' . $this->format('Y');
+        $dateStr = $dayName.', '.$this->format('j').' '.$monthName.' '.$this->format('Y');
 
-        if ($timeFormat)
-        {
-            $dateStr .= ', ' . $this->format($timeFormat);
+        if ($timeFormat) {
+            $dateStr .= ', '.$this->format($timeFormat);
         }
 
         return $dateStr;
@@ -233,7 +227,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Returns date in MySQL format
+     * Returns date in MySQL format.
      *
      * NOTE: It returns 0000-00-00 00:00:00 for hollow dates
      *
@@ -243,8 +237,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public function toMySQLDate($withTime = true)
     {
-        if ($this->isHollow())
-        {
+        if ($this->isHollow()) {
             return $withTime ? '0000-00-00 00:00:00' : '0000-00-00';
         }
 
@@ -254,7 +247,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Get year
+     * Get year.
      *
      * @param string $format The one of self::YEAR_FORMAT_* constants
      *
@@ -262,49 +255,57 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public function getYear($format = self::YEAR_FORMAT_LONG)
     {
-        if($this->isHollow()) return 0;
+        if ($this->isHollow()) {
+            return 0;
+        }
 
         return (int) $this->format($format);
     }
 
     /**
-     * Get month
+     * Get month.
      *
      * @return int
      */
     public function getMonth()
     {
-        if($this->isHollow()) return 0;
+        if ($this->isHollow()) {
+            return 0;
+        }
 
         return (int) $this->format('n');
     }
 
     /**
-     * Get day
+     * Get day.
      *
      * @return int
      */
     public function getDay()
     {
-        if($this->isHollow()) return 0;
+        if ($this->isHollow()) {
+            return 0;
+        }
 
         return (int) $this->format('j');
     }
 
     /**
-     * Get day of the week
+     * Get day of the week.
      *
      * @return int
      */
     public function getDayOw()
     {
-        if($this->isHollow()) return 0;
+        if ($this->isHollow()) {
+            return 0;
+        }
 
         return (int) $this->format('w');
     }
 
     /**
-     * Get hour
+     * Get hour.
      *
      * @return int
      */
@@ -314,7 +315,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Get minutes
+     * Get minutes.
      *
      * @return int
      */
@@ -324,7 +325,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Get seconds
+     * Get seconds.
      *
      * @return int
      */
@@ -334,7 +335,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Go x months before or ahead
+     * Go x months before or ahead.
      *
      * @param int $delta The number of months to add or subtract
      *
@@ -342,14 +343,11 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public function addMonths($delta)
     {
-        $interval = new DateInterval('P' . abs($delta) . 'M');
+        $interval = new DateInterval('P'.abs($delta).'M');
 
-        if ($delta >= 0)
-        {
+        if ($delta >= 0) {
             $this->add($interval);
-        }
-        else
-        {
+        } else {
             $this->sub($interval);
         }
 
@@ -357,7 +355,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Get calendar month number being x months before or ahead
+     * Get calendar month number being x months before or ahead.
      *
      * @param int $delta The number of months to add or subtract
      *
@@ -365,23 +363,17 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public function getCalMonthDelta($delta = 0)
     {
-        if ($delta <= -12 || $delta >= 12)
-        {
+        if ($delta <= -12 || $delta >= 12) {
             $delta = $delta % 12;
         }
 
         $month = $this->getMonth() + $delta;
 
-        if ($month < 0)
-        {
+        if ($month < 0) {
             $month = 12 + $month;
-        }
-        elseif ($month == 0)
-        {
+        } elseif ($month == 0) {
             $month = 12;
-        }
-        elseif ($month > 12)
-        {
+        } elseif ($month > 12) {
             $month = $month % 12;
         }
 
@@ -389,7 +381,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Get current year
+     * Get current year.
      *
      * @param bool   $inUTC
      * @param string $format
@@ -399,11 +391,12 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     public static function getCurrentYear($inUTC = false, $format = self::YEAR_FORMAT_LONG)
     {
         $tz = $inUTC ? 'UTC' : null;
+
         return (int) static::now($tz)->format($format);
     }
 
     /**
-     * Get current month
+     * Get current month.
      *
      * @param bool $inUTC
      *
@@ -412,11 +405,12 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     public static function getCurrentMonth($inUTC = false)
     {
         $tz = $inUTC ? 'UTC' : null;
+
         return (int) static::now($tz)->format('n');
     }
 
     /**
-     * Get current hour
+     * Get current hour.
      *
      * @param bool $inUTC
      *
@@ -425,11 +419,12 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     public static function getCurrentHour($inUTC = false)
     {
         $tz = $inUTC ? 'UTC' : null;
+
         return (int) static::now($tz)->format('G');
     }
 
     /**
-     * Get current minutes
+     * Get current minutes.
      *
      * @param bool $inUTC
      *
@@ -438,6 +433,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     public static function getCurrentMinutes($inUTC = false)
     {
         $tz = $inUTC ? 'UTC' : null;
+
         return (int) static::now($tz)->format('i');
     }
 
@@ -450,12 +446,9 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
      */
     public function format($format = '')
     {
-        if($this->isHollow())
-        {
+        if ($this->isHollow()) {
             $format = $this->format;
-        }
-        else
-        {
+        } else {
             $format = $format ?: $this->format;
         }
 
@@ -463,7 +456,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Returns date as string using formatting for the class
+     * Returns date as string using formatting for the class.
      *
      * @return string
      */
@@ -473,7 +466,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Returns data which should be serialized to JSON
+     * Returns data which should be serialized to JSON.
      *
      * @return string
      */
@@ -483,12 +476,13 @@ class DateTime extends \DateTime implements IHollow, TargetSerialize
     }
 
     /**
-     * Serialize object for given target
+     * Serialize object for given target.
      *
      * @param string $target The serialization target (one of the TSer constants)
      * @param mixed  $params The additional parameters that serializer might need
      *
      * @throws \Exception
+     *
      * @return \stdClass|string|array|NULL
      */
     public function targetSerialize($target = self::SER_DEFAULT, $params = null)

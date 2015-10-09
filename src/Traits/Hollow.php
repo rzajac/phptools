@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,45 +15,43 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Traits;
 
 /**
- * Hollow / empty trait
+ * Hollow / empty trait.
  *
- * @package Kicaj\Tools\Traits
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 trait Hollow
 {
-	/**
-	 * Is object hollow / empty
-	 *
-	 * @var bool
-	 */
-	private $_isHollow = false;
+    /**
+     * Is object hollow / empty.
+     *
+     * @var bool
+     */
+    private $_isHollow = false;
 
-	/**
-	 * Returns true if class is hollow / empty
-	 *
-	 * @return bool
-	 */
-	public function isHollow()
-	{
-		return $this->_isHollow;
-	}
+    /**
+     * Returns true if class is hollow / empty.
+     *
+     * @return bool
+     */
+    public function isHollow()
+    {
+        return $this->_isHollow;
+    }
 
-	/**
-	 * Set hollow / empty
-	 *
-	 * @param bool $flag
-	 *
-	 * @return $this
-	 */
-	public function setHollow($flag = TRUE)
-	{
-		$this->_isHollow = $flag;
+    /**
+     * Set hollow / empty.
+     *
+     * @param bool $flag
+     *
+     * @return $this
+     */
+    public function setHollow($flag = true)
+    {
+        $this->_isHollow = $flag;
 
-		return $this;
-	}
+        return $this;
+    }
 }

@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,13 +15,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Api;
 
 /**
- * Helper for HTTP response codes
+ * Helper for HTTP response codes.
  *
- * @package Kicaj\Tools\Api
  * @author Rafal Zajac <rzajac@gmail.com>
  */
 class HttpCodes
@@ -82,7 +81,7 @@ class HttpCodes
     const HTTP_VERSION_NOT_SUPPORTED = 505;
 
     /**
-     * HTTP response code to human readable message
+     * HTTP response code to human readable message.
      *
      * @var array
      */
@@ -145,7 +144,7 @@ class HttpCodes
     );
 
     /**
-     * Returns HTTP response header for given HTTP response code
+     * Returns HTTP response header for given HTTP response code.
      *
      * @param int $code
      *
@@ -153,11 +152,11 @@ class HttpCodes
      */
     public static function httpHeaderFor($code)
     {
-        return 'HTTP/1.1 ' . self::$messages[$code];
+        return 'HTTP/1.1 '.self::$messages[$code];
     }
 
     /**
-     * Returns HTTP response message for given HTTP response code
+     * Returns HTTP response message for given HTTP response code.
      *
      * @param int $code
      *
@@ -169,7 +168,7 @@ class HttpCodes
     }
 
     /**
-     * Returns true if HTTP response code is considered an error
+     * Returns true if HTTP response code is considered an error.
      *
      * @param int $code The HTTP response code
      *
@@ -178,11 +177,12 @@ class HttpCodes
     public static function isError($code)
     {
         $code = (int) $code;
+
         return $code >= self::HTTP_BAD_REQUEST;
     }
 
     /**
-     * Returns true if HTTP response code is considered not an error
+     * Returns true if HTTP response code is considered not an error.
      *
      * @param int $code The HTTP response code
      *
@@ -191,11 +191,12 @@ class HttpCodes
     public static function isOk($code)
     {
         $code = (int) $code;
+
         return $code >= 200 && $code <= 399 ? true : false;
     }
 
     /**
-     * Returns true for HTTP response codes that may have body
+     * Returns true for HTTP response codes that may have body.
      *
      * @param int $code The HTTP response code
      *

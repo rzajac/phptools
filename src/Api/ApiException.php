@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,41 +15,35 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Api;
 
 use stdClass;
 
 /**
- * Exception used in JSON API endpoints
- *
- * @package Kicaj\Tools\Api
+ * Exception used in JSON API endpoints.
  */
 class ApiException extends \Exception implements \JsonSerializable
 {
     /**
-     * The error code
+     * The error code.
      *
      * @var string|int
      */
     protected $errorCode = 'EC_UNKNOWN';
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param string    $message  The human readable message or one of the EC_* strings
-     * @param string    $ecCode   The EC_* string
+     * @param string     $message  The human readable message or one of the EC_* strings
+     * @param string     $ecCode   The EC_* string
      * @param \Exception $previous The previous exception
      */
     public function __construct($message, $ecCode = '', \Exception $previous = null)
     {
         // If message is set to EC_*
-        if ($ecCode === '' && strpos($message, 'EC_') === 0)
-        {
+        if ($ecCode === '' && strpos($message, 'EC_') === 0) {
             $this->errorCode = $message;
-        }
-        elseif ($ecCode != '')
-        {
+        } elseif ($ecCode != '') {
             $this->errorCode = $ecCode;
         }
 
@@ -66,8 +61,7 @@ class ApiException extends \Exception implements \JsonSerializable
      */
     public static function makeFromException($e)
     {
-        if ($e instanceof ApiException)
-        {
+        if ($e instanceof self) {
             return $e;
         }
 
@@ -75,7 +69,7 @@ class ApiException extends \Exception implements \JsonSerializable
     }
 
     /**
-     * Get user readable error message
+     * Get user readable error message.
      *
      * @return string
      */
@@ -83,8 +77,7 @@ class ApiException extends \Exception implements \JsonSerializable
     {
         $msg = $this->getMessage();
 
-        if ($msg === '')
-        {
+        if ($msg === '') {
             $msg = $this->errorCode;
         }
 
@@ -92,7 +85,7 @@ class ApiException extends \Exception implements \JsonSerializable
     }
 
     /**
-     * Returns error code
+     * Returns error code.
      *
      * @return string
      */
@@ -102,13 +95,13 @@ class ApiException extends \Exception implements \JsonSerializable
     }
 
     /**
-     * Returns data which should be serialized to JSON
+     * Returns data which should be serialized to JSON.
      *
      * @return stdClass
      */
     public function jsonSerialize()
     {
-        $ret = new stdClass;
+        $ret = new stdClass();
         $ret->code = $this->errorCode;
         $ret->message = $this->getUserMessage();
 

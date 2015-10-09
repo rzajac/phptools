@@ -1,6 +1,7 @@
 <?php
+
 /**
- * Copyright 2015 Rafal Zajac <rzajac@gmail.com>
+ * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may
  * not use this file except in compliance with the License. You may obtain
@@ -14,26 +15,24 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Api;
 
 use Kicaj\Tools\Itf\Paging;
 use stdClass;
 
 /**
- * Provides static methods for constructing JSON responses
+ * Provides static methods for constructing JSON responses.
  *
- * @package Kicaj\Tools\Helper
  * @author  Ralph Zajac <rzajac@gmail.com>
  */
 class JResp
 {
     /**
-     * Return error
+     * Return error.
      *
-     * @param mixed   $value       The error response
-     * @param int     $http_code   The HTTP response code
-     * @param boolean $prettyPrint If true the JSON will be pretty printed
+     * @param mixed $value       The error response
+     * @param int   $http_code   The HTTP response code
+     * @param bool  $prettyPrint If true the JSON will be pretty printed
      *
      * @return string JSON encoded $value.
      */
@@ -45,7 +44,7 @@ class JResp
     }
 
     /**
-     * Builds API response
+     * Builds API response.
      *
      * @param mixed  $value      The response
      * @param bool   $success    Set to true for success, false for failure
@@ -56,18 +55,16 @@ class JResp
      */
     public static function buildResponse($value, $success, $httpCode, Paging $pagingInfo = null)
     {
-        $response           = new stdClass;
-        $response->success  = $success;
+        $response = new stdClass();
+        $response->success = $success;
         $response->http_code = $httpCode;
 
-        if ($pagingInfo)
-        {
+        if ($pagingInfo) {
             $response->pageNumber = $pagingInfo->getPageNumber();
-            $response->pageSize   = $pagingInfo->getPageSize();
+            $response->pageSize = $pagingInfo->getPageSize();
 
             $totalPages = $pagingInfo->getPageCount();
-            if ($totalPages > 0)
-            {
+            if ($totalPages > 0) {
                 $response->totalPages = $totalPages;
             }
         }
@@ -78,10 +75,10 @@ class JResp
     }
 
     /**
-     * Return $data encoded as JSON
+     * Return $data encoded as JSON.
      *
-     * @param mixed   $response    The response
-     * @param boolean $prettyPrint If true the JSON will be pretty printed
+     * @param mixed $response    The response
+     * @param bool  $prettyPrint If true the JSON will be pretty printed
      *
      * @return string JSON encoded $response
      */
@@ -93,12 +90,12 @@ class JResp
     }
 
     /**
-     * Return success
+     * Return success.
      *
-     * @param mixed   $value       The success response
-     * @param int     $http_code   The HTTP response code
-     * @param Paging  $pagingInfo  The pagination information coming from Paging interface
-     * @param boolean $prettyPrint If true the JSON will be pretty printed
+     * @param mixed  $value       The success response
+     * @param int    $http_code   The HTTP response code
+     * @param Paging $pagingInfo  The pagination information coming from Paging interface
+     * @param bool   $prettyPrint If true the JSON will be pretty printed
      *
      * @return string JSON encoded $value
      */
@@ -110,7 +107,7 @@ class JResp
     }
 
     /**
-     * Check if a response is a success
+     * Check if a response is a success.
      *
      * @param stdClass $response The AJAX response in a format returned by buildResponse method
      *
@@ -118,12 +115,9 @@ class JResp
      */
     public static function isSuccess(stdClass $response)
     {
-        if (is_object($response) && $response->success == true)
-        {
+        if (is_object($response) && $response->success == true) {
             return HttpCodes::isOk($response->http_code);
-        }
-        else
-        {
+        } else {
             return false;
         }
     }
