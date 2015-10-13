@@ -18,9 +18,7 @@
 namespace Kicaj\Tools\Cli;
 
 /**
- * CLI colors helper class
- *
- * @package Kicaj\Tools\Cli
+ * CLI colors helper class.
  */
 class Colors
 {

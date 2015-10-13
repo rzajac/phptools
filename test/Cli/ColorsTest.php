@@ -47,10 +47,10 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
     public function getColoredStringProvider()
     {
         return [
-            ['test', '', '', "test"],
-            ['test', 'not_exist', '', "test"],
-            ['test', 'not_exist', 'not_exist', "test"],
-            ['test', '', 'not_exist', "test"],
+            ['test', '', '', 'test'],
+            ['test', 'not_exist', '', 'test'],
+            ['test', 'not_exist', 'not_exist', 'test'],
+            ['test', '', 'not_exist', 'test'],
             ['test', 'red', 'blue', "\033[0;31m\033[44mtest\033[0m"],
         ];
     }

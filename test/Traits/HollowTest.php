@@ -20,7 +20,7 @@ namespace Kicaj\Test\Traits;
 use Kicaj\Tools\Traits\Hollow;
 
 /**
- * Class ApiExceptionTest.
+ * Class HollowTest.
  *
  * @coversDefaultClass Kicaj\Tools\Traits\Hollow
  *
