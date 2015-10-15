@@ -29,35 +29,6 @@ use Kicaj\Tools\Helper\Str;
 class StrTest extends \PHPUnit_Framework_TestCase
 {
     /**
-     * @dataProvider returnIfNotProvider
-     *
-     * @covers ::returnIfNot
-     *
-     * @param mixed $oldValue
-     * @param mixed $ifNot
-     * @param mixed $newValue
-     * @param mixed $expected
-     */
-    public function test_returnIfNot($oldValue, $ifNot, $newValue, $expected)
-    {
-        $got = Str::returnIfNot($oldValue, $ifNot, $newValue);
-        $this->assertSame($expected, $got);
-    }
-
-    public function returnIfNotProvider()
-    {
-        return array(
-            [false, true, true, true],
-            [true, true, true, true],
-            [true, true, false, true],
-
-            [false, false, true, false],
-            [true, false, false, false],
-            [true, false, true, true],
-        );
-    }
-
-    /**
      * @dataProvider randomStringProvider
      *
      * @covers ::randomString

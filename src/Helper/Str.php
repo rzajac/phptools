@@ -25,24 +25,6 @@ namespace Kicaj\Tools\Helper;
 abstract class Str
 {
     /**
-     * Returns newValue when oldValue !== ifNot.
-     *
-     * @param mixed $oldValue
-     * @param mixed $ifNot
-     * @param mixed $newValue
-     *
-     * @return mixed
-     */
-    public static function returnIfNot($oldValue, $ifNot, $newValue)
-    {
-        if ($oldValue === $ifNot) {
-            return $oldValue;
-        }
-
-        return $newValue;
-    }
-
-    /**
      * Generate random string.
      *
      * @param int $length The length of the string

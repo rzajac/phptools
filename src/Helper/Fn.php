@@ -30,4 +30,22 @@ abstract class Fn
     public static function noop()
     {
     }
+
+    /**
+     * Returns newValue when oldValue !== ifNot.
+     *
+     * @param mixed $oldValue
+     * @param mixed $ifNot
+     * @param mixed $newValue
+     *
+     * @return mixed
+     */
+    public static function returnIfNot($oldValue, $ifNot, $newValue)
+    {
+        if ($oldValue === $ifNot) {
+            return $oldValue;
+        }
+
+        return $newValue;
+    }
 }

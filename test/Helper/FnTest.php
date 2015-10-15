@@ -36,4 +36,34 @@ class FnTest extends \PHPUnit_Framework_TestCase
         /* @noinspection PhpVoidFunctionResultUsedInspection */
         $this->assertSame(null, Fn::noop());
     }
+
+    /**
+     * @dataProvider returnIfNotProvider
+     *
+     * @covers ::returnIfNot
+     *
+     * @param mixed $oldValue
+     * @param mixed $ifNot
+     * @param mixed $newValue
+     * @param mixed $expected
+     */
+    public function test_returnIfNot($oldValue, $ifNot, $newValue, $expected)
+    {
+        $got = Fn::returnIfNot($oldValue, $ifNot, $newValue);
+        $this->assertSame($expected, $got);
+    }
+
+    public function returnIfNotProvider()
+    {
+        return array(
+            [false, true, true, true],
+            [true, true, true, true],
+            [true, true, false, true],
+
+            [false, false, true, false],
+            [true, false, false, false],
+            [true, false, true, true],
+        );
+    }
+
 }

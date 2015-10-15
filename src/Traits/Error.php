@@ -60,16 +60,6 @@ trait Error
     }
 
     /**
-     * Returns array of errors.
-     *
-     * @return Exception[]
-     */
-    public function getErrors()
-    {
-        return $this->errors;
-    }
-
-    /**
      * Set the errors.
      *
      * @param Exception[] $errors
@@ -102,8 +92,18 @@ trait Error
      *
      * @return Exception|null
      */
-    public function getFirstError()
+    public function getError()
     {
         return $this->hasErrors() ? reset($this->errors) : null;
+    }
+
+    /**
+     * Returns array of errors.
+     *
+     * @return Exception[]
+     */
+    public function getErrors()
+    {
+        return $this->errors;
     }
 }
