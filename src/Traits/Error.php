@@ -80,6 +80,16 @@ trait Error
     }
 
     /**
+     * Returns true if there are any errors.
+     *
+     * @return bool
+     */
+    public function hasError()
+    {
+        return count($this->errors) > 0;
+    }
+
+    /**
      * Reset errors.
      */
     public function resetErrors()
