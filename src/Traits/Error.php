@@ -41,6 +41,8 @@ trait Error
      * @param string           $key   The associative array key
      *
      * @throws Exception
+     *
+     * @return bool Always returns false
      */
     public function addError($error, $key = null)
     {
@@ -57,16 +59,21 @@ trait Error
         } else {
             $this->errors[] = $error;
         }
+
+        return false;
     }
 
     /**
      * Set the errors.
      *
      * @param Exception[] $errors
+     *
+     * @return bool Always returns false
      */
     public function setErrors(array $errors = [])
     {
         $this->errors = array_merge($this->errors, $errors);
+        return false;
     }
 
     /**
@@ -91,10 +98,13 @@ trait Error
 
     /**
      * Reset errors.
+     *
+     * @return $this
      */
     public function resetErrors()
     {
         $this->errors = [];
+        return $this;
     }
 
     /**
