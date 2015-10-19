@@ -24,6 +24,9 @@ namespace Kicaj\Tools\Itf;
  */
 interface DbConnect
 {
+    /** MySQL driver */
+    const DB_DRIVER_MYSQL = 'mysql';
+
     /**
      * Configure database.
      *
@@ -35,6 +38,7 @@ interface DbConnect
      * - database: string
      * - port: int
      * - debug: bool
+     * - driver: one of the DbConnect::DB_DRIVER_* values
      *
      * @param array $dbConfig The database configuration
      *
