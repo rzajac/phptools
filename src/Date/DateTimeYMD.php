@@ -20,6 +20,8 @@ namespace Kicaj\Tools\Date;
 
 /**
  * Specialized DateTime subclass with default format set to Y-m-d.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class DateTimeYMD extends DateTime
 {

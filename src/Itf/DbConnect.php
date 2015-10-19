@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
@@ -14,14 +15,37 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
-namespace Kicaj\Tools\Api;
+namespace Kicaj\Tools\Itf;
 
 /**
- * JSON exception.
+ * Database connection interface.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class JSONParseException extends ApiException
+interface DbConnect
 {
+    /**
+     * Configure database.
+     *
+     * The database connection info array must have keys:
+     *
+     * - host: string
+     * - username: string
+     * - password: string
+     * - database: string
+     * - port: int
+     * - debug: bool
+     *
+     * @param array $dbConfig The database configuration
+     *
+     * @return $this
+     */
+    public function setup(array $dbConfig);
+
+    /**
+     * Connect to database.
+     *
+     * @return bool Returns true on success.
+     */
+    public function connect();
 }

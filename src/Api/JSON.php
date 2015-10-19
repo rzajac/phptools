@@ -18,6 +18,11 @@
 
 namespace Kicaj\Tools\Api;
 
+/**
+ * JSON helpers.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
+ */
 class JSON
 {
     /**

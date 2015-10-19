@@ -22,6 +22,8 @@ use Exception;
 
 /**
  * Error handling trait.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 trait Error
 {

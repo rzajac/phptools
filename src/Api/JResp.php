@@ -24,7 +24,7 @@ use stdClass;
 /**
  * Provides static methods for constructing JSON responses.
  *
- * @author  Ralph Zajac <rzajac@gmail.com>
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class JResp
 {

@@ -15,11 +15,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools\Cli;
 
 /**
  * CLI colors helper class.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class Colors
 {

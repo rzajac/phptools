@@ -20,6 +20,8 @@ namespace Kicaj\Tools\Cli;
 
 /**
  * CLI user interactions helper.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class Interaction
 {

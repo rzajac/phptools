@@ -21,7 +21,7 @@ namespace Kicaj\Tools\Itf;
 /**
  * Pagination interface.
  *
- * @author  Ralph Zajac <rzajac@gmail.com>
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 interface Paging
 {
