@@ -22,7 +22,7 @@ namespace Kicaj\Tools\Itf;
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface DbConnect
+interface DbConnect extends Error
 {
     /** MySQL driver */
     const DB_DRIVER_MYSQL = 'mysql';
