@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Copyright 2015 Rafal Zajac <rzajac@gmail.com>.
  *
@@ -16,28 +15,11 @@
  * under the License.
  */
 
-namespace Kicaj\Tools\Itf;
+namespace Kicaj\Tools\Api;
 
 /**
- * Hollow / empty interface.
- *
- * @author  Ralph Zajac <rzajac@gmail.com>
+ * JSON exception.
  */
-interface Hollow
+class JSONParseException extends ApiException
 {
-    /**
-     * Returns true if class is hollow / empty.
-     *
-     * @return bool
-     */
-    public function isHollow();
-
-    /**
-     * Set hollow / empty.
-     *
-     * @param bool $flag
-     *
-     * @return $this
-     */
-    public function setHollow($flag = true);
 }

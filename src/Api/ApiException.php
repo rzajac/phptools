@@ -15,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 namespace Kicaj\Tools\Api;
 
 use stdClass;
@@ -24,12 +25,15 @@ use stdClass;
  */
 class ApiException extends \Exception implements \JsonSerializable
 {
+    /** Unknown error code */
+    const EC_UNKNOWN = 'EC_UNKNOWN';
+
     /**
      * The error code.
      *
      * @var string|int
      */
-    protected $errorCode = 'EC_UNKNOWN';
+    protected $errorCode = self::EC_UNKNOWN;
 
     /**
      * Constructor.

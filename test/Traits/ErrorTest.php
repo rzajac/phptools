@@ -15,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 namespace Kicaj\Test\Traits;
 
 use Exception;
@@ -40,7 +41,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertFalse($o->hasErrors());
         $this->assertSame([], $o->getErrors());
-        $this->assertSame(null, $o->getFirstError());
+        $this->assertSame(null, $o->getError());
     }
 
     /**
@@ -56,13 +57,13 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $o->addError($e);
 
         $this->assertTrue($o->hasErrors());
-        $this->assertSame($e, $o->getFirstError());
+        $this->assertSame($e, $o->getError());
 
         $o = new ErrorTmp();
         $o->addError('text error');
 
         $this->assertTrue($o->hasErrors());
-        $this->assertSame('text error', $o->getFirstError()->getMessage());
+        $this->assertSame('text error', $o->getError()->getMessage());
     }
 
     /**

@@ -15,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 namespace Kicaj\Tools\Traits;
 
 use Exception;
@@ -73,6 +74,7 @@ trait Error
     public function setErrors(array $errors = [])
     {
         $this->errors = array_merge($this->errors, $errors);
+
         return false;
     }
 
@@ -104,6 +106,7 @@ trait Error
     public function resetErrors()
     {
         $this->errors = [];
+
         return $this;
     }
 

@@ -15,12 +15,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 namespace Kicaj\Tools\Cli;
 
 /**
  * CLI user interactions helper.
- *
- * @package Kicaj\Tools\Cli
  */
 class Interaction
 {

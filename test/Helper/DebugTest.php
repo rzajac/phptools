@@ -15,6 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
+
 namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Debug;
