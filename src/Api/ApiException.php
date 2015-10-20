@@ -18,97 +18,11 @@
 
 namespace Kicaj\Tools\Api;
 
-use stdClass;
+use Kicaj\Tools\Exception;
 
 /**
  * Exception used in JSON API endpoints.
  */
-class ApiException extends \Exception implements \JsonSerializable
+class ApiException extends Exception
 {
-    /** Unknown error code */
-    const EC_UNKNOWN = 'EC_UNKNOWN';
-
-    /**
-     * The error code.
-     *
-     * @var string|int
-     */
-    protected $errorCode = self::EC_UNKNOWN;
-
-    /**
-     * Constructor.
-     *
-     * @param string     $message  The human readable message or one of the EC_* strings
-     * @param string     $ecCode   The EC_* string
-     * @param \Exception $previous The previous exception
-     */
-    public function __construct($message, $ecCode = '', \Exception $previous = null)
-    {
-        // If message is set to EC_*
-        if ($ecCode === '' && strpos($message, 'EC_') === 0) {
-            $this->errorCode = $message;
-        } elseif ($ecCode != '') {
-            $this->errorCode = $ecCode;
-        }
-
-        $code = is_int($this->errorCode) ? $this->errorCode : 0;
-
-        parent::__construct($message, $code, $previous);
-    }
-
-    /**
-     * Creates ApiException from any other exception.
-     *
-     * @param \Exception $e
-     *
-     * @return ApiException
-     */
-    public static function makeFromException($e)
-    {
-        if ($e instanceof self) {
-            return $e;
-        }
-
-        return new self($e->getMessage(), $e->getCode(), $e);
-    }
-
-    /**
-     * Get user readable error message.
-     *
-     * @return string
-     */
-    public function getUserMessage()
-    {
-        $msg = $this->getMessage();
-
-        if ($msg === '') {
-            $msg = $this->errorCode;
-        }
-
-        return $msg;
-    }
-
-    /**
-     * Returns error code.
-     *
-     * @return string
-     */
-    public function getErrorCode()
-    {
-        return $this->errorCode;
-    }
-
-    /**
-     * Returns data which should be serialized to JSON.
-     *
-     * @return stdClass
-     */
-    public function jsonSerialize()
-    {
-        $ret = new stdClass();
-        $ret->code = $this->errorCode;
-        $ret->message = $this->getUserMessage();
-
-        return $ret;
-    }
 }
