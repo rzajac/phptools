@@ -21,6 +21,8 @@ use Kicaj\Tools\Exception;
 
 /**
  * Exception used in JSON API endpoints.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class ApiException extends Exception
 {
