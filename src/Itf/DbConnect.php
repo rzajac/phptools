@@ -44,12 +44,12 @@ interface DbConnect extends Error
      *
      * @return $this
      */
-    public function setup(array $dbConfig);
+    public function dbSetup(array $dbConfig);
 
     /**
      * Connect to database.
      *
      * @return bool Returns true on success.
      */
-    public function connect();
+    public function dbConnect();
 }
