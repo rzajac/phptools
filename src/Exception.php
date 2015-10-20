@@ -15,13 +15,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-
 namespace Kicaj\Tools;
 
 use stdClass;
 
 /**
- * Class Exception
+ * Class Exception.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
