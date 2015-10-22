@@ -92,6 +92,7 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             ['a', 3, [], ['a', 'a', 'a']],
             ['a', 4, [], ['a', 'a', 'a', 'a']],
             ['a', 4, ['a', 'a'], ['a', 'a', 'a', 'a']],
+            ['a', 3, ['a', 'a', 'a', 'a'], ['a', 'a', 'a', 'a']],
         ];
     }
 
@@ -117,6 +118,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             [1, 3, 1, [1, 2, 3]],
             [2, 3, 1, [2, 3]],
             [4, 10, 2, [4, 6, 8, 10]],
+            [4, 10, 0, []],
+            [4, 10, -1, []],
         ];
     }
 
@@ -143,6 +146,8 @@ class ArrTest extends \PHPUnit_Framework_TestCase
             ['c', null, null, ['a' => 1, 'b' => 2]],
             ['c', 3, 3, ['a' => 1, 'b' => 2]],
             ['b', 123, 2, ['a' => 1, 'b' => 2]],
+
+            ['b', 123, 123, new stdClass],
         ];
     }
 
@@ -204,15 +209,43 @@ class ArrTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
-    public function test_fetch()
+    /**
+     * @dataProvider fetchProvider
+     *
+     * @covers ::fetch
+     *
+     * @param string $path
+     * @param mixed $default
+     * @param mixed $expected
+     */
+    public function test_fetch($path, $default, $expected)
     {
-        $this->assertSame('value', Arr::fetch($this->array, 'level0_0.level1_0.key'));
-        $this->assertSame('def', Arr::fetch($this->array, 'level0_0.level1_0.key1', 'def'));
-        $this->assertSame(null, Arr::fetch($this->array, 'level0_0.level1_0.key1'));
-        $this->assertSame(['level1_0' => ['key' => 'value']], Arr::fetch($this->array, 'level0_0'));
-        $this->assertSame(['key' => 'value'], Arr::fetch($this->array, 'level0_0.level1_0'));
-        $this->assertSame(null, Arr::fetch($this->array, 'a.b.c'));
-        $this->assertSame('defValue', Arr::fetch($this->array, 'a', 'defValue'));
+        $this->assertSame($expected, Arr::fetch($this->array, $path, $default));
+    }
+
+    public function fetchProvider()
+    {
+        return [
+            ['level0_0.level1_0.key', null, 'value'],
+            ['level0_0.level1_0.key1', null, null],
+            ['level0_0.level1_0.key1', 'def', 'def'],
+            ['level0_0.level1_0', null, ['key' => 'value'] ],
+            ['level0_0', null, ['level1_0' => ['key' => 'value']] ],
+            ['a.b.c', null, null ],
+            ['a', 'defVal', 'defVal' ],
+
+            [[], null, ['level0_0' => ['level1_0' => ['key' => 'value']]] ],
+            ['', null, ['level0_0' => ['level1_0' => ['key' => 'value']]] ],
+        ];
+    }
+
+    /**
+     * @covers ::fetch
+     */
+    public function test_fetchErr()
+    {
+        /** @noinspection PhpParamsInspection */
+        $this->assertSame('def', Arr::fetch(new stdClass, 'path.path', 'def'));
     }
 
     protected $array = [

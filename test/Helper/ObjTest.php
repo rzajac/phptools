@@ -83,6 +83,9 @@ class ObjTest extends \PHPUnit_Framework_TestCase
 
         // Values in array handled by __get
         $this->assertSame('val1', Obj::get($this->obj1, 'val1'));
+
+        // Test default and not object
+        $this->assertSame('val1', Obj::get(null, 'prop', 'val1'));
     }
 }
 

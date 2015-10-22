@@ -30,23 +30,25 @@ use Kicaj\Tools\Traits\Error;
 class ErrorTest extends \PHPUnit_Framework_TestCase
 {
     /**
+     * @covers ::hasError
      * @covers ::hasErrors
+     * @covers ::getError
      * @covers ::getErrors
-     * @covers ::getFirstError
      */
     public function test_Error()
     {
         $o = new ErrorTmp();
 
         $this->assertFalse($o->hasErrors());
+        $this->assertFalse($o->hasError());
         $this->assertSame([], $o->getErrors());
         $this->assertSame(null, $o->getError());
     }
 
     /**
      * @covers ::addError
+     * @covers ::hasError
      * @covers ::hasErrors
-     * @covers ::getFirstError
      */
     public function test_addError()
     {
@@ -56,6 +58,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
         $o->addError($e);
 
         $this->assertTrue($o->hasErrors());
+        $this->assertTrue($o->hasError());
         $this->assertSame($e, $o->getError());
 
         $o = new ErrorTmp();

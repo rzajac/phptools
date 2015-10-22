@@ -72,6 +72,8 @@ class ErrTest extends \PHPUnit_Framework_TestCase
 
         Err::restoreHandler($this->prevHandler);
         $this->assertSame($currentHandler, Err::getCurrentErrorHandler());
+
+        Err::restoreHandler(null);
     }
 
     /**

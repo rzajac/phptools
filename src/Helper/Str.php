@@ -188,4 +188,19 @@ abstract class Str
     {
         return ltrim(strtolower(preg_replace('/[A-Z]/', '_$0', $input)), '_');
     }
+
+    /**
+     * Make multi line string one line.
+     *
+     * NOTE: It also replaces multiple whitespace with one
+     *
+     * @param string $str
+     *
+     * @return string
+     */
+    public static function oneLine($str)
+    {
+        $str = str_replace(["\r", "\n"], '', $str);
+        return trim(preg_replace('/\s+/', ' ', $str));
+    }
 }

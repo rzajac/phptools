@@ -137,6 +137,10 @@ abstract class Arr
             return $default;
         }
 
+        if ($path === '') {
+            return $array;
+        }
+
         $path = is_array($path) ? $path : explode('.', $path);
         $levels = count($path);
 

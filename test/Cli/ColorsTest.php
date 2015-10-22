@@ -54,4 +54,51 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
             ['test', 'red', 'blue', "\033[0;31m\033[44mtest\033[0m"],
         ];
     }
+
+    /**
+     * @covers ::getForegroundColorNames
+     */
+    public function test_getForegroundColorNames()
+    {
+        $expColors = [
+            'black',
+            'dark_gray',
+            'blue',
+            'light_blue',
+            'green',
+            'light_green',
+            'cyan',
+            'light_cyan',
+            'red',
+            'light_red',
+            'purple',
+            'light_purple',
+            'brown',
+            'yellow',
+            'light_gray',
+            'white',
+        ];
+
+        $this->assertSame($expColors, Colors::getForegroundColorNames());
+    }
+
+    /**
+     * @covers ::getBackgroundColorNames
+     */
+    public function test_getBackgroundColorNames()
+    {
+        $expColors = [
+            'black',
+            'red',
+            'green',
+            'yellow',
+            'blue',
+            'magenta',
+            'cyan',
+            'light_gray',
+        ];
+
+        $this->assertSame($expColors, Colors::getBackgroundColorNames());
+    }
+
 }

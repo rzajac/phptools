@@ -230,4 +230,32 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($cond['B'], $bPercent, '', 3.0);
         $this->assertEquals($cond['C'], $cPercent, '', 3.0);
     }
+
+    /**
+     * @dataProvider oneLineProvider
+     *
+     * @param string $test
+     * @param string $expected
+     *
+     * @covers ::oneLine
+     */
+    public function test_oneLine($test, $expected)
+    {
+        $this->assertSame($expected, Str::oneLine($test));
+    }
+
+    public function oneLineProvider()
+    {
+        return [
+            ["aaa", "aaa"],
+            ["a a a", "a a a"],
+            ["a\n a\na", "a aa"],
+            ["a  a   \na", "a a a"],
+            ["a a a\n", "a a a"],
+            ["a a a ", "a a a"],
+            [" a a a ", "a a a"],
+            [" a a a", "a a a"],
+        ];
+    }
+
 }
