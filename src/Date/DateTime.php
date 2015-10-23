@@ -19,8 +19,8 @@ namespace Kicaj\Tools\Date;
 
 use DateInterval;
 use DateTimeZone;
-use Kicaj\Tools\Itf\Hollow as IHollow;
-use Kicaj\Tools\Itf\TargetSerialize;
+use Kicaj\Tools\Itf\Hollower as IHollow;
+use Kicaj\Tools\Itf\TargetSerializer;
 use Kicaj\Tools\Lang\Calendar;
 use Kicaj\Tools\Traits\Hollow;
 
@@ -29,7 +29,7 @@ use Kicaj\Tools\Traits\Hollow;
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DateTime extends \DateTime implements IHollow, TargetSerialize
+class DateTime extends \DateTime implements IHollow, TargetSerializer
 {
     use Hollow { setHollow as traitSetHollow; }
 

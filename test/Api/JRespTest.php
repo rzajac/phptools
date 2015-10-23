@@ -18,7 +18,7 @@
 namespace Kicaj\Test\Api;
 
 use Kicaj\Tools\Api\JResp;
-use Kicaj\Tools\Itf\Paging;
+use Kicaj\Tools\Itf\Paginer;
 
 /**
  * Class JRespTest.
@@ -97,7 +97,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging()
     {
-        $paging = new TestPaging();
+        $paging = new TestPaginer();
 
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
 
@@ -123,7 +123,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging_no_totalPages()
     {
-        $paging = new TestPaging();
+        $paging = new TestPaginer();
         $paging->totalPages = 0;
 
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
@@ -197,7 +197,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_retSuccess_paging()
     {
-        $paging = new TestPaging();
+        $paging = new TestPaginer();
         $resp = JResp::retSuccess($this->testValue, 123, $paging);
         $resp = json_decode($resp);
 
@@ -246,7 +246,7 @@ class JRespTest extends \PHPUnit_Framework_TestCase
     }
 }
 
-class TestPaging implements Paging
+class TestPaginer implements Paginer
 {
     public $currPage = 2;
 

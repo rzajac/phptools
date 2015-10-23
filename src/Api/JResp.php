@@ -17,7 +17,7 @@
  */
 namespace Kicaj\Tools\Api;
 
-use Kicaj\Tools\Itf\Paging;
+use Kicaj\Tools\Itf\Paginer;
 use stdClass;
 
 /**
@@ -46,14 +46,14 @@ class JResp
     /**
      * Builds API response.
      *
-     * @param mixed  $value      The response
-     * @param bool   $success    Set to true for success, false for failure
-     * @param int    $httpCode   The HTTP response code
-     * @param Paging $pagingInfo The pagination information coming from Paging interface
+     * @param mixed   $value      The response
+     * @param bool    $success    Set to true for success, false for failure
+     * @param int     $httpCode   The HTTP response code
+     * @param Paginer $pagingInfo The pagination information coming from Paginer interface
      *
      * @return stdClass
      */
-    public static function buildResponse($value, $success, $httpCode, Paging $pagingInfo = null)
+    public static function buildResponse($value, $success, $httpCode, Paginer $pagingInfo = null)
     {
         $response = new stdClass();
         $response->success = $success;
@@ -92,14 +92,14 @@ class JResp
     /**
      * Return success.
      *
-     * @param mixed  $value       The success response
-     * @param int    $http_code   The HTTP response code
-     * @param Paging $pagingInfo  The pagination information coming from Paging interface
-     * @param bool   $prettyPrint If true the JSON will be pretty printed
+     * @param mixed   $value       The success response
+     * @param int     $http_code   The HTTP response code
+     * @param Paginer $pagingInfo  The pagination information coming from Paginer interface
+     * @param bool    $prettyPrint If true the JSON will be pretty printed
      *
      * @return string JSON encoded $value
      */
-    public static function retSuccess($value = null, $http_code = HttpCodes::HTTP_OK, Paging $pagingInfo = null, $prettyPrint = false)
+    public static function retSuccess($value = null, $http_code = HttpCodes::HTTP_OK, Paginer $pagingInfo = null, $prettyPrint = false)
     {
         $response = self::buildResponse($value, true, $http_code, $pagingInfo);
 

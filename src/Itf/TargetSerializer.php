@@ -18,25 +18,31 @@
 namespace Kicaj\Tools\Itf;
 
 /**
- * Hollow / empty interface.
+ * Serialization interface.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface Hollow
+interface TargetSerializer extends \JsonSerializable
 {
-    /**
-     * Returns true if class is hollow / empty.
-     *
-     * @return bool
-     */
-    public function isHollow();
+    /** Default serialization target */
+    const SER_DEFAULT = 'default';
 
     /**
-     * Set hollow / empty.
+     * Serialize object for given target.
      *
-     * @param bool $flag
+     * @param string $target The serialization target (one of the TSer constants)
+     * @param mixed  $params The additional parameters that serializer might need
      *
-     * @return $this
+     * @throws \Exception
+     *
+     * @return \stdClass|string|array|NULL
      */
-    public function setHollow($flag = true);
+    public function targetSerialize($target = self::SER_DEFAULT, $params = null);
+
+    /**
+     * Serialize object to JSON.
+     *
+     * @return mixed
+     */
+    public function jsonSerialize();
 }

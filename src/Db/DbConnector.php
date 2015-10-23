@@ -15,14 +15,16 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Tools\Itf;
+namespace Kicaj\Tools\Db;
+
+use Kicaj\Tools\Itf\Error;
 
 /**
  * Database connection interface.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface DbConnect extends Error
+interface DbConnector extends Error
 {
     /** MySQL driver */
     const DB_DRIVER_MYSQL = 'mysql';

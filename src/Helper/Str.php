@@ -201,6 +201,7 @@ abstract class Str
     public static function oneLine($str)
     {
         $str = str_replace(["\r", "\n"], '', $str);
+
         return trim(preg_replace('/\s+/', ' ', $str));
     }
 }

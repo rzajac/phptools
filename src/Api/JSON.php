@@ -38,10 +38,11 @@ class JSON
      */
     public static function decode($json, $asClass = false, $depth = 512, $options = 0)
     {
-        $array = json_decode($json, !$asClass, $depth, $options);
+        $result = json_decode($json, !$asClass, $depth, $options);
+
         switch (json_last_error()) {
             case JSON_ERROR_NONE:
-                return $array;
+                return $result;
             case JSON_ERROR_DEPTH:
                 throw new JSONParseException('Maximum stack depth exceeded', 'EC_JSON_ERROR_DEPTH');
             case JSON_ERROR_STATE_MISMATCH:

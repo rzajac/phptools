@@ -18,7 +18,7 @@
 namespace Kicaj\Tools\Traits;
 
 /**
- * Hollow / empty trait.
+ * Hollower / empty trait.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */

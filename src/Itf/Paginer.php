@@ -22,7 +22,7 @@ namespace Kicaj\Tools\Itf;
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface Paging
+interface Paginer
 {
     /**
      * Get current page number.
