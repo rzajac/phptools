@@ -45,4 +45,16 @@ final class DbConnect
             DbConnector::DB_CFG_PORT => $port,
         ];
     }
+
+    /**
+     * Get database driver name.
+     *
+     * @param array $config
+     *
+     * @return string One of the DbConnector::DB_DRIVER_* constants
+     */
+    public static function getDriver(array $config)
+    {
+        return $config[DbConnector::DB_CFG_DRIVER];
+    }
 }
