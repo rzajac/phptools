@@ -27,20 +27,31 @@ interface DbConnect extends Error
     /** MySQL driver */
     const DB_DRIVER_MYSQL = 'mysql';
 
+    /** Database host address */
+    const DB_CFG_HOST = 'host';
+
+    /** Database user name */
+    const DB_CFG_USERNAME = 'username';
+
+    /** Database password */
+    const DB_CFG_PASSWORD = 'password';
+
+    /** Database name */
+    const DB_CFG_DATABASE = 'database';
+
+    /** Database port */
+    const DB_CFG_PORT = 'port';
+
+    /** Debugging 'on' or  'off'. Default 'no' */
+    const DB_CFG_DEBUG = 'debug';
+
+    /** Database driver to use. One of the self::DB_DRIVER_* constants */
+    const DB_CFG_DRIVER = 'driver';
+
     /**
      * Configure database.
      *
-     * The database connection info array must have keys:
-     *
-     * - host: string
-     * - username: string
-     * - password: string
-     * - database: string
-     * - port: int
-     * - debug: bool
-     * - driver: one of the DbConnect::DB_DRIVER_* values
-     *
-     * @param array $dbConfig The database configuration
+     * @param array $dbConfig The database configuration. See self::DB_CFG_* constants.
      *
      * @return $this
      */
