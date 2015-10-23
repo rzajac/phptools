@@ -42,8 +42,7 @@ final class DbConnect
             DbConnector::DB_CFG_USERNAME => $username,
             DbConnector::DB_CFG_PASSWORD => $password,
             DbConnector::DB_CFG_DATABASE => $database,
-            DbConnector::DB_CFG_PORT => $port,
-        ];
+            DbConnector::DB_CFG_PORT => $port];
     }
 
     /**
