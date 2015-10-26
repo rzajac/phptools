@@ -31,10 +31,11 @@ final class DbConnect
      * @param string     $password The password
      * @param string     $database The database name
      * @param string|int $port     The database port
+     * @param bool       $debug    Set to true to enable debugging
      *
      * @return array
      */
-    public static function getCfg($driver, $host, $username, $password, $database, $port)
+    public static function getCfg($driver, $host, $username, $password, $database, $port, $debug = false)
     {
         return [
             DbConnector::DB_CFG_DRIVER => $driver,
@@ -42,7 +43,8 @@ final class DbConnect
             DbConnector::DB_CFG_USERNAME => $username,
             DbConnector::DB_CFG_PASSWORD => $password,
             DbConnector::DB_CFG_DATABASE => $database,
-            DbConnector::DB_CFG_PORT => $port];
+            DbConnector::DB_CFG_PORT => $port,
+            DbConnector::DB_CFG_DEBUG => $debug];
     }
 
     /**
