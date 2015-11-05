@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\Tools\I18N;
+namespace Kicaj\Test\PhpTools\I18N;
 
 use Kicaj\Tools\Lang\Calendar;
 use PHPUnit_Framework_TestCase;

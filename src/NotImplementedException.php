@@ -31,7 +31,7 @@ class NotImplementedException extends Exception
      * @param string          $ecCode
      * @param \Exception|null $previous
      */
-    public function __construct($message = 'not implemented', $ecCode = '', \Exception $previous = null)
+    public function __construct($message = 'not implemented', $ecCode = 'EC_NOT_IMPLEMENTED', \Exception $previous = null)
     {
         parent::__construct($message, $ecCode, $previous);
     }

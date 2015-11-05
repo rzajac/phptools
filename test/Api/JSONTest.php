@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\Api;
+namespace Kicaj\Test\PhpTools\Api;
 
 use Kicaj\Tools\Api\JSON;
 use Kicaj\Tools\Api\JSONParseException;

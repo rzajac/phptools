@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\Tools\Helper;
+namespace Kicaj\Test\PhpTools\Tools\Helper;
 
 use Kicaj\Tools\Db\DbConnect;
 use Kicaj\Tools\Db\DbConnector;
@@ -85,5 +85,21 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cfg[DbConnector::DB_CFG_DATABASE], 'testDb');
         $this->assertSame($cfg[DbConnector::DB_CFG_PORT], 1234);
         $this->assertSame($cfg[DbConnector::DB_CFG_DEBUG], true);
+    }
+
+    /**
+     * @covers ::getDriver
+     */
+    public function test_getDriver()
+    {
+        $cfg = DbConnect::getCfg(
+            DbConnector::DB_DRIVER_MYSQL,
+            'localhost',
+            'testUser',
+            'testPass',
+            'testDb',
+            1234);
+
+        $this->assertSame(DbConnector::DB_DRIVER_MYSQL, DbConnect::getDriver($cfg));
     }
 }

@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\Tools\Date;
+namespace Kicaj\Test\PhpTools\Tools\Date;
 
 use Kicaj\Tools\Date\DateCalc;
 use PHPUnit_Framework_TestCase;

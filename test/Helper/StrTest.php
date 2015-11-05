@@ -16,7 +16,7 @@
  * under the License.
  */
 
-namespace Kicaj\Test\Tools\Helper;
+namespace Kicaj\Test\PhpTools\Helper;
 
 use Kicaj\Tools\Helper\Str;
 

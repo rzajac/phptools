@@ -15,10 +15,24 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-ini_set('display_errors', true);
-error_reporting(E_ALL & ~E_STRICT);
+namespace Kicaj\Test\PhpTools\Tst;
 
-define('UNIT_TEST_YOURAPPLICATION_TESTSUITE', true);
+use Kicaj\Tools\Tst\Tst;
 
-// Require composer autoloader
-require __DIR__.'/../vendor/autoload.php';
+/**
+ * Tst_Test.
+ *
+ * @coversDefaultClass \Kicaj\Tools\Tst\Tst
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
+ */
+class Tst_Test extends \PHPUnit_Framework_TestCase
+{
+    /**
+     * @covers ::isUnitTested
+     */
+    public function test_isUnitTested()
+    {
+        $this->assertTrue(Tst::isUnitTested());
+    }
+}
