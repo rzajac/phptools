@@ -18,6 +18,7 @@
 
 namespace Kicaj\Test\PhpTools\Helper;
 
+use Kicaj\Tools\Date\DateTime;
 use Kicaj\Tools\Helper\Str;
 
 /**
@@ -259,4 +260,35 @@ class StrTest extends \PHPUnit_Framework_TestCase
         ];
     }
 
+    /**
+     * @dataProvider toStringProvider
+     *
+     * @covers ::toString
+     *
+     * @param mixed  $value
+     * @param string $expected
+     */
+    public function test_toString($value, $expected)
+    {
+        $got = Str::toString($value);
+        $this->assertSame($expected, $got);
+    }
+
+    public function toStringProvider()
+    {
+        $time = new DateTime('1970-01-01 10:12:13');
+
+        $std = new \stdClass;
+
+        return [
+            [123, '123'],
+            [123.34, '123.34'],
+            [null, 'null'],
+            [false, 'false'],
+            [true, 'true'],
+            [[1, 2, 3], '[1,2,3]'],
+            [$time, '1970-01-01 10:12:13'],
+            [$std, '[no string representation]'],
+        ];
+    }
 }

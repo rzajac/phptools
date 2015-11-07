@@ -204,4 +204,24 @@ abstract class Str
 
         return trim(preg_replace('/\s+/', ' ', $str));
     }
+
+    public static function toString($value)
+    {
+        if (is_null($value)) {
+            $ret = 'null';
+        } elseif (is_bool($value)) {
+            $ret = $value ? 'true' : 'false';
+        } elseif (is_array($value)) {
+            $ret = '['.implode(',', $value).']';
+        } else if((!is_object( $value ) && settype($value, 'string') !== false )
+            || (is_object( $value ) && method_exists($value, '__toString')))
+        {
+            $ret = ''.$value;
+        } else {
+            $ret = '[no string representation]';
+        }
+
+
+        return $ret;
+    }
 }
