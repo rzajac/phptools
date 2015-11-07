@@ -19,6 +19,7 @@ namespace Kicaj\Tools\Date;
 
 use DateInterval;
 use DateTimeZone;
+use Kicaj\Tools\Exception;
 use Kicaj\Tools\Itf\Hollower as IHollow;
 use Kicaj\Tools\Itf\TargetSerializer;
 use Kicaj\Tools\Lang\Calendar;
@@ -156,7 +157,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      * @param DateTimeZone|string|null $timezone The DateTimeZone instance or timezone name ex.: UTC.
      *                                           If null the default timezone will be taken
      *
-     * @throws \Exception
+     * @throws Exception
      *
      * @return static
      */
@@ -172,7 +173,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
         if (!$dt) {
             $errorMsg = self::getLastErrors();
             $errorMsg = array_values($errorMsg['errors'])[0];
-            throw new \Exception($errorMsg);
+            throw new Exception($errorMsg);
         }
 
         $object = new static('now', $dt->getTimezone());
