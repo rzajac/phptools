@@ -62,7 +62,16 @@ interface DbConnector extends Error
     /**
      * Connect to database.
      *
+     * This method might be called multiple times but only the first call should connect to database.
+     *
      * @return bool Returns true on success.
      */
     public function dbConnect();
+
+    /**
+     * Close database connection.
+     *
+     * @return bool
+     */
+    public function dbClose();
 }
