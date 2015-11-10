@@ -190,6 +190,18 @@ abstract class Str
     }
 
     /**
+     * Change camel_case string to camelCase.
+     *
+     * @param string $input
+     *
+     * @return string
+     */
+    public static function underscoreToCamelCase($input)
+    {
+        return str_replace(' ', '', ucwords(preg_replace('/_/', ' ', $input)));
+    }
+
+    /**
      * Make multi line string one line.
      *
      * NOTE: It also replaces multiple whitespace with one

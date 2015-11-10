@@ -209,6 +209,28 @@ class StrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider underscoreToCamelCaseProvider
+     *
+     * @covers ::underscoreToCamelCase
+     *
+     * @param string $str
+     * @param string $expected
+     */
+    public function test_underscoreToCamelCase($str, $expected)
+    {
+        $got = Str::underscoreToCamelCase($str);
+        $this->assertSame($expected, $got);
+    }
+
+    public function underscoreToCamelCaseProvider()
+    {
+        return [
+            ['aaa_bbb', 'AaaBbb'],
+            ['aaa_bbb_ccc', 'AaaBbbCcc'],
+        ];
+    }
+
+    /**
      * @covers ::getRandomWeightedElement
      */
     public function test_getRandomWeightedElement()
