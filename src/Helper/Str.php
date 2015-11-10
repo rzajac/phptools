@@ -205,6 +205,13 @@ abstract class Str
         return trim(preg_replace('/\s+/', ' ', $str));
     }
 
+    /**
+     * Cast anything to string.
+     *
+     * @param mixed $value The value to cast to string
+     *
+     * @return string
+     */
     public static function toString($value)
     {
         if (is_null($value)) {
@@ -220,7 +227,6 @@ abstract class Str
         } else {
             $ret = '[no string representation]';
         }
-
 
         return $ret;
     }

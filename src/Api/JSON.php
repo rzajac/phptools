@@ -34,7 +34,7 @@ class JSON
      *
      * @return mixed
      *
-     * @throws JSONParseException
+     * @throws JSONParseException If passed $json string is not JSON
      */
     public static function decode($json, $asClass = false, $depth = 512, $options = 0)
     {

@@ -25,7 +25,7 @@ namespace Kicaj\Tools\Cli;
 class Interaction
 {
     /**
-     * Get password.
+     * Get password from command line.
      *
      * Note: you probably should trim the return
      *

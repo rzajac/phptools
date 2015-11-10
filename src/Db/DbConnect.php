@@ -25,6 +25,8 @@ namespace Kicaj\Tools\Db;
 final class DbConnect
 {
     /**
+     * Get config array.
+     *
      * @param string     $driver   The database driver to use. One of the DbConnector::DB_DRIVER_* constants
      * @param string     $host     The database host address
      * @param string     $username The username

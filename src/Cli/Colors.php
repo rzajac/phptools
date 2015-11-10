@@ -67,9 +67,9 @@ class Colors
     /**
      * Returns colored string.
      *
-     * @param string $string
-     * @param string $foreground_color
-     * @param string $background_color
+     * @param string $string           The string to applu color to
+     * @param string $foreground_color The foreground color
+     * @param string $background_color The background color
      *
      * @return string
      */
