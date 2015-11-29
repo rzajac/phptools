@@ -1,9 +1,11 @@
-Classes I find myself reusing
+## PHP Tools
 
-# API documentation
+Collection of classes I find myself reusing.
+
+## API documentation
 
 [API Documentation](docs/index.md)
 
 ## License
 
-Apache License Version 2.0
+[Apache License Version 2.0](LICENSE)
