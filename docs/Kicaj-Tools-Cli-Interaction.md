@@ -3,9 +3,9 @@ CLI user interactions helper.
 
 ## Methods
 
-|                          |
-| ------------------------ |
-[getPassword](#getpassword)|
+|                              |
+| ---------------------------- |
+| [getPassword](#getpassword)  |
 
 -------
 ## Methods

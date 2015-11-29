@@ -20,21 +20,21 @@ const DB_CFG_DRIVER = 'driver';
 
 ## Methods
 
-|                      |                      |                      |
-| -------------------- | -------------------- | -------------------- |
- [dbSetup](#dbsetup)  |[dbConnect](#dbconnect)| [dbClose](#dbclose)  |
+|                          |                          |                          |
+| ------------------------ | ------------------------ | ------------------------ |
+|   [dbSetup](#dbsetup)    | [dbConnect](#dbconnect)  |   [dbClose](#dbclose)    |
 
 -------
 ## Methods
 #### dbSetup
 Configure database.
 ```php
-public function dbSetup(array $dbConfig) : \Kicaj\Tools\Db\DbConnector
+public function dbSetup(array $dbConfig) : Kicaj\Tools\Db\DbConnector
 ```
 Arguments:
 - _$dbConfig_ **array** - The database configuration. See self::DB_CFG_* constants.
 
-Returns: **\Kicaj\Tools\Db\DbConnector**
+Returns: **[Kicaj\Tools\Db\DbConnector](Kicaj-Tools-Db-DbConnector.md)**
 
 -------
 #### dbConnect

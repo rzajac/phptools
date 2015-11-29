@@ -13,9 +13,9 @@ const EC_UNKNOWN = 'EC_UNKNOWN';
 
 ## Properties
 
-|                        |
-| ---------------------- |
-[$errorCode](#errorcode)|
+|                            |
+| -------------------------- |
+|  [$errorCode](#errorcode)  |
 
 -------
 

@@ -3,9 +3,9 @@ Helper class with number related methods.
 
 ## Methods
 
-|                          |                          |                          |
-| ------------------------ | ------------------------ | ------------------------ |
-[equalWithin](#equalwithin)|     [isOdd](#isodd)      |    [isEven](#iseven)     |
+|                              |                              |                              |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+| [equalWithin](#equalwithin)  |       [isOdd](#isodd)        |      [isEven](#iseven)       |
 
 -------
 ## Methods

@@ -3,10 +3,10 @@ Helper class operating on arrays.
 
 ## Methods
 
-|                    |                    |                    |                    |                    |                    |                    |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-  [every](#every)   |[toObject](#toobject)| [fillUp](#fillup)  |  [range](#range)   |    [get](#get)     |  [fetch](#fetch)   | [remove](#remove)  |
-   [keep](#keep)    |       [](#)        |       [](#)        |       [](#)        |       [](#)        |       [](#)        |       [](#)        |
+|                        |                        |                        |                        |                        |                        |                        |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+|    [every](#every)     | [toObject](#toobject)  |   [fillUp](#fillup)    |    [range](#range)     |      [get](#get)       |    [fetch](#fetch)     |   [remove](#remove)    |
+|     [keep](#keep)      |         [](#)          |         [](#)          |         [](#)          |         [](#)          |         [](#)          |         [](#)          |
 
 -------
 ## Methods
@@ -26,12 +26,12 @@ Returns: **boolean**
 #### toObject
 Translates associative array to stdClass.
 ```php
-public static function toObject(array $arr) : \stdClass
+public static function toObject(array $arr) : stdClass
 ```
 Arguments:
 - _$arr_ **array**
 
-Returns: **\stdClass**
+Returns: **stdClass**
 
 -------
 #### fillUp

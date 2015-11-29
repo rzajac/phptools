@@ -3,9 +3,9 @@ Database connection helper class.
 
 ## Methods
 
-|                      |                      |
-| -------------------- | -------------------- |
-  [getCfg](#getcfg)   |[getDriver](#getdriver)|
+|                          |                          |
+| ------------------------ | ------------------------ |
+|    [getCfg](#getcfg)     | [getDriver](#getdriver)  |
 
 -------
 ## Methods

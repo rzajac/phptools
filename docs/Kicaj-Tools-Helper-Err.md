@@ -3,9 +3,9 @@ Error handling.
 
 ## Methods
 
-|                                                |                                                |                                                |
-| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-       [errToException](#errtoexception)        |       [restoreHandler](#restorehandler)        |[getCurrentErrorHandler](#getcurrenterrorhandler)|
+|                                                    |                                                    |                                                    |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+|         [errToException](#errtoexception)          |         [restoreHandler](#restorehandler)          | [getCurrentErrorHandler](#getcurrenterrorhandler)  |
 
 -------
 ## Methods

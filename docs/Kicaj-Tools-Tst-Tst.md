@@ -3,9 +3,9 @@ Test helpers.
 
 ## Methods
 
-|                            |
-| -------------------------- |
-[isUnitTested](#isunittested)|
+|                                |
+| ------------------------------ |
+| [isUnitTested](#isunittested)  |
 
 -------
 ## Methods

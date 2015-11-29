@@ -3,15 +3,15 @@ Helper class for operating on files.
 
 ## Methods
 
-|                          |                          |                          |                          |                          |
-| ------------------------ | ------------------------ | ------------------------ | ------------------------ | ------------------------ |
-[__construct](#__construct)|      [make](#make)       | [splitFile](#splitfile)  |   [getHash](#gethash)    |   [getSize](#getsize)    |
+|                              |                              |                              |                              |                              |
+| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
+| [__construct](#__construct)  |        [make](#make)         |   [splitFile](#splitfile)    |     [getHash](#gethash)      |     [getSize](#getsize)      |
 
 ## Properties
 
-|                      |
-| -------------------- |
-[$filePath](#filepath)|
+|                          |
+| ------------------------ |
+|  [$filePath](#filepath)  |
 
 -------
 
@@ -34,19 +34,19 @@ Arguments:
 - _$dirPath_ **string**
 
 Throws:
-- \Exception
+- Exception
 
 -------
 #### make
 Make.
 ```php
-public static function make(string $filePath, string $dirPath) : \Kicaj\Tools\Helper\File
+public static function make(string $filePath, string $dirPath) : Kicaj\Tools\Helper\File
 ```
 Arguments:
 - _$filePath_ **string**
 - _$dirPath_ **string**
 
-Returns: **\Kicaj\Tools\Helper\File**
+Returns: **[Kicaj\Tools\Helper\File](Kicaj-Tools-Helper-File.md)**
 
 -------
 #### splitFile

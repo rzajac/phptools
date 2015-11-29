@@ -3,9 +3,9 @@ Pagination interface.
 
 ## Methods
 
-|                              |                              |                              |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-[getPageNumber](#getpagenumber)| [getPageSize](#getpagesize)  |[getPageCount](#getpagecount) |
+|                                  |                                  |                                  |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| [getPageNumber](#getpagenumber)  |   [getPageSize](#getpagesize)    |  [getPageCount](#getpagecount)   |
 
 -------
 ## Methods

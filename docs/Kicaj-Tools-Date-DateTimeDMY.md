@@ -20,9 +20,9 @@ const TIME_FORMAT_SHORT = 'H:i';
 
 ## Properties
 
-|                          |                          |                          |
-| ------------------------ | ------------------------ | ------------------------ |
-    [$format](#format)    |[$formatBack](#formatback)| [$_isHollow](#_ishollow) |
+|                              |                              |                              |
+| ---------------------------- | ---------------------------- | ---------------------------- |
+|      [$format](#format)      |  [$formatBack](#formatback)  |   [$_isHollow](#_ishollow)   |
 
 -------
 

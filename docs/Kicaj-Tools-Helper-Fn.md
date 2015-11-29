@@ -3,9 +3,9 @@ Helper functions.
 
 ## Methods
 
-|                          |                          |
-| ------------------------ | ------------------------ |
-      [noop](#noop)       |[returnIfNot](#returnifnot)|
+|                              |                              |
+| ---------------------------- | ---------------------------- |
+|        [noop](#noop)         | [returnIfNot](#returnifnot)  |
 
 -------
 ## Methods

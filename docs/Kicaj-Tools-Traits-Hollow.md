@@ -3,15 +3,15 @@ Hollower / empty trait.
 
 ## Methods
 
-|                      |                      |
-| -------------------- | -------------------- |
-[isHollow](#ishollow) |[setHollow](#sethollow)|
+|                          |                          |
+| ------------------------ | ------------------------ |
+|  [isHollow](#ishollow)   | [setHollow](#sethollow)  |
 
 ## Properties
 
-|                        |
-| ---------------------- |
-[$_isHollow](#_ishollow)|
+|                            |
+| -------------------------- |
+|  [$_isHollow](#_ishollow)  |
 
 -------
 
@@ -29,11 +29,11 @@ Returns: **boolean**
 #### setHollow
 Set hollow / empty.
 ```php
-public function setHollow(boolean $flag) : \Kicaj\Tools\Traits\Hollow
+public function setHollow(boolean $flag) : Kicaj\Tools\Traits\Hollow
 ```
 Arguments:
 - _$flag_ **boolean**
 
-Returns: **\Kicaj\Tools\Traits\Hollow**
+Returns: **[Kicaj\Tools\Traits\Hollow](Kicaj-Tools-Traits-Hollow.md)**
 
 -------

@@ -49,16 +49,16 @@ const HTTP_VERSION_NOT_SUPPORTED = 505;
 
 ## Methods
 
-|                                      |                                      |                                      |                                      |
-| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
-   [httpHeaderFor](#httpheaderfor)    |[getMessageForCode](#getmessageforcode)|         [isError](#iserror)          |            [isOk](#isok)             |
-     [mayHaveBody](#mayhavebody)      |                [](#)                 |                [](#)                 |                [](#)                 |
+|                                          |                                          |                                          |                                          |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+|     [httpHeaderFor](#httpheaderfor)      | [getMessageForCode](#getmessageforcode)  |           [isError](#iserror)            |              [isOk](#isok)               |
+|       [mayHaveBody](#mayhavebody)        |                  [](#)                   |                  [](#)                   |                  [](#)                   |
 
 ## Properties
 
-|                      |
-| -------------------- |
-[$messages](#messages)|
+|                          |
+| ------------------------ |
+|  [$messages](#messages)  |
 
 -------
 

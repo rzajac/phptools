@@ -3,9 +3,9 @@ Debugging helpers.
 
 ## Methods
 
-|                            |
-| -------------------------- |
-[getCallStack](#getcallstack)|
+|                                |
+| ------------------------------ |
+| [getCallStack](#getcallstack)  |
 
 -------
 ## Methods

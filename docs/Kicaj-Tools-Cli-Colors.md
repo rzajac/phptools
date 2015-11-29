@@ -3,15 +3,15 @@ CLI colors helper class.
 
 ## Methods
 
-|                                                  |                                                  |                                                  |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-      [getColoredString](#getcoloredstring)       |[getForegroundColorNames](#getforegroundcolornames)|[getBackgroundColorNames](#getbackgroundcolornames)|
+|                                                      |                                                      |                                                      |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+|        [getColoredString](#getcoloredstring)         | [getForegroundColorNames](#getforegroundcolornames)  | [getBackgroundColorNames](#getbackgroundcolornames)  |
 
 ## Properties
 
-|                                        |                                        |
-| -------------------------------------- | -------------------------------------- |
-[$foreground_colors](#foreground_colors)|[$background_colors](#background_colors)|
+|                                            |                                            |
+| ------------------------------------------ | ------------------------------------------ |
+|  [$foreground_colors](#foreground_colors)  |  [$background_colors](#background_colors)  |
 
 -------
 

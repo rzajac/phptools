@@ -13,25 +13,25 @@ const SER_DEFAULT = 'default';
 
 ## Methods
 
-|                                  |                                  |
-| -------------------------------- | -------------------------------- |
-[targetSerialize](#targetserialize)| [jsonSerialize](#jsonserialize)  |
+|                                      |                                      |
+| ------------------------------------ | ------------------------------------ |
+| [targetSerialize](#targetserialize)  |   [jsonSerialize](#jsonserialize)    |
 
 -------
 ## Methods
 #### targetSerialize
 Serialize object for given target.
 ```php
-public function targetSerialize(string $target, mixed $params) : \stdClass|string|array|NULL
+public function targetSerialize(string $target, mixed $params) : stdClass|string|array|NULL
 ```
 Arguments:
 - _$target_ **string** - The serialization target (one of the TSer constants), 
 - _$params_ **mixed** - The additional parameters that serializer might need
 
 Throws:
-- \Exception
+- Exception
 
-Returns: **\stdClass|string|array|NULL**
+Returns: **stdClass|string|array|NULL**
 
 -------
 #### jsonSerialize

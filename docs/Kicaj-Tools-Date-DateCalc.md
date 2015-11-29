@@ -3,10 +3,10 @@ Class for handling date and time related calculations.
 
 ## Methods
 
-|                                                  |                                                  |                                                  |
-| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
-            [durationHI](#durationhi)             |  [secondsSinceMidnight](#secondssincemidnight)   |[secondsSinceMidnightStr](#secondssincemidnightstr)|
-         [formatStrTime](#formatstrtime)          |                      [](#)                       |                      [](#)                       |
+|                                                      |                                                      |                                                      |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+|              [durationHI](#durationhi)               |    [secondsSinceMidnight](#secondssincemidnight)     | [secondsSinceMidnightStr](#secondssincemidnightstr)  |
+|           [formatStrTime](#formatstrtime)            |                        [](#)                         |                        [](#)                         |
 
 -------
 ## Methods

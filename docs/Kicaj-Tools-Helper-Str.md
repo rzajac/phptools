@@ -3,12 +3,12 @@ Collection of static helper methods for string and mixed types.
 
 ## Methods
 
-|                                                    |                                                    |                                                    |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-           [randomString](#randomstring)            |          [generateToken](#generatetoken)           |           [emptyOnFalse](#emptyonfalse)            |
-[getRandomWeightedElement](#getrandomweightedelement)|                [slugify](#slugify)                 |             [startsWith](#startswith)              |
-               [endsWith](#endswith)                |  [camelCaseToUnderscore](#camelcasetounderscore)   |  [underscoreToCamelCase](#underscoretocamelcase)   |
-                [oneLine](#oneline)                 |               [toString](#tostring)                |                       [](#)                        |
+|                                                        |                                                        |                                                        |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+|             [randomString](#randomstring)              |            [generateToken](#generatetoken)             |             [emptyOnFalse](#emptyonfalse)              |
+| [getRandomWeightedElement](#getrandomweightedelement)  |                  [slugify](#slugify)                   |               [startsWith](#startswith)                |
+|                 [endsWith](#endswith)                  |    [camelCaseToUnderscore](#camelcasetounderscore)     |    [underscoreToCamelCase](#underscoretocamelcase)     |
+|                  [oneLine](#oneline)                   |                 [toString](#tostring)                  |                         [](#)                          |
 
 -------
 ## Methods
