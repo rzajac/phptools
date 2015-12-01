@@ -305,6 +305,31 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::getYear
+     * @covers ::getMonth
+     * @covers ::getDay
+     * @covers ::getDayOw
+     * @covers ::getHours
+     * @covers ::getMinutes
+     * @covers ::getSeconds
+     * @covers ::getLongDate
+     */
+    public function test_hollow()
+    {
+        $dt = DateTime::hollow();
+        $this->assertSame(0, $dt->getYear());
+        $this->assertSame(0, $dt->getYear());
+        $this->assertSame(0, $dt->getYear());
+        $this->assertSame(0, $dt->getMonth());
+        $this->assertSame(0, $dt->getDay());
+        $this->assertSame(0, $dt->getDayOw());
+        $this->assertSame(0, $dt->getHours());
+        $this->assertSame(0, $dt->getMinutes());
+        $this->assertSame(0, $dt->getSeconds());
+        $this->assertSame('', $dt->getLongDate('pl'));
+    }
+
+    /**
      * @dataProvider mysqlDateProvider
      *
      * @covers ::toMySQLDate
