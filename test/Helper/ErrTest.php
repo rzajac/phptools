@@ -63,6 +63,25 @@ class ErrTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::errToException
+     */
+    public function test_errToException_noError()
+    {
+        $currentHandler = Err::getCurrentErrorHandler();
+        $this->prevHandler = Err::errToException();
+
+        // Assert getCurrentErrorHandler returned current handler
+        $this->assertSame($currentHandler, $this->prevHandler);
+
+
+        $previous = error_reporting(0);
+        // This is actual test
+        $o = new stdClass();
+        $o->test;
+        error_reporting($previous);
+    }
+
+    /**
      * @covers ::restoreHandler
      */
     public function test_restoreHandler()
