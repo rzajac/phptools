@@ -42,4 +42,17 @@ class Interaction
 
         return $pass;
     }
+
+    /**
+     * Returns true if shell command exists.
+     *
+     * @param string $cmd The command line program to check.
+     *
+     * @return bool
+     */
+    public static function commandExist($cmd)
+    {
+        exec("which $cmd", $output, $returnVal);
+        return ($returnVal === 0 ? true : false);
+    }
 }
