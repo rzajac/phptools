@@ -21,11 +21,11 @@ Returns: **boolean**
 #### setHollow
 Set hollow / empty.
 ```php
-public function setHollow(boolean $flag) : Kicaj\Tools\Itf\Hollower
+public function setHollow(boolean $flag) : \Kicaj\Tools\Itf\Hollower
 ```
 Arguments:
 - _$flag_ **boolean**
 
-Returns: **[Kicaj\Tools\Itf\Hollower](Kicaj-Tools-Itf-Hollower.md)**
+Returns: **\Kicaj\Tools\Itf\Hollower**
 
 -------

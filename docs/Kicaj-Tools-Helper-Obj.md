@@ -28,7 +28,7 @@ Arguments:
 - _$handleException_ **boolean** - If set to true method will catch eny exceptions thrown when accessing properties
 
 Throws:
-- Exception
+- \Exception
 
 Returns: **mixed**
 

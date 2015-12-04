@@ -29,12 +29,12 @@ const DB_CFG_DRIVER = 'driver';
 #### dbSetup
 Configure database.
 ```php
-public function dbSetup(array $dbConfig) : Kicaj\Tools\Db\DbConnector
+public function dbSetup(array $dbConfig) : \Kicaj\Tools\Db\DbConnector
 ```
 Arguments:
 - _$dbConfig_ **array** - The database configuration. See self::DB_CFG_* constants.
 
-Returns: **[Kicaj\Tools\Db\DbConnector](Kicaj-Tools-Db-DbConnector.md)**
+Returns: **\Kicaj\Tools\Db\DbConnector**
 
 -------
 #### dbConnect

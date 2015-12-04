@@ -21,7 +21,7 @@ Arguments:
 - _$options_ **integer** - The bitmask of JSON decode options
 
 Throws:
-- [Kicaj\Tools\Api\JSONParseException](Kicaj-Tools-Api-JSONParseException.md)
+- \Kicaj\Tools\Api\JSONParseException
 
 Returns: **mixed**
 

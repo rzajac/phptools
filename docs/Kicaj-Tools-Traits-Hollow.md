@@ -29,11 +29,11 @@ Returns: **boolean**
 #### setHollow
 Set hollow / empty.
 ```php
-public function setHollow(boolean $flag) : Kicaj\Tools\Traits\Hollow
+public function setHollow(boolean $flag) : \Kicaj\Tools\Traits\Hollow
 ```
 Arguments:
 - _$flag_ **boolean**
 
-Returns: **[Kicaj\Tools\Traits\Hollow](Kicaj-Tools-Traits-Hollow.md)**
+Returns: **\Kicaj\Tools\Traits\Hollow**
 
 -------

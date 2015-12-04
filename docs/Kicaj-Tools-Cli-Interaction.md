@@ -3,9 +3,9 @@ CLI user interactions helper.
 
 ## Methods
 
-|                              |
-| ---------------------------- |
-| [getPassword](#getpassword)  |
+|                                |                                |
+| ------------------------------ | ------------------------------ |
+|  [getPassword](#getpassword)   | [commandExist](#commandexist)  |
 
 -------
 ## Methods
@@ -20,5 +20,16 @@ Arguments:
 - _$prompt_ **string** - The CLI prompt text
 
 Returns: **string**
+
+-------
+#### commandExist
+Returns true if shell command exists.
+```php
+public static function commandExist(string $cmd) : boolean
+```
+Arguments:
+- _$cmd_ **string** - The command line program to check.
+
+Returns: **boolean**
 
 -------

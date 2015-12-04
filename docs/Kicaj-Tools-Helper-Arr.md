@@ -26,12 +26,12 @@ Returns: **boolean**
 #### toObject
 Translates associative array to stdClass.
 ```php
-public static function toObject(array $arr) : stdClass
+public static function toObject(array $arr) : \stdClass
 ```
 Arguments:
 - _$arr_ **array**
 
-Returns: **stdClass**
+Returns: **\stdClass**
 
 -------
 #### fillUp
