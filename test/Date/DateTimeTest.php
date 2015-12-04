@@ -527,6 +527,7 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
             ['2015-12-11', false],
             ['2015-12-12', true],
             ['2015-12-13', true],
+            ['2015-12-14', false],
         ];
     }
 }
