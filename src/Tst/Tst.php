@@ -29,12 +29,20 @@ final class Tst
      *
      * Good place to put define is in unit test bootstrap file:
      *
-     * define('UNIT_TEST_YOURAPPLICATION_TESTSUITE', 'yes');
+     * define('UNIT_TEST_YOUR_APPLICATION_TEST_SUITE', 'yes');
      *
      * @return bool
      */
     public static function isUnitTested()
     {
-        return defined('UNIT_TEST_YOURAPPLICATION_TESTSUITE');
+        return defined('UNIT_TEST_YOUR_APPLICATION_TEST_SUITE') && UNIT_TEST_YOUR_APPLICATION_TEST_SUITE == 'yes';
+    }
+
+    /**
+     * Indicate application is being unit tested.
+     */
+    public static function setAsUnitTested()
+    {
+        define('UNIT_TEST_YOUR_APPLICATION_TEST_SUITE', 'yes');
     }
 }

@@ -33,6 +33,18 @@ class Tst_Test extends \PHPUnit_Framework_TestCase
      */
     public function test_isUnitTested()
     {
+        $this->assertFalse(Tst::isUnitTested());
+    }
+
+    /**
+     * @depends test_isUnitTested
+     *
+     * @covers ::isUnitTested
+     * @covers ::setAsUnitTested
+     */
+    public function test_setAsUnitTested()
+    {
+        Tst::setAsUnitTested();
         $this->assertTrue(Tst::isUnitTested());
     }
 }
