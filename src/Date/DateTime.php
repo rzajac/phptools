@@ -248,6 +248,26 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
     }
 
     /**
+     * Returns true if date is on saturday or sunday.
+     *
+     * @return bool
+     */
+    function isWeekend()
+    {
+        return (int) $this->format('N') > 5;
+    }
+
+    /**
+     * Returns true if date is on monday through friday.
+     *
+     * @return bool
+     */
+    function isWorkDay()
+    {
+        return !$this->isWeekend();
+    }
+
+    /**
      * Get year.
      *
      * @param string $format The one of self::YEAR_FORMAT_* constants

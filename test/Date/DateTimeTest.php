@@ -499,4 +499,34 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->assertFalse($date->isHollow());
         $this->assertSame('Y-m-d H:i:s', $date->getFormat());
     }
+
+    /**
+     * @dataProvider isWeekendProvider
+     *
+     * @covers ::isWeekend
+     * @covers ::isWorkday
+     *
+     * @param string $date
+     * @param bool $isWeekend
+     */
+    public function test_isWeekend($date, $isWeekend)
+    {
+        $date = DateTime::make($date);
+
+        $this->assertSame($isWeekend, $date->isWeekend());
+        $this->assertSame(!$isWeekend, $date->isWorkDay());
+    }
+
+    public function isWeekendProvider()
+    {
+        return [
+            ['2015-12-07', false],
+            ['2015-12-08', false],
+            ['2015-12-09', false],
+            ['2015-12-10', false],
+            ['2015-12-11', false],
+            ['2015-12-12', true],
+            ['2015-12-13', true],
+        ];
+    }
 }
