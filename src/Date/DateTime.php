@@ -63,9 +63,9 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
     /**
      * Constructor.
      *
-     * @param string                   $time     The time
-     * @param DateTimeZone|string|null $timezone The DateTimeZone instance or timezone name ex.: UTC.
-     *                                           If null the default timezone will be used
+     * @param string                   $time        The time.
+     * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
+     *                                              If null the default timezone will be used.
      *
      * @see http://php.net/timezones
      */
@@ -92,13 +92,12 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      * @param string                   $time        The time
      * @param DateTimeZone|string|null $timezone    The DateTimeZone instance or timezone name ex.: UTC.
      *                                              If null the default timezone will be taken
-     * @param bool                     $addZeroHour Set to true to add 00:00:00 to the passed date
      *
      * @return static
      */
-    public static function make($time = 'now', $timezone = null, $addZeroHour = false)
+    public static function make($time = 'now', $timezone = null)
     {
-        return new static($time, $timezone, $addZeroHour);
+        return new static($time, $timezone);
     }
 
     /**
