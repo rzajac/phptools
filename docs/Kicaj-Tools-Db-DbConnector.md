@@ -14,6 +14,7 @@ const DB_CFG_USERNAME = 'username';
 const DB_CFG_PASSWORD = 'password';
 const DB_CFG_DATABASE = 'database';
 const DB_CFG_PORT = 'port';
+const DB_CFG_CONNECT = 'connect';
 const DB_CFG_DEBUG = 'debug';
 const DB_CFG_DRIVER = 'driver';
 ```
@@ -29,12 +30,12 @@ const DB_CFG_DRIVER = 'driver';
 #### dbSetup
 Configure database.
 ```php
-public function dbSetup(array $dbConfig) : \Kicaj\Tools\Db\DbConnector
+public function dbSetup(array $dbConfig) : Kicaj\Tools\Db\DbConnector
 ```
 Arguments:
 - _$dbConfig_ **array** - The database configuration. See self::DB_CFG_* constants.
 
-Returns: **\Kicaj\Tools\Db\DbConnector**
+Returns: **[Kicaj\Tools\Db\DbConnector](Kicaj-Tools-Db-DbConnector.md)**
 
 -------
 #### dbConnect

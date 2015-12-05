@@ -52,7 +52,7 @@ Arguments:
 - _$style_ **string** - The style to return day name in. One of the self::STYLE_* constants
 
 Throws:
-- \Exception
+- Exception
 
 Returns: **mixed**
 
@@ -68,7 +68,7 @@ Arguments:
 - _$style_ **string** - The style to return month name in. One of the self::STYLE_* constants
 
 Throws:
-- \Exception
+- Exception
 
 Returns: **mixed**
 

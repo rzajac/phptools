@@ -25,15 +25,15 @@ Returns: **string** - JSON encoded $value.
 #### buildResponse
 Builds API response.
 ```php
-public static function buildResponse(mixed $value, boolean $success, integer $httpCode, \Kicaj\Tools\Itf\Paginer $pagingInfo) : \stdClass
+public static function buildResponse(mixed $value, boolean $success, integer $httpCode, [Kicaj\Tools\Itf\Paginer](Kicaj-Tools-Itf-Paginer.md) $pagingInfo) : stdClass
 ```
 Arguments:
 - _$value_ **mixed** - The response, 
 - _$success_ **boolean** - Set to true for success, false for failure, 
 - _$httpCode_ **integer** - The HTTP response code, 
-- _$pagingInfo_ **\Kicaj\Tools\Itf\Paginer** - The pagination information coming from Paginer interface
+- _$pagingInfo_ **[Kicaj\Tools\Itf\Paginer](Kicaj-Tools-Itf-Paginer.md)** - The pagination information coming from Paginer interface
 
-Returns: **\stdClass**
+Returns: **stdClass**
 
 -------
 #### retJSON
@@ -51,12 +51,12 @@ Returns: **string** - JSON encoded $response
 #### retSuccess
 Return success.
 ```php
-public static function retSuccess(mixed $value, integer $http_code, \Kicaj\Tools\Itf\Paginer $pagingInfo, boolean $prettyPrint) : string
+public static function retSuccess(mixed $value, integer $http_code, [Kicaj\Tools\Itf\Paginer](Kicaj-Tools-Itf-Paginer.md) $pagingInfo, boolean $prettyPrint) : string
 ```
 Arguments:
 - _$value_ **mixed** - The success response, 
 - _$http_code_ **integer** - The HTTP response code, 
-- _$pagingInfo_ **\Kicaj\Tools\Itf\Paginer** - The pagination information coming from Paginer interface, 
+- _$pagingInfo_ **[Kicaj\Tools\Itf\Paginer](Kicaj-Tools-Itf-Paginer.md)** - The pagination information coming from Paginer interface, 
 - _$prettyPrint_ **boolean** - If true the JSON will be pretty printed
 
 Returns: **string** - JSON encoded $value
@@ -65,10 +65,10 @@ Returns: **string** - JSON encoded $value
 #### isSuccess
 Check if a response is a success.
 ```php
-public static function isSuccess(\stdClass $response) : boolean
+public static function isSuccess(stdClass $response) : boolean
 ```
 Arguments:
-- _$response_ **\stdClass** - The AJAX response in a format returned by buildResponse method
+- _$response_ **stdClass** - The AJAX response in a format returned by buildResponse method
 
 Returns: **boolean**
 

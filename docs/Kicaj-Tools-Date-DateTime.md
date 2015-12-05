@@ -56,24 +56,23 @@ protected string $format = 'Y-m-d H:i:s'
 #### __construct
 Constructor.
 ```php
-public function __construct(string $time, \DateTimeZone|string|null $timezone) : 
+public function __construct(string $time, DateTimeZone|string|null $timezone) : 
 ```
 Arguments:
-- _$time_ **string** - The time, 
-- _$timezone_ **\DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
-                                          If null the default timezone will be used
+- _$time_ **string** - The time., 
+- _$timezone_ **DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
+                                             If null the default timezone will be used.
 
 -------
 #### make
 Make.
 ```php
-public static function make(string $time, \DateTimeZone|string|null $timezone, boolean $addZeroHour) : static
+public static function make(string $time, DateTimeZone|string|null $timezone) : static
 ```
 Arguments:
 - _$time_ **string** - The time, 
-- _$timezone_ **\DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
-                                             If null the default timezone will be taken, 
-- _$addZeroHour_ **boolean** - Set to true to add 00:00:00 to the passed date
+- _$timezone_ **DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
+                                             If null the default timezone will be taken
 
 Returns: **static**
 
@@ -81,10 +80,10 @@ Returns: **static**
 #### now
 Return current time.
 ```php
-public static function now(\DateTimeZone|string|null $timezone) : static
+public static function now(DateTimeZone|string|null $timezone) : static
 ```
 Arguments:
-- _$timezone_ **\DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
+- _$timezone_ **DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
                                           If null the default timezone will be taken
 
 Returns: **static**
@@ -102,12 +101,12 @@ Returns: **static**
 #### setHollow
 Set DateTime as hollow / empty.
 ```php
-public function setHollow(boolean $flag) : \Kicaj\Tools\Date\DateTime
+public function setHollow(boolean $flag) : Kicaj\Tools\Date\DateTime
 ```
 Arguments:
 - _$flag_ **boolean** - Set to true to make object hollow / empty
 
-Returns: **\Kicaj\Tools\Date\DateTime**
+Returns: **[Kicaj\Tools\Date\DateTime](Kicaj-Tools-Date-DateTime.md)**
 
 -------
 #### fromFormat
@@ -116,16 +115,16 @@ Parse a string into a new DateTime object according to the specified format.
 This is basically the same method as parent&#039;s createFromFormat but allows
 passing time zone as string.
 ```php
-public static function fromFormat(string $format, string $time, \DateTimeZone|string|null $timezone) : static
+public static function fromFormat(string $format, string $time, DateTimeZone|string|null $timezone) : static
 ```
 Arguments:
 - _$format_ **string** - Format accepted by date(), 
 - _$time_ **string** - String representing the time, 
-- _$timezone_ **\DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
+- _$timezone_ **DateTimeZone|string|null** - The DateTimeZone instance or timezone name ex.: UTC.
                                           If null the default timezone will be taken
 
 Throws:
-- \Kicaj\Tools\Exception
+- [Kicaj\Tools\Exception](Kicaj-Tools-Exception.md)
 
 Returns: **static**
 
@@ -355,15 +354,15 @@ Returns: **string**
 #### targetSerialize
 Serialize object for given target.
 ```php
-public function targetSerialize(string $target, mixed $params) : \stdClass|string|array|NULL
+public function targetSerialize(string $target, mixed $params) : stdClass|string|array|NULL
 ```
 Arguments:
 - _$target_ **string** - The serialization target (one of the TSer constants), 
 - _$params_ **mixed** - The additional parameters that serializer might need
 
 Throws:
-- \Exception
+- Exception
 
-Returns: **\stdClass|string|array|NULL**
+Returns: **stdClass|string|array|NULL**
 
 -------
