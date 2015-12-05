@@ -42,7 +42,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
             'testDb',
             1234);
 
-        $this->assertSame(7, count(array_keys($cfg)));
+        $this->assertSame(8, count(array_keys($cfg)));
 
         $this->assertArrayHasKey(DbConnector::DB_CFG_DRIVER, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_HOST, $cfg);
@@ -51,6 +51,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertArrayHasKey(DbConnector::DB_CFG_DATABASE, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_PORT, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_DEBUG, $cfg);
+        $this->assertArrayHasKey(DbConnector::DB_CFG_CONNECT, $cfg);
 
         $this->assertSame($cfg[DbConnector::DB_CFG_DRIVER], DbConnector::DB_DRIVER_MYSQL);
         $this->assertSame($cfg[DbConnector::DB_CFG_HOST], 'localhost');
@@ -58,6 +59,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cfg[DbConnector::DB_CFG_PASSWORD], 'testPass');
         $this->assertSame($cfg[DbConnector::DB_CFG_DATABASE], 'testDb');
         $this->assertSame($cfg[DbConnector::DB_CFG_PORT], 1234);
+        $this->assertSame($cfg[DbConnector::DB_CFG_CONNECT], true);
         $this->assertSame($cfg[DbConnector::DB_CFG_DEBUG], false);
 
         $cfg = DbConnect::getCfg(
@@ -67,15 +69,17 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
             'testPass',
             'testDb',
             1234,
+            false,
             true);
 
-        $this->assertSame(7, count(array_keys($cfg)));
+        $this->assertSame(8, count(array_keys($cfg)));
         $this->assertArrayHasKey(DbConnector::DB_CFG_DRIVER, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_HOST, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_USERNAME, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_PASSWORD, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_DATABASE, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_PORT, $cfg);
+        $this->assertArrayHasKey(DbConnector::DB_CFG_CONNECT, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_DEBUG, $cfg);
 
         $this->assertSame($cfg[DbConnector::DB_CFG_DRIVER], DbConnector::DB_DRIVER_MYSQL);
@@ -84,6 +88,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cfg[DbConnector::DB_CFG_PASSWORD], 'testPass');
         $this->assertSame($cfg[DbConnector::DB_CFG_DATABASE], 'testDb');
         $this->assertSame($cfg[DbConnector::DB_CFG_PORT], 1234);
+        $this->assertSame($cfg[DbConnector::DB_CFG_CONNECT], false);
         $this->assertSame($cfg[DbConnector::DB_CFG_DEBUG], true);
     }
 

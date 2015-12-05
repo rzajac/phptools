@@ -27,17 +27,18 @@ final class DbConnect
     /**
      * Get config array.
      *
-     * @param string     $driver   The database driver to use. One of the DbConnector::DB_DRIVER_* constants
-     * @param string     $host     The database host address
-     * @param string     $username The username
-     * @param string     $password The password
-     * @param string     $database The database name
-     * @param string|int $port     The database port
-     * @param bool       $debug    Set to true to enable debugging
+     * @param string     $driver   The database driver to use. One of the DbConnector::DB_DRIVER_* constants.
+     * @param string     $host     The database host address.
+     * @param string     $username The username.
+     * @param string     $password The password.
+     * @param string     $database The database name.
+     * @param string|int $port     The database port.
+     * @param bool       $connect  Set to true to connect right away.
+     * @param bool       $debug    Set to true to enable debugging.
      *
      * @return array
      */
-    public static function getCfg($driver, $host, $username, $password, $database, $port, $debug = false)
+    public static function getCfg($driver, $host, $username, $password, $database, $port, $connect = true, $debug = false)
     {
         return [
             DbConnector::DB_CFG_DRIVER => $driver,
@@ -46,6 +47,7 @@ final class DbConnect
             DbConnector::DB_CFG_PASSWORD => $password,
             DbConnector::DB_CFG_DATABASE => $database,
             DbConnector::DB_CFG_PORT => $port,
+            DbConnector::DB_CFG_CONNECT => $connect,
             DbConnector::DB_CFG_DEBUG => $debug];
     }
 
@@ -54,7 +56,7 @@ final class DbConnect
      *
      * @param array $config
      *
-     * @return string One of the DbConnector::DB_DRIVER_* constants
+     * @return string One of the DbConnector::DB_DRIVER_* constants.
      */
     public static function getDriver(array $config)
     {

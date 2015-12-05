@@ -26,25 +26,28 @@ use Kicaj\Tools\Itf\Error;
  */
 interface DbConnector extends Error
 {
-    /** MySQL driver */
+    /** MySQL driver. */
     const DB_DRIVER_MYSQL = 'mysql';
 
-    /** Database host address */
+    /** Database host address. */
     const DB_CFG_HOST = 'host';
 
-    /** Database user name */
+    /** Database user name. */
     const DB_CFG_USERNAME = 'username';
 
-    /** Database password */
+    /** Database password. */
     const DB_CFG_PASSWORD = 'password';
 
-    /** Database name */
+    /** Database name. */
     const DB_CFG_DATABASE = 'database';
 
-    /** Database port */
+    /** Database port. */
     const DB_CFG_PORT = 'port';
 
-    /** Debugging 'on' or  'off'. Default 'no' */
+    /** Connect true / false to database right away. */
+    const DB_CFG_CONNECT = 'connect';
+
+    /** Debugging true / false */
     const DB_CFG_DEBUG = 'debug';
 
     /** Database driver to use. One of the self::DB_DRIVER_* constants */
