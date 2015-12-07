@@ -50,7 +50,7 @@ interface DbConnector extends Error
     /** Debugging true / false */
     const DB_CFG_DEBUG = 'debug';
 
-    /** Database driver to use. One of the self::DB_DRIVER_* constants */
+    /** Database driver to use. One of the self::DB_DRIVER_* constants. */
     const DB_CFG_DRIVER = 'driver';
 
     /** The timezone to use for connection. Default UTC */
@@ -70,14 +70,14 @@ interface DbConnector extends Error
      *
      * This method might be called multiple times but only the first call should connect to database.
      *
-     * @return bool Returns true on success.
+     * @throws DatabaseException
      */
     public function dbConnect();
 
     /**
      * Close database connection.
      *
-     * @return bool
+     * @throws DatabaseException
      */
     public function dbClose();
 }
