@@ -42,7 +42,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
             'testDb',
             1234);
 
-        $this->assertSame(8, count(array_keys($cfg)));
+        $this->assertSame(9, count(array_keys($cfg)));
 
         $this->assertArrayHasKey(DbConnector::DB_CFG_DRIVER, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_HOST, $cfg);
@@ -60,6 +60,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cfg[DbConnector::DB_CFG_DATABASE], 'testDb');
         $this->assertSame($cfg[DbConnector::DB_CFG_PORT], 1234);
         $this->assertSame($cfg[DbConnector::DB_CFG_CONNECT], true);
+        $this->assertSame($cfg[DbConnector::DB_CFG_TIMEZONE], 'UTC');
         $this->assertSame($cfg[DbConnector::DB_CFG_DEBUG], false);
 
         $cfg = DbConnect::getCfg(
@@ -70,9 +71,10 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
             'testDb',
             1234,
             false,
+            'ABC',
             true);
 
-        $this->assertSame(8, count(array_keys($cfg)));
+        $this->assertSame(9, count(array_keys($cfg)));
         $this->assertArrayHasKey(DbConnector::DB_CFG_DRIVER, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_HOST, $cfg);
         $this->assertArrayHasKey(DbConnector::DB_CFG_USERNAME, $cfg);
@@ -89,6 +91,7 @@ class DbConnectorTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($cfg[DbConnector::DB_CFG_DATABASE], 'testDb');
         $this->assertSame($cfg[DbConnector::DB_CFG_PORT], 1234);
         $this->assertSame($cfg[DbConnector::DB_CFG_CONNECT], false);
+        $this->assertSame($cfg[DbConnector::DB_CFG_TIMEZONE], 'ABC');
         $this->assertSame($cfg[DbConnector::DB_CFG_DEBUG], true);
     }
 

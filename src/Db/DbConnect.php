@@ -34,12 +34,17 @@ final class DbConnect
      * @param string     $database The database name.
      * @param string|int $port     The database port.
      * @param bool       $connect  Set to true to connect right away.
+     * @param string     $timezone The timezone to use for the connection.
      * @param bool       $debug    Set to true to enable debugging.
      *
      * @return array
      */
-    public static function getCfg($driver, $host, $username, $password, $database, $port, $connect = true, $debug = false)
+    public static function getCfg($driver, $host, $username, $password, $database, $port, $connect = true, $timezone = '', $debug = false)
     {
+        if ($timezone == '') {
+            $timezone = 'UTC';
+        }
+
         return [
             DbConnector::DB_CFG_DRIVER => $driver,
             DbConnector::DB_CFG_HOST => $host,
@@ -48,6 +53,7 @@ final class DbConnect
             DbConnector::DB_CFG_DATABASE => $database,
             DbConnector::DB_CFG_PORT => $port,
             DbConnector::DB_CFG_CONNECT => $connect,
+            DbConnector::DB_CFG_TIMEZONE => $timezone,
             DbConnector::DB_CFG_DEBUG => $debug];
     }
 

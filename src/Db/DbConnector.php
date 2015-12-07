@@ -53,6 +53,9 @@ interface DbConnector extends Error
     /** Database driver to use. One of the self::DB_DRIVER_* constants */
     const DB_CFG_DRIVER = 'driver';
 
+    /** The timezone to use for connection. Default UTC */
+    const DB_CFG_TIMEZONE = 'timezone';
+
     /**
      * Configure database.
      *
