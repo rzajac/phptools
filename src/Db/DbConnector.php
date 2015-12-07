@@ -61,6 +61,8 @@ interface DbConnector extends Error
      *
      * @param array $dbConfig The database configuration. See self::DB_CFG_* constants.
      *
+     * @throws DatabaseException
+     *
      * @return $this
      */
     public function dbSetup(array $dbConfig);
@@ -71,6 +73,8 @@ interface DbConnector extends Error
      * This method might be called multiple times but only the first call should connect to database.
      *
      * @throws DatabaseException
+     *
+     * @return $this
      */
     public function dbConnect();
 
