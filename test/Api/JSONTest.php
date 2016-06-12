@@ -61,9 +61,9 @@ class JSONTest extends \PHPUnit_Framework_TestCase
     {
         return [
             ['{"aaa": 1}', false, 512, '', ''],
-            ['{"aaa: 1}', false, 512, 'Syntax error, malformed JSON', 'EC_JSON_ERROR_SYNTAX'],
+            ['{"aaa: 1}', false, 512, 'JSON decoding error', 'EC_JSON_ERROR_DECODE'],
             ['{"aaa": {"aaa": {"aaa": {}}}', false, 1, 'Maximum stack depth exceeded', 'EC_JSON_ERROR_DEPTH'],
-            ['{"j": 1 ] }', false, 512, 'Underflow or the modes mismatch', 'EC_JSON_ERROR_STATE_MISMATCH'],
+            ['{"j": 1 ] }', false, 512, 'JSON decoding error', 'EC_JSON_ERROR_DECODE'],
         ];
     }
 

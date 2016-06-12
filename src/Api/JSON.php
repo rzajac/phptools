@@ -45,14 +45,11 @@ class JSON
                 return $result;
             case JSON_ERROR_DEPTH:
                 throw new JSONParseException('Maximum stack depth exceeded', 'EC_JSON_ERROR_DEPTH');
-            case JSON_ERROR_STATE_MISMATCH:
-                throw new JSONParseException('Underflow or the modes mismatch', 'EC_JSON_ERROR_STATE_MISMATCH');
-            case JSON_ERROR_CTRL_CHAR:
-                throw new JSONParseException('Unexpected control character found', 'EC_JSON_ERROR_CTRL_CHAR');
             case JSON_ERROR_SYNTAX:
-                throw new JSONParseException('Syntax error, malformed JSON', 'EC_JSON_ERROR_SYNTAX');
+            case JSON_ERROR_STATE_MISMATCH:
+            case JSON_ERROR_CTRL_CHAR:
             case JSON_ERROR_UTF8:
-                throw new JSONParseException('Malformed UTF-8 characters, possibly incorrectly encoded', 'EC_JSON_ERROR_UTF8');
+                throw new JSONParseException('JSON decoding error', 'EC_JSON_ERROR_DECODE');
             default:
                 throw new JSONParseException('Unknown error', ApiException::EC_UNKNOWN);
         }

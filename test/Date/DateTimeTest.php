@@ -53,7 +53,8 @@ class DateTimeTest extends PHPUnit_Framework_TestCase
         $this->defaultTz = date_default_timezone_get();
 
         // Pick and set time zone that is not UTC
-        $this->setTz = reset(array_diff(['Europe/Warsaw', 'Brazil/Acre'], [$this->defaultTz]));
+        $tz = array_diff(['Europe/Warsaw', 'Brazil/Acre'], [$this->defaultTz]);
+        $this->setTz = reset($tz);
         date_default_timezone_set($this->setTz);
     }
 
