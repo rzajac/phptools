@@ -20,45 +20,32 @@ namespace Kicaj\Tools\Itf;
 use Exception;
 
 /**
- * Error interface.
+ * Errors interface.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface Error
+interface Errors extends Error
 {
     /**
-     * Add error.
+     * Set the errors.
      *
-     * If the key is not provided the method will just
-     * add another element to the array.
-     *
-     * @param Exception|string $error The error
-     * @param string           $key   The associative array key
-     *
-     * @throws Exception
+     * @param Exception[] $errors
      *
      * @return bool Always returns false
      */
-    public function addError($error, $key = null);
+    public function setErrors(array $errors = []);
 
     /**
      * Returns true if there are any errors.
      *
      * @return bool
      */
-    public function hasError();
+    public function hasErrors();
 
     /**
-     * Reset error.
+     * Returns array of errors.
      *
-     * @return $this
+     * @return Exception[]
      */
-    public function resetError();
-
-    /**
-     * Returns first reported error.
-     *
-     * @return Exception|null
-     */
-    public function getError();
+    public function getErrors();
 }
