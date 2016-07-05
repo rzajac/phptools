@@ -79,6 +79,15 @@ interface DbConnector extends Error
     public function dbConnect();
 
     /**
+     * The database to use if not specified in database config.
+     *
+     * @param string $dbName The database name to use.
+     *
+     * @return $this
+     */
+    public function useDatabase($dbName);
+
+    /**
      * Close database connection.
      *
      * @throws DatabaseException
