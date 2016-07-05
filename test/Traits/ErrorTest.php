@@ -126,7 +126,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @covers ::resetErrors
+     * @covers ::resetError
      */
     public function test_reset()
     {
@@ -141,7 +141,7 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
 
         $this->assertSame(3, count($errors));
 
-        $o->resetErrors();
+        $o->resetError();
         $this->assertSame(0, count($o->getErrors()));
     }
 }

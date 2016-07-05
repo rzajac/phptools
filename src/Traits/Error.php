@@ -104,7 +104,7 @@ trait Error
      *
      * @return $this
      */
-    public function resetErrors()
+    public function resetError()
     {
         $this->errors = [];
 
