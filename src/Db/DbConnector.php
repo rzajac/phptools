@@ -17,14 +17,12 @@
  */
 namespace Kicaj\Tools\Db;
 
-use Kicaj\Tools\Itf\Error;
-
 /**
  * Database connection interface.
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-interface DbConnector extends Error
+interface DbConnector
 {
     /** MySQL driver. */
     const DB_DRIVER_MYSQL = 'mysql';
@@ -82,6 +80,8 @@ interface DbConnector extends Error
      * The database to use if not specified in database config.
      *
      * @param string $dbName The database name to use.
+     *
+     * @throws DatabaseException
      *
      * @return $this
      */
