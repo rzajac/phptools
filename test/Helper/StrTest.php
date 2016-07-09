@@ -313,4 +313,35 @@ class StrTest extends \PHPUnit_Framework_TestCase
             [$std, '[no string representation]'],
         ];
     }
+
+    /**
+     * @dataProvider containsProvider
+     *
+     * @covers ::contains
+     *
+     * @param string $haystack
+     * @param string $needle
+     * @param bool $ignoreCase
+     * @param bool $expected
+     */
+    public function test_containsProvider($haystack, $needle, $ignoreCase, $expected)
+    {
+        $got = Str::contains($haystack, $needle, $ignoreCase);
+
+        $this->assertSame($expected, $got);
+    }
+
+    public function containsProvider()
+    {
+        return [
+            ['Some sentence as haystack.', 'sentence', false, true],
+            ['Some sentence as haystack.', 'sentence', true, true],
+            ['Some sentence as haystack.', 'Sentence', false, false],
+            ['Some sentence as haystack.', 'Sentence', true, true],
+
+            ['Some sentence as haystack.', 'Som', False, true],
+            ['Some sentence as haystack.', 'Som', true, true],
+        ];
+    }
+
 }

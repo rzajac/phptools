@@ -220,7 +220,7 @@ abstract class Str
     /**
      * Cast anything to string.
      *
-     * @param mixed $value The value to cast to string
+     * @param mixed $value The value to cast to string.
      *
      * @return string
      */
@@ -231,15 +231,35 @@ abstract class Str
         } elseif (is_bool($value)) {
             $ret = $value ? 'true' : 'false';
         } elseif (is_array($value)) {
-            $ret = '['.implode(',', $value).']';
-        } else if((!is_object( $value ) && settype($value, 'string') !== false )
-            || (is_object( $value ) && method_exists($value, '__toString')))
-        {
-            $ret = ''.$value;
+            $ret = '[' . implode(',', $value) . ']';
+        } else if ((!is_object($value) && settype($value, 'string') !== false)
+            || (is_object($value) && method_exists($value, '__toString'))
+        ) {
+            $ret = '' . $value;
         } else {
             $ret = '[no string representation]';
         }
 
         return $ret;
+    }
+
+    /**
+     * Return true if haystack contains needle.
+     *
+     * @param string $haystack   The string to check for needle existence.
+     * @param string $needle     The string to find in the haystack.
+     * @param bool   $ignoreCase Set to true to ignore case.
+     *
+     * @return bool
+     */
+    public static function contains($haystack, $needle, $ignoreCase = false)
+    {
+        if ($ignoreCase) {
+            $needle = strtolower($needle);
+            $haystack = strtolower($haystack);
+        }
+        $pos = strpos($haystack, $needle);
+
+        return !($pos === false);
     }
 }
