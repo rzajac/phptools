@@ -1,10 +1,6 @@
 ## Interface Kicaj\Tools\Db\DbConnector
 Database connection interface.
 
-## Extends
-
-- Kicaj\Tools\Itf\Error
-
 ## Constants
 
 ```php

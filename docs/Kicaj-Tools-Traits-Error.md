@@ -3,9 +3,9 @@ Error handling trait.
 
 ## Methods
 
-|                              |                              |                              |                              |                              |                              |                              |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-|    [addError](#adderror)     |   [setErrors](#seterrors)    |   [hasErrors](#haserrors)    |    [hasError](#haserror)     | [resetErrors](#reseterrors)  |    [getError](#geterror)     |   [getErrors](#geterrors)    |
+|                            |                            |                            |                            |                            |                            |                            |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+|   [addError](#adderror)    |  [setErrors](#seterrors)   |  [hasErrors](#haserrors)   |   [hasError](#haserror)    | [resetError](#reseterror)  |   [getError](#geterror)    |  [getErrors](#geterrors)   |
 
 ## Properties
 
@@ -71,10 +71,10 @@ public function hasError() : boolean
 Returns: **boolean**
 
 -------
-#### resetErrors
+#### resetError
 Reset errors.
 ```php
-public function resetErrors() : Kicaj\Tools\Traits\Error
+public function resetError() : Kicaj\Tools\Traits\Error
 ```
 
 Returns: **[Kicaj\Tools\Traits\Error](Kicaj-Tools-Traits-Error.md)**

@@ -3,9 +3,9 @@ Error interface.
 
 ## Methods
 
-|                              |                              |                              |                              |                              |                              |                              |
-| ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
-|    [addError](#adderror)     |   [setErrors](#seterrors)    |   [hasErrors](#haserrors)    |    [hasError](#haserror)     | [resetErrors](#reseterrors)  |    [getError](#geterror)     |   [getErrors](#geterrors)    |
+|                            |                            |                            |                            |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+|   [addError](#adderror)    |   [hasError](#haserror)    | [resetError](#reseterror)  |   [getError](#geterror)    |
 
 -------
 ## Methods
@@ -27,26 +27,6 @@ Throws:
 Returns: **boolean** - Always returns false
 
 -------
-#### setErrors
-Set the errors.
-```php
-public function setErrors(\Exception[] $errors) : boolean
-```
-Arguments:
-- _$errors_ **\Exception[]**
-
-Returns: **boolean** - Always returns false
-
--------
-#### hasErrors
-Returns true if there are any errors.
-```php
-public function hasErrors() : boolean
-```
-
-Returns: **boolean**
-
--------
 #### hasError
 Returns true if there are any errors.
 ```php
@@ -56,10 +36,10 @@ public function hasError() : boolean
 Returns: **boolean**
 
 -------
-#### resetErrors
-Reset errors.
+#### resetError
+Reset error.
 ```php
-public function resetErrors() : Kicaj\Tools\Itf\Error
+public function resetError() : Kicaj\Tools\Itf\Error
 ```
 
 Returns: **[Kicaj\Tools\Itf\Error](Kicaj-Tools-Itf-Error.md)**
@@ -72,14 +52,5 @@ public function getError() : Exception|null
 ```
 
 Returns: **Exception|null**
-
--------
-#### getErrors
-Returns array of errors.
-```php
-public function getErrors() : \Exception[]
-```
-
-Returns: **\Exception[]**
 
 -------
