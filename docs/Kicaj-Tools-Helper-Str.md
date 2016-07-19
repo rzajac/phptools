@@ -8,7 +8,7 @@ Collection of static helper methods for string and mixed types.
 |             [randomString](#randomstring)              |            [generateToken](#generatetoken)             |             [emptyOnFalse](#emptyonfalse)              |
 | [getRandomWeightedElement](#getrandomweightedelement)  |                  [slugify](#slugify)                   |               [startsWith](#startswith)                |
 |                 [endsWith](#endswith)                  |    [camelCaseToUnderscore](#camelcasetounderscore)     |    [underscoreToCamelCase](#underscoretocamelcase)     |
-|                  [oneLine](#oneline)                   |                 [toString](#tostring)                  |                         [](#)                          |
+|                  [oneLine](#oneline)                   |                 [toString](#tostring)                  |                 [contains](#contains)                  |
 
 -------
 ## Methods
@@ -143,8 +143,21 @@ Cast anything to string.
 public static function toString(mixed $value) : string
 ```
 Arguments:
-- _$value_ **mixed** - The value to cast to string
+- _$value_ **mixed** - The value to cast to string.
 
 Returns: **string**
+
+-------
+#### contains
+Return true if haystack contains needle.
+```php
+public static function contains(string $haystack, string $needle, boolean $ignoreCase) : boolean
+```
+Arguments:
+- _$haystack_ **string** - The string to check for needle existence., 
+- _$needle_ **string** - The string to find in the haystack., 
+- _$ignoreCase_ **boolean** - Set to true to ignore case.
+
+Returns: **boolean**
 
 -------
