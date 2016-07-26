@@ -15,19 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Traits;
+namespace Kicaj\Test\Tools\Traits;
 
 use Exception;
 use Kicaj\Tools\Traits\Error;
 
 /**
- * Class ErrorTest.
+ * Class Error_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Traits\Error
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class ErrorTest extends \PHPUnit_Framework_TestCase
+class Error_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::hasError
@@ -37,8 +37,10 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_Error()
     {
+        // When
         $o = new ErrorTmp();
 
+        // Then
         $this->assertFalse($o->hasErrors());
         $this->assertFalse($o->hasError());
         $this->assertSame([], $o->getErrors());
@@ -52,18 +54,39 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_addError()
     {
+        // Given
         $e = new Exception('test message');
         $o = new ErrorTmp();
 
+        // When
         $o->addError($e);
 
+        // Then
         $this->assertTrue($o->hasErrors());
         $this->assertTrue($o->hasError());
         $this->assertSame($e, $o->getError());
 
+        //$o = new ErrorTmp();
+        //$o->addError('text error');
+        //
+        //$this->assertTrue($o->hasErrors());
+        //$this->assertSame('text error', $o->getError()->getMessage());
+    }
+
+    /**
+     * @covers ::addError
+     * @covers ::hasError
+     * @covers ::hasErrors
+     */
+    public function test_addError_error_message()
+    {
+        // Given
         $o = new ErrorTmp();
+
+        // When
         $o->addError('text error');
 
+        // Then
         $this->assertTrue($o->hasErrors());
         $this->assertSame('text error', $o->getError()->getMessage());
     }
@@ -76,7 +99,10 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_addError_Exception()
     {
+        // When
         $o = new ErrorTmp();
+
+        // Then
         $o->addError(123);
     }
 
@@ -86,10 +112,14 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_addError_key()
     {
+        // Given
         $o = new ErrorTmp();
+
+        // When
         $o->addError('test error 1', 'key1');
         $o->addError('test error 2', 'key2');
 
+        // Then
         $errors = $o->getErrors();
 
         $this->assertSame(2, count($errors));
@@ -106,13 +136,16 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_setErrors()
     {
+        // Given
         $e1 = new Exception('test error 1');
         $e2 = new Exception('test error 2');
 
+        // When
         $o = new ErrorTmp();
         $o->addError('test error 0', 'key0');
         $o->setErrors([$e1, $e2]);
 
+        // Then
         $errors = $o->getErrors();
 
         $this->assertSame(3, count($errors));
@@ -130,22 +163,30 @@ class ErrorTest extends \PHPUnit_Framework_TestCase
      */
     public function test_reset()
     {
+        // Given
         $e1 = new Exception('test error 1');
         $e2 = new Exception('test error 2');
 
+        // When
         $o = new ErrorTmp();
         $o->addError('test error 0', 'key0');
         $o->setErrors([$e1, $e2]);
 
+        // Then
         $errors = $o->getErrors();
-
         $this->assertSame(3, count($errors));
-
         $o->resetError();
         $this->assertSame(0, count($o->getErrors()));
     }
 }
 
+/**
+ * ErrorTmp.
+ *
+ * Helper class to test Error trait.
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
+ */
 class ErrorTmp
 {
     use Error;

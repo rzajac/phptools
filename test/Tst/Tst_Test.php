@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Tst;
+namespace Kicaj\Test\Tools\Tst;
 
 use Kicaj\Tools\Tst\Tst;
 
@@ -33,6 +33,7 @@ class Tst_Test extends \PHPUnit_Framework_TestCase
      */
     public function test_isUnitTested()
     {
+        $this->assertFalse(defined('UNIT_TEST_YOUR_APPLICATION_TEST_SUITE'));
         $this->assertFalse(Tst::isUnitTested());
     }
 
@@ -44,7 +45,11 @@ class Tst_Test extends \PHPUnit_Framework_TestCase
      */
     public function test_setAsUnitTested()
     {
+        // When
         Tst::setAsUnitTested();
+
+        // Then
+        $this->assertTrue(defined('UNIT_TEST_YOUR_APPLICATION_TEST_SUITE'));
         $this->assertTrue(Tst::isUnitTested());
     }
 }

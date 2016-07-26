@@ -15,25 +15,25 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Api {
+namespace Kicaj\Test\Tools\Api {
 
-    use Kicaj\Tools\Api\_WhatTodo;
+    use Kicaj\Tools\Api\_WhatJsonLastError;
     use Kicaj\Tools\Api\JSON;
     use Kicaj\Tools\Api\JSONParseException;
 
 
     /**
-     * JSON class uit tests.
+     * JSON class unit tests.
      *
      * @coversDefaultClass Kicaj\Tools\Api\JSON
      *
      * @author             Rafal Zajac <rzajac@gmail.com>
      */
-    class JSONTest extends \PHPUnit_Framework_TestCase
+    class JSON_Test extends \PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
-            _WhatTodo::$whatToDo = -1;
+            _WhatJsonLastError::$jsonLastErrorReturn = _WhatJsonLastError::USE_DEFAULT;
         }
 
         /**
@@ -51,15 +51,17 @@ namespace Kicaj\Test\PhpTools\Api {
          */
         public function test_decode($json, $asClass, $depth, $expErrMsg, $expErrCode)
         {
+            // When
             try {
-                JSON::decode($json, $asClass, $depth);
                 $gotErrMsg = '';
                 $gotErrCode = '';
+                JSON::decode($json, $asClass, $depth);
             } catch (JSONParseException $e) {
                 $gotErrMsg = $e->getMessage();
                 $gotErrCode = $e->getErrorCode();
             }
 
+            // Then
             $this->assertSame($expErrMsg, $gotErrMsg);
             $this->assertSame($expErrCode, $gotErrCode);
         }
@@ -78,33 +80,37 @@ namespace Kicaj\Test\PhpTools\Api {
          * @covers ::decode
          *
          * @expectedException \Kicaj\Tools\Api\JSONParseException
-         * @expectedExceptionMessage
+         * @expectedExceptionMessage Unknown error
          */
-        public function test_decode_errors()
+        public function test_decode_unknown_error()
         {
-            _WhatTodo::$whatToDo = 10000;
+            // Given
+            _WhatJsonLastError::$jsonLastErrorReturn = 10000;
 
+            // Then
             $json = '{"does not matter what it is here": 1}';
             JSON::decode($json);
         }
     }
 }
 
+// Trick to inject our own json_last_error() to  Kicaj\Tools\Api namespace.
+
 namespace Kicaj\Tools\Api {
 
-    class _WhatTodo
+    class _WhatJsonLastError
     {
-        public static $whatToDo = -1;
+        const USE_DEFAULT = -1;
+
+        public static $jsonLastErrorReturn = self::USE_DEFAULT;
     }
 
     function json_last_error()
     {
-        switch (_WhatTodo::$whatToDo) {
-            case -1;
-                return \json_last_error();
-
-            default:
-                return _WhatTodo::$whatToDo;
+        if (_WhatJsonLastError::$jsonLastErrorReturn === _WhatJsonLastError::USE_DEFAULT) {
+            return \json_last_error();
+        } else {
+            return _WhatJsonLastError::$jsonLastErrorReturn;
         }
     }
 }

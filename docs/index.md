@@ -11,7 +11,6 @@
 - [Kicaj\Tools\Api\ApiException](Kicaj-Tools-Api-ApiException.md)
 - [Kicaj\Tools\Cli\Interaction](Kicaj-Tools-Cli-Interaction.md)
 - [Kicaj\Tools\Helper\Fn](Kicaj-Tools-Helper-Fn.md)
-- [Kicaj\Tools\Db\DatabaseException](Kicaj-Tools-Db-DatabaseException.md)
 - [Kicaj\Tools\Helper\Arr](Kicaj-Tools-Helper-Arr.md)
 - [Kicaj\Tools\Date\DateTimeYMDHI](Kicaj-Tools-Date-DateTimeYMDHI.md)
 - [Kicaj\Tools\Lang\Calendar](Kicaj-Tools-Lang-Calendar.md)
@@ -28,7 +27,6 @@
 - [Kicaj\Tools\Date\DateTimeDMY](Kicaj-Tools-Date-DateTimeDMY.md)
 - [Kicaj\Tools\NotImplementedException](Kicaj-Tools-NotImplementedException.md)
 - [Kicaj\Tools\Helper\Str](Kicaj-Tools-Helper-Str.md)
-- [Kicaj\Tools\Db\DbConnect](Kicaj-Tools-Db-DbConnect.md)
 - [Kicaj\Tools\Helper\Obj](Kicaj-Tools-Helper-Obj.md)
 - [Kicaj\Tools\Api\HttpCodes](Kicaj-Tools-Api-HttpCodes.md)
 
@@ -36,7 +34,6 @@
 
 - [Kicaj\Tools\Itf\Error](Kicaj-Tools-Itf-Error.md)
 - [Kicaj\Tools\Itf\TargetSerializer](Kicaj-Tools-Itf-TargetSerializer.md)
-- [Kicaj\Tools\Db\DbConnector](Kicaj-Tools-Db-DbConnector.md)
 - [Kicaj\Tools\Itf\Paginer](Kicaj-Tools-Itf-Paginer.md)
 - [Kicaj\Tools\Itf\Hollower](Kicaj-Tools-Itf-Hollower.md)
 - [Kicaj\Tools\Itf\Errors](Kicaj-Tools-Itf-Errors.md)

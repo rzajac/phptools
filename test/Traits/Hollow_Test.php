@@ -15,33 +15,61 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Traits;
+namespace Kicaj\Test\Tools\Traits;
 
 use Kicaj\Tools\Traits\Hollow;
 
 /**
- * Class HollowTest.
+ * Class Hollow_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Traits\Hollow
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class HollowTest extends \PHPUnit_Framework_TestCase
+class Hollow_Test extends \PHPUnit_Framework_TestCase
 {
+    /**
+     * @covers ::isHollow
+     */
+    public function test_not_hollow()
+    {
+        // When
+        $h = new HollowTmp();
+
+        // Then
+        $this->assertFalse($h->isHollow());
+    }
+
     /**
      * @covers ::isHollow
      * @covers ::setHollow
      */
-    public function test_setHollow()
+    public function test_setHollow_true()
     {
+        // Given
         $h = new HollowTmp();
 
-        $this->assertFalse($h->isHollow());
-
+        // When
         $h->setHollow();
-        $this->assertTrue($h->isHollow());
 
+        // Then
+        $this->assertTrue($h->isHollow());
+    }
+
+    /**
+     * @covers ::isHollow
+     * @covers ::setHollow
+     */
+    public function test_setHollow_set_not_hollow()
+    {
+        // Given
+        $h = new HollowTmp();
+
+        // When
+        $h->setHollow();
         $h->setHollow(false);
+
+        // Then
         $this->assertFalse($h->isHollow());
     }
 }

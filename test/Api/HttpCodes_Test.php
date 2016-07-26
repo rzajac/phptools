@@ -15,36 +15,34 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Api;
+namespace Kicaj\Test\Tools\Api;
 
 use Kicaj\Tools\Api\HttpCodes;
 
 /**
- * Class HttpCodesTest.
+ * Class HttpCodes_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Api\HttpCodes
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class HttpCodesTest extends \PHPUnit_Framework_TestCase
+class HttpCodes_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider httpHeaderForProvider
      *
      * @covers ::httpHeaderFor
-     * @covers ::getMessageForCode
      *
      * @param int    $code
      * @param string $expected
      */
     public function test_httpHeaderFor($code, $expected)
     {
-        $got = HttpCodes::httpHeaderFor($code);
-        $this->assertSame($expected, $got);
+        // When
+        $gotHeader = HttpCodes::httpHeaderFor($code);
 
-        $expected = str_replace('HTTP/1.1 ', '', $expected);
-        $got = HttpCodes::getMessageForCode($code);
-        $this->assertSame($expected, $got);
+        // Then
+        $this->assertSame($expected, $gotHeader);
     }
 
     public function httpHeaderForProvider()
@@ -55,6 +53,34 @@ class HttpCodesTest extends \PHPUnit_Framework_TestCase
             [400, 'HTTP/1.1 Bad Request'],
             [401, 'HTTP/1.1 Unauthorized'],
             [404, 'HTTP/1.1 Not Found'],
+        ];
+    }
+
+    /**
+     * @dataProvider getMessageForCodeProvider
+     *
+     * @covers ::getMessageForCode
+     *
+     * @param int    $code
+     * @param string $expected
+     */
+    public function test_getMessageForCode($code, $expected)
+    {
+        // When
+        $gotHeader = HttpCodes::getMessageForCode($code);
+
+        // Then
+        $this->assertSame($expected, $gotHeader);
+    }
+
+    public function getMessageForCodeProvider()
+    {
+        return [
+            [200, 'OK'],
+            [301, 'Moved Permanently'],
+            [400, 'Bad Request'],
+            [401, 'Unauthorized'],
+            [404, 'Not Found'],
         ];
     }
 
@@ -72,14 +98,15 @@ class HttpCodesTest extends \PHPUnit_Framework_TestCase
      */
     public function test_isError($code, $isError, $isOk, $mayHaveBody)
     {
-        $got = HttpCodes::isError($code);
-        $this->assertSame($isError, $got);
+        // When
+        $gotIsOk = HttpCodes::isOk($code);
+        $gotIsError = HttpCodes::isError($code);
+        $gotMayHaveBody = HttpCodes::mayHaveBody($code);
 
-        $got = HttpCodes::isOk($code);
-        $this->assertSame($isOk, $got);
-
-        $got = HttpCodes::mayHaveBody($code);
-        $this->assertSame($mayHaveBody, $got);
+        // Then
+        $this->assertSame($isOk, $gotIsOk);
+        $this->assertSame($isError, $gotIsError);
+        $this->assertSame($mayHaveBody, $gotMayHaveBody);
     }
 
     public function isErrorProvider()

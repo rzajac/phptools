@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools;
+namespace Kicaj\Test\Tools;
 
 use Kicaj\Tools\NotImplementedException;
 
@@ -35,7 +35,10 @@ class NotImplementedException_Test extends \PHPUnit_Framework_TestCase
      */
     public function test___construct_EC_CODE_and_message()
     {
+        // When
         $e = new NotImplementedException();
+
+        // Then
         $this->assertSame('not implemented', $e->getUserMessage());
         $this->assertSame('EC_NOT_IMPLEMENTED', $e->getErrorCode());
         $this->assertSame(0, $e->getCode());
@@ -48,7 +51,10 @@ class NotImplementedException_Test extends \PHPUnit_Framework_TestCase
      */
     public function test___construct_EC_CODE_and_message_custom()
     {
+        // When
         $e = new NotImplementedException('custom msg', 'EC_CUSTOM');
+
+        // Then
         $this->assertSame('custom msg', $e->getUserMessage());
         $this->assertSame('EC_CUSTOM', $e->getErrorCode());
         $this->assertSame(0, $e->getCode());

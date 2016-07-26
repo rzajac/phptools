@@ -15,7 +15,7 @@ Change errors to exceptions.
 public static function errToException(boolean $turnOn) : mixed
 ```
 Arguments:
-- _$turnOn_ **boolean** - Set to false to turn off user defined error to exception handling
+- _$turnOn_ **boolean** - Set to false to turn off user defined error exception handling and set the default one.
 
 Returns: **mixed**
 

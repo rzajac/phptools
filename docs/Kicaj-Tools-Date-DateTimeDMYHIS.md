@@ -33,5 +33,12 @@ Default serialization format.
 protected string $format = 'Y-m-d H:i:s'
 ```
 
+#### $formatBack
+Backup of default serialization format.
+
+```php
+protected string $formatBack
+```
+
 -------
 ## Methods

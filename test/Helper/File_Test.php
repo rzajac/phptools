@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Exception;
 use Kicaj\Tools\Helper\File;
@@ -23,13 +23,13 @@ use org\bovigo\vfs\vfsStream;
 use org\bovigo\vfs\vfsStreamDirectory;
 
 /**
- * Class FileTest.
+ * Class File_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\File
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class FileTest extends \PHPUnit_Framework_TestCase
+class File_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * Root of virtual filesystem.
@@ -91,7 +91,10 @@ class FileTest extends \PHPUnit_Framework_TestCase
      */
     public function test_getHash()
     {
+        // When
         $file = File::make($this->testFile);
+
+        // Then
         $this->assertEquals($this->testFileHash, $file->getHash());
     }
 
@@ -100,7 +103,10 @@ class FileTest extends \PHPUnit_Framework_TestCase
      */
     public function test_getSize()
     {
+        // When
         $file = File::make($this->testFile);
+
+        // Then
         $this->assertSame(10141, $file->getSize());
     }
 
@@ -109,14 +115,15 @@ class FileTest extends \PHPUnit_Framework_TestCase
      */
     public function test_splitFile()
     {
-        // Prepare test
+        // Given
         $dstDir = vfsStream::url('exampleDir/chunks');
         mkdir($dstDir);
 
+        // When
         $file = File::make($this->testFile);
-        $chunks = $file->splitFile($dstDir, 1024);
 
-        // Test we got 9 chunks
+        // Then
+        $chunks = $file->splitFile($dstDir, 1024);
         $this->assertSame(9, count($chunks));
 
         $expectedHashes = [

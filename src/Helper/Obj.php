@@ -17,8 +17,6 @@
  */
 namespace Kicaj\Tools\Helper;
 
-use Exception;
-
 /**
  * Helper class operating on objects.
  *
@@ -29,40 +27,57 @@ abstract class Obj
     /**
      * Get object property value or default if it does not exist.
      *
-     * NOTES:
+     * This handles only public properties.
      *
-     *  - this method does not handle PHP errors. Unless you use user defined
-     *    error handler like in @see Err::errToException()
-     *
-     *  - objects implementing __get() magic method must also implement __isset()
-     *
-     * @param object $obj             The object
-     * @param string $propName        The property name
-     * @param mixed  $default         The default value to return if property name doesn't exist
-     * @param bool   $handleException If set to true method will catch eny exceptions thrown when accessing properties
-     *
-     * @throws Exception
+     * @param object $obj      The object.
+     * @param string $propName The public property name.
+     * @param mixed  $default  The default value to return if property name doesn't exist.
      *
      * @return mixed
      */
-    public static function get($obj, $propName, $default = null, $handleException = true)
+    public static function get($obj, $propName, $default = null)
     {
         if (!is_object($obj)) {
             return $default;
         }
 
-        if (property_exists($obj, $propName) || isset($obj->$propName)) {
-            try {
-                return $obj->$propName;
-            } catch (Exception $e) {
-                if ($handleException) {
-                    return $default;
-                }
-
-                throw $e;
-            }
+        try {
+            return $obj->$propName;
+        } catch (\Exception $e) {
         }
 
         return $default;
+    }
+
+    /**
+     * Get object property value using reflection.
+     *
+     * This method is slower then Obj::get.
+     *
+     * @param object $obj      The object.
+     * @param string $propName The property name.
+     * @param mixed  $default  The default value to return if property name doesn't exist.
+     *
+     * @return mixed|null
+     */
+    public static function getRfl($obj, $propName, $default = null)
+    {
+        if (!is_object($obj)) {
+            return $default;
+        }
+
+        try {
+            $prop = new \ReflectionProperty($obj, $propName);
+        } catch (\Exception $e) {
+            return $default;
+        }
+
+        if ($prop->isPublic()) {
+            return $obj->$propName;
+        } else {
+            $prop->setAccessible(true);
+
+            return $prop->getValue($obj);
+        }
     }
 }

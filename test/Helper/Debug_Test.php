@@ -15,30 +15,41 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Debug;
 
 /**
- * Class DebugTest.
+ * Class Debug_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Debug
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DebugTest extends \PHPUnit_Framework_TestCase
+class Debug_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::getCallStack
      */
-    public function test_getCallStack()
+    public function test_getCallStack_true()
     {
+        // When
         $stack = Debug::getCallStack(true);
 
+        // Then
         $this->assertTrue(is_array($stack));
-        $this->assertTrue(strpos($stack[0], 'DebugTest.php:getCallStack') !== false);
+        $this->assertTrue(strpos($stack[0], 'Debug_Test.php:getCallStack') !== false);
+    }
 
+    /**
+     * @covers ::getCallStack
+     */
+    public function test_getCallStack_false()
+    {
+        // When
         $stack = Debug::getCallStack();
+
+        // Then
         $this->assertTrue(is_string($stack));
     }
 }

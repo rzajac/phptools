@@ -15,19 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Arr;
 use stdClass;
 
 /**
- * Class ArrTest.
+ * Class Arr_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Arr
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class ArrTest extends \PHPUnit_Framework_TestCase
+class Arr_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider everyProvider
@@ -60,9 +60,13 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_toObject()
     {
+        // Given
         $arr = ['a' => 1, 'b' => 2];
+
+        // When
         $got = Arr::toObject($arr);
 
+        // Then
         $exp = new stdClass();
         $exp->a = 1;
         $exp->b = 2;
@@ -82,7 +86,10 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_fillUp($value, $minCount, $arr, $exp)
     {
+        // When
         $got = Arr::fillUp($arr, $minCount, $value);
+
+        // Then
         $this->assertSame($exp, $got);
     }
 
@@ -108,7 +115,10 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_range($start, $max, $step, $expected)
     {
+        // When
         $got = Arr::range($max, $start, $step);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -135,7 +145,10 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_get($key, $default, $expected, $array)
     {
+        // When
         $got = Arr::get($array, $key, $default);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -162,7 +175,10 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_remove($toRemove, $arr, $expected)
     {
+        // When
         $got = Arr::remove($arr, $toRemove);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -191,7 +207,10 @@ class ArrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_keep($toKeep, $arr, $expected)
     {
+        // When
         $got = Arr::keep($arr, $toKeep);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 

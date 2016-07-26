@@ -15,18 +15,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Cli;
+namespace Kicaj\Test\Tools\Cli;
 
 use Kicaj\Tools\Cli\Colors;
 
 /**
- * Class ColorsTest.
+ * Class Colors_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Cli\Colors
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class ColorsTest extends \PHPUnit_Framework_TestCase
+class Colors_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider getColoredStringProvider
@@ -40,7 +40,10 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
      */
     public function test_httpHeaderFor($string, $fgColorName, $bgColorName, $expected)
     {
+        // When
         $got = Colors::getColoredString($string, $fgColorName, $bgColorName);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -60,6 +63,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
      */
     public function test_getForegroundColorNames()
     {
+        // When
         $expColors = [
             'black',
             'dark_gray',
@@ -79,6 +83,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
             'white',
         ];
 
+        // Then
         $this->assertSame($expColors, Colors::getForegroundColorNames());
     }
 
@@ -87,6 +92,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
      */
     public function test_getBackgroundColorNames()
     {
+        // When
         $expColors = [
             'black',
             'red',
@@ -98,6 +104,7 @@ class ColorsTest extends \PHPUnit_Framework_TestCase
             'light_gray',
         ];
 
+        // Then
         $this->assertSame($expColors, Colors::getBackgroundColorNames());
     }
 

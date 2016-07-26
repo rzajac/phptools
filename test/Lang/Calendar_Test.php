@@ -15,19 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\I18N;
+namespace Kicaj\Test\Tools\I18N;
 
 use Kicaj\Tools\Lang\Calendar;
 use PHPUnit_Framework_TestCase;
 
 /**
- * Class CalendarTest.
+ * Class Calendar_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Lang\Calendar
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class CalendarTest extends PHPUnit_Framework_TestCase
+class Calendar_Test extends PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider getDayProvider

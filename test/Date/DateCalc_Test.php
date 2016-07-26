@@ -15,7 +15,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Tools\Date;
+namespace Kicaj\Test\Tools\Date;
 
 use Kicaj\Tools\Date\DateCalc;
 use PHPUnit_Framework_TestCase;
@@ -27,22 +27,22 @@ use PHPUnit_Framework_TestCase;
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class DateCalcTest extends PHPUnit_Framework_TestCase
+class DateCalc_Test extends PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::durationHI
      *
-     * @dataProvider durationProvider
+     * @dataProvider durationHIProvider
      *
      * @param int    $duration
      * @param string $formatted
      */
-    public function testDurationFormatted($duration, $formatted)
+    public function test_durationHI($duration, $formatted)
     {
         $this->assertEquals(DateCalc::durationHI($duration), $formatted);
     }
 
-    public function durationProvider()
+    public function durationHIProvider()
     {
         return [
             [60, '1h 00min'],
@@ -57,15 +57,30 @@ class DateCalcTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider secondsSinceMidnightProvider
+     *
      * @covers ::secondsSinceMidnight
+     *
+     * @param int $hour
+     * @param int $minute
+     * @param int $second
+     * @param int $expected
      */
-    public function testCalcSecondsSinceMidnight()
+    public function test_secondsSinceMidnight($hour, $minute, $second, $expected)
     {
-        $secSince = DateCalc::secondsSinceMidnight(1, 1, 1);
-        $this->assertSame(3661, $secSince);
+        // When
+        $secSince = DateCalc::secondsSinceMidnight($hour, $minute, $second);
 
-        $secSince = DateCalc::secondsSinceMidnight(0, 1, 0);
-        $this->assertSame(60, $secSince);
+        // Then
+        $this->assertSame($expected, $secSince);
+    }
+
+    public function secondsSinceMidnightProvider()
+    {
+        return [
+            [1, 1, 1, 3661],
+            [0, 1, 0, 60],
+        ];
     }
 
     /**
@@ -76,7 +91,7 @@ class DateCalcTest extends PHPUnit_Framework_TestCase
      * @param string $timeStr
      * @param int    $expected
      */
-    public function testSecondsSinceMidnightStr($timeStr, $expected)
+    public function test_secondsSinceMidnightStr($timeStr, $expected)
     {
         $this->assertSame($expected, DateCalc::secondsSinceMidnightStr($timeStr));
     }
@@ -103,7 +118,10 @@ class DateCalcTest extends PHPUnit_Framework_TestCase
      */
     public function testFormatTimeStr($timeInt, $withSeconds, $expected)
     {
+        // When
         $time = DateCalc::formatStrTime($timeInt, $withSeconds);
+
+        // Then
         $this->assertSame($expected, $time);
     }
 

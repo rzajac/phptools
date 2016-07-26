@@ -16,19 +16,19 @@
  * under the License.
  */
 
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Date\DateTime;
 use Kicaj\Tools\Helper\Str;
 
 /**
- * Class StrTest.
+ * Class Str_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Str
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class StrTest extends \PHPUnit_Framework_TestCase
+class Str_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider randomStringProvider
@@ -39,7 +39,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_randomString($length)
     {
+        // When
         $str = Str::randomString($length);
+
+        // Then
         $this->assertSame($length, strlen($str));
         $this->assertSame(true, ctype_lower($str));
     }
@@ -63,11 +66,13 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_generateToken($length)
     {
-        $str = Str::generateToken($length, true);
-        $this->assertSame($length, strlen($str));
+        // When
+        $strStrong = Str::generateToken($length, true);
+        $strWeak = Str::generateToken($length, false);
 
-        $str = Str::generateToken($length, false);
-        $this->assertSame($length, strlen($str));
+        // Then
+        $this->assertSame($length, strlen($strStrong));
+        $this->assertSame($length, strlen($strWeak));
     }
 
     public function generateTokenProvider()
@@ -90,7 +95,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_emptyOnFalse($value, $expected)
     {
+        // When
         $got = Str::emptyOnFalse($value);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -120,7 +128,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_slugify($str, $expected)
     {
+        // When
         $got = Str::slugify($str);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -146,7 +157,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_startsWith($str, $needle, $expected)
     {
+        // When
         $got = Str::startsWith($str, $needle);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -171,7 +185,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_endsWith($str, $needle, $expected)
     {
+        // When
         $got = Str::endsWith($str, $needle);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -196,7 +213,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_camelCaseToUnderscore($str, $expected)
     {
+        // When
         $got = Str::camelCaseToUnderscore($str);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -218,7 +238,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_underscoreToCamelCase($str, $expected)
     {
+        // When
         $got = Str::underscoreToCamelCase($str);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -235,11 +258,13 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_getRandomWeightedElement()
     {
+        // Given
         $iterations = 1000;
 
         $cond = ['A' => 5.0, 'B' => 35.0, 'C' => 60.0];
         $count = ['A' => 0, 'B' => 0, 'C' => 0];
 
+        // When
         for ($x = 0; $x < $iterations; ++$x) {
             $got = Str::getRandomWeightedElement($cond);
             ++$count[$got];
@@ -249,6 +274,7 @@ class StrTest extends \PHPUnit_Framework_TestCase
         $bPercent = round($count['B'] / $iterations * 100, 0);
         $cPercent = round($count['C'] / $iterations * 100, 0);
 
+        // Then
         // Accuracy within 3% is fine
         $this->assertEquals($cond['A'], $aPercent, '', 3.0);
         $this->assertEquals($cond['B'], $bPercent, '', 3.0);
@@ -292,7 +318,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_toString($value, $expected)
     {
+        // When
         $got = Str::toString($value);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -326,8 +355,10 @@ class StrTest extends \PHPUnit_Framework_TestCase
      */
     public function test_containsProvider($haystack, $needle, $ignoreCase, $expected)
     {
+        // When
         $got = Str::contains($haystack, $needle, $ignoreCase);
 
+        // Then
         $this->assertSame($expected, $got);
     }
 

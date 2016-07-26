@@ -15,19 +15,19 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Api;
+namespace Kicaj\Test\Tools\Api;
 
 use Kicaj\Tools\Api\JResp;
 use Kicaj\Tools\Itf\Paginer;
 
 /**
- * Class JRespTest.
+ * Class JResp_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Api\JResp
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class JRespTest extends \PHPUnit_Framework_TestCase
+class JResp_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var array
@@ -50,8 +50,10 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_simple()
     {
+        // When
         $resp = JResp::buildResponse($this->testValue, true, 200);
 
+        // Then
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
@@ -73,9 +75,11 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_httpCode()
     {
+        // When
         $resp = JResp::buildResponse($this->testValue, true, 123);
-        $this->assertSame(123, $resp->http_code);
 
+        // Then
+        $this->assertSame(123, $resp->http_code);
         // Make sure there are no other keys
         $this->assertSame(3, count(array_keys((array) $resp)));
     }
@@ -85,9 +89,11 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_success()
     {
+        // When
         $resp = JResp::buildResponse($this->testValue, false, 123);
-        $this->assertSame(false, $resp->success);
 
+        // Then
+        $this->assertSame(false, $resp->success);
         // Make sure there are no other keys
         $this->assertSame(3, count(array_keys((array) $resp)));
     }
@@ -97,10 +103,10 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging()
     {
-        $paging = new TestPaginer();
+        // When
+        $resp = JResp::buildResponse($this->testValue, false, 123, new TestPaginer);
 
-        $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
-
+        // Then
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
@@ -123,11 +129,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_buildResponse_paging_no_totalPages()
     {
+        // Given
         $paging = new TestPaginer();
         $paging->totalPages = 0;
 
+        // When
         $resp = JResp::buildResponse($this->testValue, false, 123, $paging);
 
+        // Then
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
         $this->assertObjectHasAttribute('data', $resp);
@@ -147,24 +156,48 @@ class JRespTest extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::isSuccess
      */
-    public function test_isSuccess()
+    public function test_isSuccess_false()
     {
+        // When
         $resp = JResp::buildResponse($this->testValue, false, 345);
-        $this->assertSame(false, JResp::isSuccess($resp));
 
+        // Then
+        $this->assertSame(false, JResp::isSuccess($resp));
+    }
+
+    /**
+     * @covers ::isSuccess
+     */
+    public function test_isSuccess_true()
+    {
+        // When
         $resp = JResp::buildResponse($this->testValue, true, 345);
+
+        // Then
         $this->assertSame(true, JResp::isSuccess($resp));
     }
 
     /**
      * @covers ::retJSON
      */
-    public function test_retJSON()
+    public function test_retJSON_prettyPrint_false()
     {
+        // When
         $ret = JResp::retJSON($this->testValue);
-        $this->assertSame($this->testValueJson, $ret);
 
+        // Then
+        $this->assertSame($this->testValueJson, $ret);
+    }
+
+    /**
+     * @covers ::retJSON
+     */
+    public function test_retJSON_prettyPrint_true()
+    {
+        // When
         $ret = JResp::retJSON($this->testValue, true);
+
+        // Then
         $this->assertSame($this->testValueJsonPretty, $ret);
     }
 
@@ -173,9 +206,11 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_retSuccess_no_paging()
     {
+        // When
         $resp = JResp::retSuccess($this->testValue, 200);
         $resp = json_decode($resp);
 
+        // Then
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
@@ -197,10 +232,11 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_retSuccess_paging()
     {
-        $paging = new TestPaginer();
-        $resp = JResp::retSuccess($this->testValue, 123, $paging);
+        // When
+        $resp = JResp::retSuccess($this->testValue, 123, new TestPaginer);
         $resp = json_decode($resp);
 
+        // Then
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
@@ -225,10 +261,14 @@ class JRespTest extends \PHPUnit_Framework_TestCase
      */
     public function test_retError()
     {
+        // Given
         $error = ['error' => 'error message', 'errorCode' => 123];
+
+        // When
         $resp = JResp::retError($error, 444);
         $resp = json_decode($resp);
 
+        // Then
         $this->assertInstanceOf('stdClass', $resp);
         $this->assertObjectHasAttribute('success', $resp);
         $this->assertObjectHasAttribute('http_code', $resp);
@@ -246,6 +286,13 @@ class JRespTest extends \PHPUnit_Framework_TestCase
     }
 }
 
+/**
+ * TestPaginer.
+ *
+ * Unit test helper class
+ *
+ * @author Rafal Zajac <rzajac@gmail.com>
+ */
 class TestPaginer implements Paginer
 {
     public $currPage = 2;

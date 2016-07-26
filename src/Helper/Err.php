@@ -31,16 +31,14 @@ abstract class Err
      *
      * @see http://php.net/manual/en/class.errorexception.php
      *
-     * @param bool $turnOn Set to false to turn off user defined error to exception handling
+     * @param bool $turnOn Set to false to turn off user defined error exception handling and set the default one.
      *
      * @return mixed
      */
     public static function errToException($turnOn = true)
     {
         if (!$turnOn) {
-            // @codeCoverageIgnoreStart
             return set_error_handler(null);
-            // @codeCoverageIgnoreEnd
         }
 
         /*
@@ -75,10 +73,6 @@ abstract class Err
      */
     public static function restoreHandler($handler)
     {
-        if (!$handler) {
-            $handler = null;
-        }
-
         return set_error_handler($handler);
     }
 

@@ -15,33 +15,30 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
-use Kicaj\Tools\Helper\Arr;
-use Kicaj\Tools\Helper\GET;
+use Kicaj\Tools\Helper\POST;
 use stdClass;
 
 /**
- * Class GETTest.
+ * Class POST_Test.
  *
- * @coversDefaultClass Kicaj\Tools\Helper\GET
+ * @coversDefaultClass Kicaj\Tools\Helper\POST
  *
- * @author Rafal Zajac <rzajac@gmail.com>
+ * @author             Rafal Zajac <rzajac@gmail.com>
  */
-class GETTest extends \PHPUnit_Framework_TestCase
+class POST_Test extends \PHPUnit_Framework_TestCase
 {
-    protected $get;
+    protected $post;
 
     protected function setUp()
     {
-        parent::setUp();
-        $this->get = $_GET;
+        $this->post = $_POST;
     }
 
     protected function tearDown()
     {
-        parent::tearDown();
-        $_GET = $this->get;
+        $_POST = $this->post;
     }
 
     /**
@@ -56,8 +53,13 @@ class GETTest extends \PHPUnit_Framework_TestCase
      */
     public function test_get($key, $default, $expected, $array)
     {
-        $_GET = $array;
-        $got = GET::get($key, $default);
+        // Given
+        $_POST = $array;
+
+        // When
+        $got = POST::get($key, $default);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 

@@ -15,18 +15,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Fn;
 
 /**
- * Class FnTest.
+ * Class Fn_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Fn
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class FnTest extends \PHPUnit_Framework_TestCase
+class Fn_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::noop
@@ -49,7 +49,10 @@ class FnTest extends \PHPUnit_Framework_TestCase
      */
     public function test_returnIfNot($oldValue, $ifNot, $newValue, $expected)
     {
+        // When
         $got = Fn::returnIfNot($oldValue, $ifNot, $newValue);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 

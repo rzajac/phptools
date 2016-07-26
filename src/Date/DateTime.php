@@ -58,7 +58,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      *
      * @var string
      */
-    private $formatBack;
+    protected $formatBack;
 
     /**
      * Constructor.
@@ -365,9 +365,9 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
     {
         $interval = new DateInterval('P'.abs($delta).'M');
 
-        if ($delta >= 0) {
+        if ($delta > 0) {
             $this->add($interval);
-        } else {
+        } elseif ($delta < 0) {
             $this->sub($interval);
         }
 
@@ -383,21 +383,8 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      */
     public function getCalMonthDelta($delta = 0)
     {
-        if ($delta <= -12 || $delta >= 12) {
-            $delta = $delta % 12;
-        }
-
-        $month = $this->getMonth() + $delta;
-
-        if ($month < 0) {
-            $month = 12 + $month;
-        } elseif ($month == 0) {
-            $month = 12;
-        } elseif ($month > 12) {
-            $month = $month % 12;
-        }
-
-        return $month;
+        $dt = clone $this;
+        return $dt->addMonths($delta)->getMonth();
     }
 
     /**

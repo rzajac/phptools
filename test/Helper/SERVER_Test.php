@@ -15,34 +15,29 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
-use Kicaj\Tools\Helper\Arr;
-use Kicaj\Tools\Helper\GET;
-use Kicaj\Tools\Helper\POST;
 use Kicaj\Tools\Helper\SERVER;
 use stdClass;
 
 /**
- * Class SERVERTest.
+ * Class SERVER_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\SERVER
  *
- * @author Rafal Zajac <rzajac@gmail.com>
+ * @author             Rafal Zajac <rzajac@gmail.com>
  */
-class SERVERTest extends \PHPUnit_Framework_TestCase
+class SERVER_Test extends \PHPUnit_Framework_TestCase
 {
     protected $server;
 
     protected function setUp()
     {
-        parent::setUp();
         $this->server = $_SERVER;
     }
 
     protected function tearDown()
     {
-        parent::tearDown();
         $_SERVER = $this->server;
     }
 
@@ -58,8 +53,13 @@ class SERVERTest extends \PHPUnit_Framework_TestCase
      */
     public function test_get($key, $default, $expected, $array)
     {
+        // Given
         $_SERVER = $array;
+
+        // When
         $got = SERVER::get($key, $default);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 

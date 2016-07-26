@@ -15,28 +15,46 @@
  * under the License.
  */
 
-namespace Kicaj\Test\PhpTools\Cli {
+namespace Kicaj\Test\Tools\Cli {
 
+    use Kicaj\Tools\Cli\_WhatFgets;
     use Kicaj\Tools\Cli\Interaction;
 
     /**
-     * InteractionTest.
+     * Interaction_Test.
      *
      * @coversDefaultClass Kicaj\Tools\Cli\Interaction
      *
      * @author             Rafal Zajac <rzajac@gmail.com>
      */
-    class InteractionTest extends \PHPUnit_Framework_TestCase
+    class Interaction_Test extends \PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            _WhatFgets::$fgetsReturn = _WhatFgets::USE_DEFAULT;
+        }
+
         /**
          * @covers ::commandExist
          */
-        public function test_commandExist()
+        public function test_commandExist_false()
         {
+            // When
             $exists = Interaction::commandExist('_not_existing');
-            $this->assertFalse($exists);
 
+            // Then
+            $this->assertFalse($exists);
+        }
+
+        /**
+         * @covers ::commandExist
+         */
+        public function test_commandExist_true()
+        {
+            // When
             $exists = Interaction::commandExist('ls');
+
+            // Then
             $this->assertTrue($exists);
         }
 
@@ -45,16 +63,36 @@ namespace Kicaj\Test\PhpTools\Cli {
          */
         public function test_getPassword()
         {
+            // Given
+            _WhatFgets::$fgetsReturn = 'testPass';
+
+            // When
             $gotPass = Interaction::getPassword('Give me password: ');
+
+            // Then
             $this->expectOutputString('Give me password: ');
             $this->assertSame('testPass', $gotPass);
         }
     }
 }
 
+// Trick to inject our own fgets() to Kicaj\Tools\Cli namespace.
+
 namespace Kicaj\Tools\Cli {
-    function fgets()
+
+    class _WhatFgets
     {
-        return 'testPass';
+        const USE_DEFAULT = -1;
+
+        public static $fgetsReturn = self::USE_DEFAULT;
+    }
+
+    function fgets($handle)
+    {
+        if (_WhatFgets::$fgetsReturn === _WhatFgets::USE_DEFAULT) {
+            return \fgets($handle);
+        } else {
+            return _WhatFgets::$fgetsReturn;
+        }
     }
 }

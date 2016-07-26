@@ -15,18 +15,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\PhpTools\Helper;
+namespace Kicaj\Test\Tools\Helper;
 
 use Kicaj\Tools\Helper\Num;
 
 /**
- * Class NumTest.
+ * Class Num_Test.
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Num
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class NumTest extends \PHPUnit_Framework_TestCase
+class Num_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @dataProvider equalWithinProvider
@@ -40,7 +40,10 @@ class NumTest extends \PHPUnit_Framework_TestCase
      */
     public function test_equalWithin($a, $b, $delta, $expected)
     {
+        // When
         $got = Num::equalWithin($a, $b, $delta);
+
+        // Then
         $this->assertSame($expected, $got);
     }
 
@@ -96,9 +99,11 @@ class NumTest extends \PHPUnit_Framework_TestCase
      */
     public function test_oddEven($num, $isEven, $isOdd)
     {
+        // When
         $even = Num::isEven($num);
         $odd = Num::isOdd($num);
 
+        // Then
         $this->assertSame($isEven, $even);
         $this->assertSame($isOdd, $odd);
     }
