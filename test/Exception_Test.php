@@ -15,18 +15,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-namespace Kicaj\Test\Tools\Api;
+namespace Kicaj\Test\Tools;
 
-use Kicaj\Tools\Api\ApiException;
+use Kicaj\Tools\Exception;
 
 /**
- * Class ApiException_Test.
+ * Class Exception_Test.
  *
- * @coversDefaultClass Kicaj\Tools\Api\ApiException
+ * @coversDefaultClass Kicaj\Tools\Exception
  *
  * @author Rafal Zajac <rzajac@gmail.com>
  */
-class ApiException_Test extends \PHPUnit_Framework_TestCase
+class Exception_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::__construct
@@ -36,7 +36,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     public function test___construct_simple_message()
     {
         // When
-        $e = new ApiException('error message');
+        $e = new Exception('error message');
 
         // Then
         $this->assertSame('error message', $e->getUserMessage());
@@ -52,7 +52,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     public function test___construct_no_message()
     {
         // When
-        $e = new ApiException('');
+        $e = new Exception('');
 
         // Then
         $this->assertSame('EC_UNKNOWN', $e->getUserMessage());
@@ -68,7 +68,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     public function test___construct_EC_CODE()
     {
         // When
-        $e = new ApiException('EC_SOME_ERROR');
+        $e = new Exception('EC_SOME_ERROR');
 
         // Then
         $this->assertSame('EC_SOME_ERROR', $e->getUserMessage());
@@ -84,7 +84,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     public function test___construct_EC_CODE_and_message()
     {
         // When
-        $e = new ApiException('my message', 'EC_MY_ERROR');
+        $e = new Exception('my message', 'EC_MY_ERROR');
 
         // Then
         $this->assertSame('my message', $e->getUserMessage());
@@ -99,7 +99,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     {
         // When
         $e = new \Exception('ex message', 123);
-        $apiEx = ApiException::makeFromException($e);
+        $apiEx = Exception::makeFromException($e);
 
         // Then
         $this->assertSame('ex message', $apiEx->getUserMessage());
@@ -114,8 +114,8 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     {
         // When
         $e = new \Exception('ex message', 123);
-        $apiEx = ApiException::makeFromException($e);
-        $apiEx2 = ApiException::makeFromException($apiEx);
+        $apiEx = Exception::makeFromException($e);
+        $apiEx2 = Exception::makeFromException($apiEx);
 
         // Then
         $this->assertSame($apiEx, $apiEx2);
@@ -127,7 +127,7 @@ class ApiException_Test extends \PHPUnit_Framework_TestCase
     public function test_jsonSerialize()
     {
         // When
-        $e = new ApiException('my message', 'EC_MY_ERROR');
+        $e = new Exception('my message', 'EC_MY_ERROR');
         $std = $e->jsonSerialize();
 
         // Then
