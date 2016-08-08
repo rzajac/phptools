@@ -53,7 +53,7 @@ abstract class Arr
      */
     public static function toObject(array $arr)
     {
-        return (object) $arr;
+        return (object)$arr;
     }
 
     /**
@@ -122,11 +122,13 @@ abstract class Arr
     }
 
     /**
-     * Get array.
+     * Fetch nested array value by dot notation path.
      *
-     * @param array        $array
-     * @param string|array $path
-     * @param mixed        $default
+     * Arr::fetch('key1.key2', $arr);
+     *
+     * @param array        $array   The array to get value from.
+     * @param string|array $path    The key in dot notation. You can also pass array with keys.
+     * @param mixed        $default The default value if key does not exist.
      *
      * @return mixed
      */
