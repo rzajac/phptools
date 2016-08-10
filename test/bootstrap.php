@@ -17,7 +17,7 @@
  */
 
 ini_set('display_errors', true);
-error_reporting(E_ALL & ~E_STRICT);
+error_reporting(E_ALL);
 
 // Require composer autoloader
 require __DIR__.'/../vendor/autoload.php';
