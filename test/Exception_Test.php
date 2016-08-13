@@ -24,7 +24,7 @@ use Kicaj\Tools\Exception;
  *
  * @coversDefaultClass Kicaj\Tools\Exception
  *
- * @author Rafal Zajac <rzajac@gmail.com>
+ * @author             Rafal Zajac <rzajac@gmail.com>
  */
 class Exception_Test extends \PHPUnit_Framework_TestCase
 {
@@ -110,6 +110,22 @@ class Exception_Test extends \PHPUnit_Framework_TestCase
     /**
      * @covers ::makeFromException
      */
+    public function test_makeFromException_override_code()
+    {
+        // When
+        $e = new \Exception('ex message', 123);
+        $apiEx = Exception::makeFromException($e, 345);
+
+        // Then
+        $this->assertSame('ex message', $apiEx->getUserMessage());
+        $this->assertSame(345, $apiEx->getErrorCode());
+        $this->assertSame(345, $apiEx->getCode());
+        $this->assertSame(123, $apiEx->getPrevious()->getCode());
+    }
+
+    /**
+     * @covers ::makeFromException
+     */
     public function test_makeFromException_return_if_already_instance_of_self()
     {
         // When
@@ -133,6 +149,6 @@ class Exception_Test extends \PHPUnit_Framework_TestCase
         // Then
         $this->assertInstanceOf('stdClass', $std);
         $exp = ['code' => 'EC_MY_ERROR', 'message' => 'my message'];
-        $this->assertSame($exp, (array) $exp);
+        $this->assertSame($exp, (array)$exp);
     }
 }

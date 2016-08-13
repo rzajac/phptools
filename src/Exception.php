@@ -60,17 +60,22 @@ class Exception extends \Exception implements \JsonSerializable
     /**
      * Creates ApiException from any other exception.
      *
-     * @param \Exception $e
+     * @param \Exception $e            The original exception.
+     * @param null       $overrideCode The code to override.
      *
      * @return static
      */
-    public static function makeFromException($e)
+    public static function makeFromException($e, $overrideCode = null)
     {
+        $code = $overrideCode === null ? $e->getCode() : $overrideCode;
+
         if ($e instanceof self) {
+            $e->code = $code;
+
             return $e;
         }
 
-        return new static($e->getMessage(), $e->getCode(), $e);
+        return new static($e->getMessage(), $code, $e);
     }
 
     /**
