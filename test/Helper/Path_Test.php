@@ -20,11 +20,11 @@ namespace Kicaj\Test\Tools\Helper;
 use Kicaj\Tools\Helper\Path;
 
 /**
- * Class POST_Test.
+ * Class Path_Test.
  *
- * @coversDefaultClass Kicaj\Tools\Helper\POST
+ * @coversDefaultClass Kicaj\Tools\Helper\Path
  *
- * @author             Rafal Zajac <rzajac@gmail.com>
+ * @author Rafal Zajac <rzajac@gmail.com>
  */
 class Path_Test extends \PHPUnit_Framework_TestCase
 {
