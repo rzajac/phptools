@@ -54,8 +54,6 @@ class Calendar
      * @param string $style    The style to return day name in. One of the self::STYLE_* constants
      *
      * @return mixed
-     *
-     * @throws \Exception
      */
     public static function getDay($day, $langCode, $style = self::STYLE_LONG)
     {
@@ -72,8 +70,6 @@ class Calendar
      * @param string $style    The style to return month name in. One of the self::STYLE_* constants
      *
      * @return mixed
-     *
-     * @throws \Exception
      */
     public static function getMonth($month, $langCode, $style = self::STYLE_LONG)
     {

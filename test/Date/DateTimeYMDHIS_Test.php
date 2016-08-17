@@ -138,6 +138,8 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
      *
      * @param string $dateStr
      * @param string $expected
+     *
+     * @throws \Exception
      */
     public function test_targetSerialize($dateStr, $expected)
     {

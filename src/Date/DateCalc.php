@@ -78,7 +78,7 @@ abstract class DateCalc
         switch (count($time_a)) {
             case 0:
             case 1:
-                return;
+                return null;
 
             case 2:
                 // Add seconds
@@ -89,7 +89,7 @@ abstract class DateCalc
                 break;
 
             default:
-                return;
+                return null;
         }
 
         return self::secondsSinceMidnight((int) $time_a[0], (int) $time_a[1], (int) $time_a[2]);

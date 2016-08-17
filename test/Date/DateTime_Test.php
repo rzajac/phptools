@@ -442,8 +442,6 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
      *
      * @covers ::fromFormat
      *
-     * @todo         clean up this test
-     *
      * @param string $format
      * @param string $dateTime
      * @param string $timezone
@@ -463,7 +461,7 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
 
         // Then
         if ($gotErrMsg) {
-            $this->assertSame($expected, $dt);
+            $this->assertSame(null, $dt);
             $this->assertSame('Unexpected data found.', $gotErrMsg);
         } else {
             $this->assertSame($expected, $dt->format(DateTime::ATOM));
@@ -502,6 +500,8 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
      *
      * @param string $dateStr
      * @param string $expected
+     *
+     * @throws \Exception
      */
     public function test_targetSerialize($dateStr, $expected)
     {

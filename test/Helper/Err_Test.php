@@ -25,7 +25,7 @@ use stdClass;
  *
  * @coversDefaultClass Kicaj\Tools\Helper\Err
  *
- * @author Rafal Zajac <rzajac@gmail.com>
+ * @author             Rafal Zajac <rzajac@gmail.com>
  */
 class Err_Test extends \PHPUnit_Framework_TestCase
 {
@@ -100,13 +100,22 @@ class Err_Test extends \PHPUnit_Framework_TestCase
      */
     public function test_errToException_noError()
     {
+        // Given
+        $o = null;
+
         // When
         Err::errToException();
         error_reporting(0);
 
         // Then
-        $o = new stdClass();
-        $o->test;
+        try {
+            $o = new stdClass();
+            $o->test;
+        } catch (\Exception $e) {
+            $this->fail('We should get no error.');
+        }
+
+        $this->assertNotNull($o);
     }
 
     /**

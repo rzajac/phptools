@@ -1,4 +1,4 @@
-\.idea
-coverage
-vendor/**
-tmp/**
+\.idea/
+coverage/
+vendor/
+tmp/
