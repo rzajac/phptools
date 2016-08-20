@@ -282,8 +282,8 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
     public function test_getCurrentYear()
     {
         // When
-        $yearL = (int) date('Y');
-        $yearS = (int) date('y');
+        $yearL = (int)date('Y');
+        $yearS = (int)date('y');
 
         // Then
         $this->assertSame($yearL, DateTime::getCurrentYear(true));
@@ -296,7 +296,7 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
     public function test_getCurrentMonth()
     {
         // When
-        $month = (int) date('m');
+        $month = (int)date('m');
 
         // Then
         $this->assertSame($month, DateTime::getCurrentMonth(true));
@@ -308,7 +308,7 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
     public function test_getCurrentHour()
     {
         // When
-        $hour = (int) date('G');
+        $hour = (int)date('G');
 
         // Then
         $this->assertNotSame($hour, DateTime::getCurrentHour(true));
@@ -324,7 +324,7 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
         date_default_timezone_set('Asia/Kathmandu');
 
         // When
-        $minutes = (int) date('i');
+        $minutes = (int)date('i');
 
         // Then
         $this->assertNotSame($minutes, DateTime::getCurrentMinutes(true));
@@ -438,6 +438,34 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @dataProvider isPastProvider
+     *
+     * @covers ::isPast
+     * @covers ::isFuture
+     *
+     * @param string $date
+     * @param false  $isPast
+     */
+    public function test_isPast($date, $isPast)
+    {
+        // Given
+        // When
+        $dt = new DateTime($date);
+
+        // Then
+        $this->assertSame($isPast, $dt->isPast());
+        $this->assertSame(!$isPast, $dt->isFuture());
+    }
+
+    public function isPastProvider()
+    {
+        return [
+            ['1980-08-12', true],
+            ['2130-08-12', false],
+        ];
+    }
+
+    /**
      * @dataProvider fromFormatProvider
      *
      * @covers ::fromFormat
@@ -544,7 +572,7 @@ class DateTime_Test extends \PHPUnit_Framework_TestCase
      * @param string $givenDate
      * @param int    $monthDelta
      * @param int    $expMonth
-     * @param string $expDate    Not used in this test.
+     * @param string $expDate Not used in this test.
      */
     public function test_getMonthDelta($givenDate, $monthDelta, $expMonth, $expDate)
     {

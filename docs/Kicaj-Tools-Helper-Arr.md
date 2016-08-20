@@ -74,14 +74,16 @@ Returns: **mixed**
 
 -------
 #### fetch
-Get array.
+Fetch nested array value by dot notation path.
+
+Arr::fetch(&#039;key1.key2&#039;, $arr);
 ```php
 public static function fetch(array $array, string|array $path, mixed $default) : mixed
 ```
 Arguments:
-- _$array_ **array**
-- _$path_ **string|array**
-- _$default_ **mixed**
+- _$array_ **array** - The array to get value from., 
+- _$path_ **string|array** - The key in dot notation. You can also pass array with keys., 
+- _$default_ **mixed** - The default value if key does not exist.
 
 Returns: **mixed**
 

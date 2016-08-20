@@ -51,9 +51,6 @@ Arguments:
 - _$langCode_ **string** - The supported language code ex: en, 
 - _$style_ **string** - The style to return day name in. One of the self::STYLE_* constants
 
-Throws:
-- Exception
-
 Returns: **mixed**
 
 -------
@@ -66,9 +63,6 @@ Arguments:
 - _$month_ **integer** - The month number 1 - 12, 
 - _$langCode_ **string** - The supported language code ex: en, 
 - _$style_ **string** - The style to return month name in. One of the self::STYLE_* constants
-
-Throws:
-- Exception
 
 Returns: **mixed**
 

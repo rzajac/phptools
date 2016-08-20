@@ -53,10 +53,11 @@ Arguments:
 #### makeFromException
 Creates ApiException from any other exception.
 ```php
-public static function makeFromException(Exception $e) : static
+public static function makeFromException(Exception $e, null $overrideCode) : static
 ```
 Arguments:
-- _$e_ **Exception**
+- _$e_ **Exception** - The original exception., 
+- _$overrideCode_ **null** - The code to override.
 
 Returns: **static**
 

@@ -251,7 +251,7 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      *
      * @return bool
      */
-    function isWeekend()
+    public function isWeekend()
     {
         return (int) $this->format('N') > 5;
     }
@@ -261,9 +261,31 @@ class DateTime extends \DateTime implements IHollow, TargetSerializer
      *
      * @return bool
      */
-    function isWorkDay()
+    public function isWorkDay()
     {
         return !$this->isWeekend();
+    }
+
+    /**
+     * Is date in the past.
+     *
+     * @return bool
+     */
+    public function isPast()
+    {
+        $now = new static('now', $this->getTimezone());
+
+        return $now > $this;
+    }
+
+    /**
+     * Is date in the future.
+     *
+     * @return bool
+     */
+    public function isFuture()
+    {
+        return !$this->isPast();
     }
 
     /**

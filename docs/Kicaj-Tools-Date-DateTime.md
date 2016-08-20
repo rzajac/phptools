@@ -30,11 +30,11 @@ const TIME_FORMAT_SHORT = 'H:i';
 |          [__construct](#__construct)           |                 [make](#make)                  |                  [now](#now)                   |               [hollow](#hollow)                |
 |            [setHollow](#sethollow)             |           [fromFormat](#fromformat)            |            [getFormat](#getformat)             |          [getLongDate](#getlongdate)           |
 | [secondsSinceMidnight](#secondssincemidnight)  |          [toMySQLDate](#tomysqldate)           |            [isWeekend](#isweekend)             |            [isWorkDay](#isworkday)             |
-|              [getYear](#getyear)               |             [getMonth](#getmonth)              |               [getDay](#getday)                |             [getDayOw](#getdayow)              |
-|             [getHours](#gethours)              |           [getMinutes](#getminutes)            |           [getSeconds](#getseconds)            |            [addMonths](#addmonths)             |
-|     [getCalMonthDelta](#getcalmonthdelta)      |       [getCurrentYear](#getcurrentyear)        |      [getCurrentMonth](#getcurrentmonth)       |       [getCurrentHour](#getcurrenthour)        |
-|    [getCurrentMinutes](#getcurrentminutes)     |               [format](#format)                |           [__toString](#__tostring)            |        [jsonSerialize](#jsonserialize)         |
-|      [targetSerialize](#targetserialize)       |                     [](#)                      |                     [](#)                      |                     [](#)                      |
+|               [isPast](#ispast)                |             [isFuture](#isfuture)              |              [getYear](#getyear)               |             [getMonth](#getmonth)              |
+|               [getDay](#getday)                |             [getDayOw](#getdayow)              |             [getHours](#gethours)              |           [getMinutes](#getminutes)            |
+|           [getSeconds](#getseconds)            |            [addMonths](#addmonths)             |     [getCalMonthDelta](#getcalmonthdelta)      |       [getCurrentYear](#getcurrentyear)        |
+|      [getCurrentMonth](#getcurrentmonth)       |       [getCurrentHour](#getcurrenthour)        |    [getCurrentMinutes](#getcurrentminutes)     |               [format](#format)                |
+|           [__toString](#__tostring)            |        [jsonSerialize](#jsonserialize)         |      [targetSerialize](#targetserialize)       |                     [](#)                      |
 
 ## Properties
 
@@ -192,6 +192,24 @@ Returns: **boolean**
 Returns true if date is on monday through friday.
 ```php
 public function isWorkDay() : boolean
+```
+
+Returns: **boolean**
+
+-------
+#### isPast
+Is date in the past.
+```php
+public function isPast() : boolean
+```
+
+Returns: **boolean**
+
+-------
+#### isFuture
+Is date in the future.
+```php
+public function isFuture() : boolean
 ```
 
 Returns: **boolean**
