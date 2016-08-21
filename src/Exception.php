@@ -62,7 +62,7 @@ class Exception extends \Exception implements \JsonSerializable
      *
      * @param string $format The sprintf format.
      *
-     * @return Exception
+     * @return static
      */
     public static function spf($format)
     {
