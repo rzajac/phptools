@@ -151,4 +151,16 @@ class Exception_Test extends \PHPUnit_Framework_TestCase
         $exp = ['code' => 'EC_MY_ERROR', 'message' => 'my message'];
         $this->assertSame($exp, (array)$exp);
     }
+
+    /**
+     * @covers ::spf
+     */
+    public function test_spf()
+    {
+        // When
+        $e = Exception::spf('Something %s created %d errors.', 'awful', 666);
+
+        // Then
+        $this->assertSame('Something awful created 666 errors.', $e->getMessage());
+    }
 }

@@ -19,8 +19,8 @@ const EC_UNKNOWN = 'EC_UNKNOWN';
 
 |                                          |                                          |                                          |                                          |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-|       [__construct](#__construct)        | [makeFromException](#makefromexception)  |    [getUserMessage](#getusermessage)     |      [getErrorCode](#geterrorcode)       |
-|     [jsonSerialize](#jsonserialize)      |                  [](#)                   |                  [](#)                   |                  [](#)                   |
+|       [__construct](#__construct)        |               [spf](#spf)                | [makeFromException](#makefromexception)  |    [getUserMessage](#getusermessage)     |
+|      [getErrorCode](#geterrorcode)       |     [jsonSerialize](#jsonserialize)      |                  [](#)                   |                  [](#)                   |
 
 ## Properties
 
@@ -48,6 +48,17 @@ Arguments:
 - _$message_ **string** - The human readable message or one of the EC_* strings, 
 - _$ecCode_ **string** - The EC_* string, 
 - _$previous_ **Exception** - The previous exception
+
+-------
+#### spf
+Create exception with sprintf like message.
+```php
+public static function spf(string $format) : Kicaj\Tools\Exception
+```
+Arguments:
+- _$format_ **string** - The sprintf format.
+
+Returns: **[Kicaj\Tools\Exception](Kicaj-Tools-Exception.md)**
 
 -------
 #### makeFromException

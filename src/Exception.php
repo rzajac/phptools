@@ -58,6 +58,20 @@ class Exception extends \Exception implements \JsonSerializable
     }
 
     /**
+     * Create exception with sprintf like message.
+     *
+     * @param string $format The sprintf format.
+     *
+     * @return Exception
+     */
+    public static function spf($format)
+    {
+        $msg = call_user_func_array('sprintf', func_get_args());
+
+        return new static($msg);
+    }
+
+    /**
      * Creates ApiException from any other exception.
      *
      * @param \Exception $e            The original exception.
