@@ -195,11 +195,12 @@ class Str_Test extends \PHPUnit_Framework_TestCase
     public function endsWithProvider()
     {
         return [
-            ['aaaBBB', 'BB', true],
-            ['aaaBBB', 'BBB', true],
-            ['aaaBBB', 'B', true],
-            ['aaaBBB', '', true],
-            ['aaaBBB', 'bb', false],
+            ["aaaBBB", 'BB', true],
+            ["aaaBBB", 'BBB', true],
+            ["aaaBBB", 'B', true],
+            ["aaaBBB", '', true],
+            ["aaaBBB", 'bb', false],
+            ["aaa\nBBB\naa;", ';', true],
         ];
     }
 

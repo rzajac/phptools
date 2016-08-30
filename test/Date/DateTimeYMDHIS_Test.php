@@ -17,16 +17,16 @@
  */
 namespace Kicaj\Test\Tools\Date;
 
-use Kicaj\Tools\Date\DateTimeYMDHI;
+use Kicaj\Tools\Date\DateTimeYMDHIS;
 
 /**
- * Class DateTimeYMDHI_Test.
+ * Class DateTimeYMDHIS_Test.
  *
- * @coversDefaultClass Kicaj\Tools\Date\DateTimeYMDHI
+ * @coversDefaultClass Kicaj\Tools\Date\DateTimeYMDHIS
  *
  * @author             Rafal Zajac <rzajac@gmail.com>
  */
-class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
+class DateTimeYMDHIS_Test extends \PHPUnit_Framework_TestCase
 {
     /**
      * @covers ::__construct
@@ -35,10 +35,10 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test___construct()
     {
         // When
-        $dt = new DateTimeYMDHI();
+        $dt = new DateTimeYMDHIS();
 
         // Then
-        $this->assertSame('Y-m-d H:i', $dt->getFormat());
+        $this->assertSame('Y-m-d H:i:s', $dt->getFormat());
     }
 
     /**
@@ -48,10 +48,10 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_make()
     {
         // When
-        $dt = DateTimeYMDHI::make();
+        $dt = DateTimeYMDHIS::make();
 
         // Then
-        $this->assertSame('Y-m-d H:i', $dt->getFormat());
+        $this->assertSame('Y-m-d H:i:s', $dt->getFormat());
     }
 
     /**
@@ -61,7 +61,7 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_setHollow_true()
     {
         // Given
-        $dt = new DateTimeYMDHI('2020-10-12');
+        $dt = new DateTimeYMDHIS('2020-10-12');
 
         // When
         $dt->setHollow();
@@ -77,14 +77,14 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_setHollow_true_false()
     {
         // Given
-        $dt = new DateTimeYMDHI('2020-10-12');
+        $dt = new DateTimeYMDHIS('2020-10-12');
 
         // When
         $dt->setHollow();
         $dt->setHollow(false);
 
         // Then
-        $this->assertSame('Y-m-d H:i', $dt->getFormat());
+        $this->assertSame('Y-m-d H:i:s', $dt->getFormat());
     }
 
     /**
@@ -93,13 +93,13 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_format_hollow_not_hollow()
     {
         // Given
-        $dt = new DateTimeYMDHI('');
+        $dt = new DateTimeYMDHIS('');
 
         // When
         $dt->setHollow(false);
 
         // Then
-        $this->assertSame('1970-01-01 00:00', $dt->format());
+        $this->assertSame('1970-01-01 00:00:00', $dt->format());
     }
 
     /**
@@ -108,10 +108,10 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_format_default_format()
     {
         // When
-        $dt = new DateTimeYMDHI('1956-11-12 13:14:15');
+        $dt = new DateTimeYMDHIS('1956-11-12 13:14:15');
 
         // Then
-        $this->assertSame('1956-11-12 13:14', $dt->format());
+        $this->assertSame('1956-11-12 13:14:15', $dt->format());
     }
 
     /**
@@ -125,7 +125,7 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test__toString($dateStr, $expected)
     {
         // When
-        $dt = new DateTimeYMDHI($dateStr);
+        $dt = new DateTimeYMDHIS($dateStr);
 
         // Then
         $this->assertEquals($expected, $dt->__toString());
@@ -144,7 +144,7 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_targetSerialize($dateStr, $expected)
     {
         // When
-        $dt = new DateTimeYMDHI($dateStr);
+        $dt = new DateTimeYMDHIS($dateStr);
 
         // Then
         $this->assertEquals($expected, $dt->targetSerialize());
@@ -161,7 +161,7 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function test_jsonSerialize($dateStr, $expected)
     {
         // When
-        $dt = new DateTimeYMDHI($dateStr);
+        $dt = new DateTimeYMDHIS($dateStr);
 
         // Then
         $this->assertEquals('"' . $expected . '"', json_encode($dt));
@@ -170,7 +170,7 @@ class DateTimeYMDHI_Test extends \PHPUnit_Framework_TestCase
     public function serializeProvider()
     {
         return [
-            ['2013-09-22 09:08:10', '2013-09-22 09:08'],
+            ['2013-09-22 09:08:10', '2013-09-22 09:08:10'],
         ];
     }
 }
