@@ -83,7 +83,7 @@ class Exception extends \Exception implements \JsonSerializable
     {
         $code = $overrideCode === null ? $e->getCode() : $overrideCode;
 
-        if ($e instanceof self) {
+        if ($e instanceof static) {
             $e->code = $code;
 
             return $e;

@@ -18,6 +18,7 @@
 namespace Kicaj\Test\Tools;
 
 use Kicaj\Tools\Exception;
+use Kicaj\Tools\NotImplementedException;
 
 /**
  * Class Exception_Test.
@@ -138,6 +139,19 @@ class Exception_Test extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * @covers ::makeFromException
+     */
+    public function test_makeFromException_should_test_for_static_not_self()
+    {
+        // When
+        $e = new NotImplementedException('message');
+        $e2 = TestException::makeFromException($e);
+
+        // Then
+        $this->assertInstanceOf('\Kicaj\Test\Tools\TestException', $e2);
+    }
+
+    /**
      * @covers ::jsonSerialize
      */
     public function test_jsonSerialize()
@@ -164,3 +178,5 @@ class Exception_Test extends \PHPUnit_Framework_TestCase
         $this->assertSame('Something awful created 666 errors.', $e->getMessage());
     }
 }
+
+class TestException extends Exception {}
